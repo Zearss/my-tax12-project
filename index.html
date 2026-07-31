@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAXAD 12 · ทีมสีแดง</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F5F3;
+    --card:#FFFFFF;
+    --ink:#1A1C20;
+    --body:#43474D;
+    --slate:#767A81;
+    --line:#E0E2DE;
+    --line-2:#CBCEC9;
+    --red:#C81E28;
+    --amber:#C07C1E;
+    --mono:"IBM Plex Mono",monospace;
+    --radius:3px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      linear-gradient(rgba(21,23,27,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(21,23,27,.035) 1px, transparent 1px);
+    background-size:26px 26px;
+    color:var(--ink);
+    font-family:"Anuphan", system-ui, sans-serif;
+    font-weight:400;
+    line-height:1.65;
+  }
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--red);outline-offset:2px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+ 
+  .top{border-bottom:1px solid var(--line);background:var(--card)}
+  .top-in{display:flex;align-items:center;gap:12px;height:54px}
+  .mark{width:11px;height:11px;background:var(--red);border-radius:2px;flex:none}
+  .top strong{font-size:14.5px;font-weight:600}
+  .top .code{margin-left:auto;font-family:var(--mono);font-size:11.5px;
+    color:var(--slate);letter-spacing:.1em}
+ 
+  .intro{padding:clamp(28px,5vw,52px) 0 clamp(20px,3vw,32px)}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--slate);margin:0 0 12px}
+  h1{font-size:clamp(26px,4.4vw,40px);font-weight:600;line-height:1.2;
+    margin:0;letter-spacing:-.01em}
+  .intro p{margin:14px 0 0;max-width:56ch;color:var(--body);font-size:15.5px;font-weight:300}
+ 
+  .facts{display:flex;flex-wrap:wrap;margin-top:26px;
+    border:1px solid var(--line-2);border-radius:var(--radius);background:var(--card);
+    overflow:hidden}
+  .fact{flex:1 1 170px;padding:14px 18px;border-right:1px solid var(--line)}
+  .fact:last-child{border-right:0}
+  .fact small{display:block;font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.1em;color:var(--slate);text-transform:uppercase}
+  .fact span{font-size:15px;font-weight:500}
+  .fact .draft{color:var(--slate);font-weight:400;font-size:13px}
+ 
+  .grid{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(16px,2.4vw,24px);
+    padding-bottom:clamp(28px,5vw,52px);align-items:start}
+  .box{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius)}
+  .box-head{display:flex;align-items:center;gap:10px;padding:13px 18px;
+    border-bottom:1px solid var(--line)}
+  .box-head h2{margin:0;font-size:14.5px;font-weight:600}
+  .box-head .hint{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--slate)}
+ 
+  .months{display:flex;gap:6px;padding:12px 18px 0;flex-wrap:wrap}
+  .mtab{appearance:none;font:inherit;cursor:pointer;background:transparent;
+    border:1px solid var(--line-2);border-radius:var(--radius);
+    padding:5px 12px;font-size:13px;color:var(--body);transition:all .15s}
+  .mtab:hover{border-color:var(--slate)}
+  .mtab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+ 
+  .cal{padding:14px 18px 18px}
+  .dow,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .dow div{text-align:center;font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.06em;color:var(--slate);padding-bottom:6px}
+  .day{min-height:56px;border:1px solid var(--line);border-radius:var(--radius);
+    padding:5px 6px;font-family:var(--mono);font-size:12px;color:var(--body);
+    display:flex;flex-direction:column;gap:4px}
+  .day.pad{border-color:transparent}
+  .day.today{box-shadow:inset 0 0 0 1.5px var(--ink)}
+  .day .n{color:var(--slate)}
+  .day.has .n{color:var(--ink);font-weight:500}
+  .pill{font-family:"IBM Plex Sans Thai",sans-serif;font-size:10.5px;line-height:1.3;
+    padding:2px 4px;border-radius:2px;background:var(--line);color:var(--body)}
+  .pill.ours{background:var(--red);color:#fff}
+  .pill.due{background:#F6EBD6;color:var(--amber);font-weight:500}
+  .pill.show{background:var(--ink);color:#fff}
+ 
+  .legend{display:flex;flex-wrap:wrap;gap:14px;padding:0 18px 16px;
+    font-size:12px;color:var(--slate)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .legend i{width:10px;height:10px;border-radius:2px;display:block;border:1px solid var(--line-2)}
+ 
+  .agenda{padding:0}
+  .item{display:flex;gap:12px;padding:11px 18px;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:0}
+  .item .d{font-family:var(--mono);font-size:12px;color:var(--slate);
+    min-width:58px;padding-top:2px}
+  .item h3{margin:0;font-size:14px;font-weight:500}
+  .item p{margin:2px 0 0;font-size:12.5px;color:var(--slate)}
+  .item.next{background:#FCF3F3}
+  .item.next .d{color:var(--red)}
+ 
+  .note{padding:14px 18px;font-size:13px;color:var(--body);
+    border-top:1px solid var(--line);background:#FAFAF9}
+  .note b{font-weight:600}
+ 
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:clamp(12px,2vw,16px);padding-bottom:clamp(36px,6vw,64px)}
+  .link{display:block;text-decoration:none;background:var(--card);
+    border:1px solid var(--line-2);border-radius:var(--radius);padding:16px 18px;
+    transition:border-color .15s}
+  .link:hover{border-color:var(--ink)}
+  .link h3{margin:0 0 4px;font-size:14.5px;font-weight:600}
+  .link p{margin:0;font-size:13px;color:var(--slate)}
+  .link .st{display:inline-block;margin-top:10px;font-family:var(--mono);
+    font-size:10px;letter-spacing:.08em;color:var(--slate);
+    border:1px solid var(--line-2);border-radius:2px;padding:2px 6px}
+ 
+  footer{border-top:1px solid var(--line);background:var(--card);padding:18px 0}
+  .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:11px;color:var(--slate);letter-spacing:.06em}
+ 
+  @media (max-width:820px){
+    .grid{grid-template-columns:1fr}
+    .day{min-height:48px}
+  }
+  @media (max-width:520px){
+    .day{min-height:42px;font-size:11px;padding:3px 4px}
+    .pill{font-size:9px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+ 
+<div class="top">
+  <div class="wrap top-in">
+    <span class="mark" aria-hidden="true"></span>
+    <strong>TAXAD 12 · ทีมสีแดง</strong>
+    <span class="code">2569</span>
+  </div>
+</div>
+ 
+<div class="wrap intro">
+  <p class="kicker">โครงงานภาษีอากร</p>
+  <h1>หน้ารวมงานของทีมสีแดง</h1>
+  <p>ที่เดียวสำหรับดูหัวข้อ กำหนดการ และคิวปรึกษาอาจารย์
+    ตอนนี้อยู่ในขั้นสรุปหัวข้อ<br/>รายละเอียดยังปรับเปลี่ยนได้</p>
+ 
+  <div class="facts">
+    <div class="fact">
+      <small>หัวข้อ</small>
+      <span>EV &amp; Battery <span class="draft">— ร่าง</span></span>
+    </div>
+    <div class="fact">
+      <small>คิวปรึกษา</small>
+      <span>ทีมที่ 2 · ครั้งละ 15 นาที</span>
+    </div>
+    <div class="fact">
+      <small>ที่ปรึกษา</small>
+      <span>อ.สุเทพ</span>
+    </div>
+    <div class="fact">
+      <small>วันนำเสนอ</small>
+      <span>11 ต.ค. 69</span>
+    </div>
+  </div>
+</div>
+ 
+<div class="wrap grid">
+ 
+  <div class="box">
+    <div class="box-head">
+      <h2>ปฏิทินโครงงาน</h2>
+      <span class="hint" id="monthLabel"></span>
+    </div>
+    <div class="months" id="months"></div>
+    <div class="cal">
+      <div class="dow">
+        <div>อา</div><div>จ</div><div>อ</div><div>พ</div><div>พฤ</div><div>ศ</div><div>ส</div>
+      </div>
+      <div class="days" id="days"></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--red)"></i>คิวของเรา</span>
+      <span><i style="background:var(--line)"></i>ทีมอื่นเข้าพบ</span>
+      <span><i style="background:#F6EBD6"></i>กำหนดส่ง</span>
+      <span><i style="background:var(--ink)"></i>นำเสนอ</span>
+    </div>
+  </div>
+ 
+  <div class="box">
+    <div class="box-head">
+      <h2>ถัดไป</h2>
+      <span class="hint">เฉพาะของเรา</span>
+    </div>
+    <div class="agenda" id="agenda"></div>
+    <div class="note">
+      ทีมสีแดงเป็น <b>ลำดับทีมที่ 2</b> ของวันอาทิตย์ เสมอ และคิวตรงกับ สีชมพู ทุกครั้ง — รวม 5 ครั้ง ครั้งละ 15 นาที เตรียมคำถามไปให้แน่นทุกรอบ เพราะเวลาน้อยมาก
+    </div>
+  </div>
+ 
+</div>
+ 
+<div class="wrap links">
+  <a class="link" href="summary.html">
+    <h3>สรุปหัวข้อ</h3>
+    <p>ขอบเขตธุรกิจและเหตุผลที่เลือก</p>
+    <span class="st">พร้อมอ่าน</span>
+  </a>
+  <a class="link" href="#">
+    <h3>โครงร่างรายงาน</h3>
+    <p>หัวข้อย่อยและการแบ่งงานในทีม</p>
+    <span class="st">ยังไม่เริ่ม</span>
+  </a>
+  <a class="link" href="#">
+    <h3>ไฟล์และเอกสาร</h3>
+    <p>รูปเล่ม สไลด์ และแหล่งอ้างอิง</p>
+    <span class="st">รอไฟล์</span>
+  </a>
+  <a class="link" href="#">
+    <h3>บันทึกการพบอาจารย์</h3>
+    <p>สิ่งที่อาจารย์แนะนำในแต่ละครั้ง</p>
+    <span class="st">รอครั้งแรก</span>
+  </a>
+</div>
+ 
+<footer>
+  <div class="wrap foot">
+    <span>TEAM RED · TAXAD 12</span>
+    <span>อัปเดตล่าสุด: ส.ค. 2569</span>
+  </div>
+</footer>
+ 
+<script>
+(function(){
+  var THMONTH = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+ 
+  /* ---- แก้กำหนดการได้ที่นี่ ----
+     k: "ours" = คิวเรา | "due" = กำหนดส่ง | "show" = นำเสนอ | "" = ทีมอื่น
+     skip: true = ไม่ต้องขึ้นในช่อง "ถัดไป"                    */
+  var EVENTS = [
+    {d:"2026-08-01", label:"เสนอหัวข้อ", k:"",     title:"เสนอหัวข้อรายงาน",       note:"1–2 ส.ค."},
+    {d:"2026-08-02", label:"เสนอหัวข้อ", k:"",     title:"เสนอหัวข้อรายงาน",       note:"วันที่สอง"},
+    {d:"2026-08-08", label:"ทีมอื่น",    k:"",     title:"วันปรึกษา (ฟ้า/เหลือง)", note:"ไม่ใช่คิวเรา", skip:true},
+    {d:"2026-08-09", label:"ปรึกษา",     k:"ours", title:"ปรึกษาอาจารย์",          note:"ทีมที่ 2 · 15 นาที"},
+    {d:"2026-08-15", label:"ทีมอื่น",    k:"",     title:"วันปรึกษา (ฟ้า/เหลือง)", note:"ไม่ใช่คิวเรา", skip:true},
+    {d:"2026-08-16", label:"ปรึกษา",     k:"ours", title:"ปรึกษาอาจารย์",          note:"ทีมที่ 2 · 15 นาที"},
+    {d:"2026-08-22", label:"ทีมอื่น",    k:"",     title:"วันปรึกษา (ฟ้า/เหลือง)", note:"ไม่ใช่คิวเรา", skip:true},
+    {d:"2026-08-23", label:"ปรึกษา",     k:"ours", title:"ปรึกษาอาจารย์",          note:"ทีมที่ 2 · 15 นาที"},
+    {d:"2026-08-29", label:"ทีมอื่น",    k:"",     title:"วันปรึกษา (ฟ้า/เหลือง)", note:"ไม่ใช่คิวเรา", skip:true},
+    {d:"2026-08-30", label:"ปรึกษา",     k:"ours", title:"ปรึกษาอาจารย์",          note:"ทีมที่ 2 · 15 นาที"},
+    {d:"2026-09-05", label:"ทีมอื่น",    k:"",     title:"Final (ฟ้า/เหลือง)",     note:"ไม่ใช่คิวเรา", skip:true},
+    {d:"2026-09-06", label:"Final",      k:"ours", title:"ปรึกษาอาจารย์ · Final",  note:"ทีมที่ 2 · 15 นาที"},
+    {d:"2026-10-03", label:"ส่งเล่ม",    k:"due",  title:"ส่งเล่มรายงานและสไลด์",  note:"พิมพ์สี 3 ชุด"},
+    {d:"2026-10-04", label:"ส่งเล่ม",    k:"due",  title:"ส่งเล่มรายงานและสไลด์",  note:"วันสุดท้าย"},
+    {d:"2026-10-11", label:"นำเสนอ",     k:"show", title:"นำเสนอรายงานกลุ่ม",      note:"กลุ่มละ 30 นาที · จับฉลากลำดับ"}
+  ];
+ 
+  var MONTHS = [[2026,6],[2026,7],[2026,8],[2026,9]]; // ก.ค.–ต.ค.
+  var today = new Date(); today.setHours(0,0,0,0);
+  function iso(dt){
+    return dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0");
+  }
+  var byDay = {};
+  EVENTS.forEach(function(e){ (byDay[e.d] = byDay[e.d] || []).push(e); });
+ 
+  var tabs   = document.getElementById("months");
+  var daysEl = document.getElementById("days");
+  var label  = document.getElementById("monthLabel");
+  var current = 1;
+ 
+  MONTHS.forEach(function(m,i){
+    var b = document.createElement("button");
+    b.className = "mtab"; b.type = "button";
+    b.textContent = THMONTH[m[1]] + " " + String(m[0]+543).slice(-2);
+    b.addEventListener("click", function(){ current = i; render(); });
+    tabs.appendChild(b);
+  });
+ 
+  function render(){
+    Array.prototype.forEach.call(tabs.children, function(b,i){
+      b.setAttribute("aria-pressed", i===current ? "true" : "false");
+    });
+    var y = MONTHS[current][0], m = MONTHS[current][1];
+    label.textContent = THMONTH[m] + " " + (y+543);
+ 
+    var first = new Date(y,m,1), total = new Date(y,m+1,0).getDate();
+    daysEl.innerHTML = "";
+ 
+    for(var p=0;p<first.getDay();p++){
+      var pad = document.createElement("div");
+      pad.className = "day pad";
+      daysEl.appendChild(pad);
+    }
+    for(var d=1; d<=total; d++){
+      var dt = new Date(y,m,d), key = iso(dt);
+      var cell = document.createElement("div");
+      cell.className = "day" + (byDay[key] ? " has" : "") + (key===iso(today) ? " today" : "");
+      var n = document.createElement("span");
+      n.className = "n"; n.textContent = d;
+      cell.appendChild(n);
+      (byDay[key]||[]).forEach(function(e){
+        var pill = document.createElement("span");
+        pill.className = "pill" + (e.k ? " " + e.k : "");
+        pill.textContent = e.label;
+        cell.appendChild(pill);
+      });
+      daysEl.appendChild(cell);
+    }
+  }
+  render();
+ 
+  var agenda = document.getElementById("agenda");
+  var upcoming = EVENTS.filter(function(e){
+    return !e.skip && new Date(e.d + "T00:00:00") >= today;
+  }).slice(0,5);
+ 
+  if(!upcoming.length){
+    agenda.innerHTML = '<div class="item"><div class="d">—</div><div><h3>จบกำหนดการแล้ว</h3></div></div>';
+  }
+  upcoming.forEach(function(e,i){
+    var dt = new Date(e.d + "T00:00:00");
+    var row = document.createElement("div");
+    row.className = "item" + (i===0 ? " next" : "");
+    row.innerHTML =
+      '<div class="d">' + dt.getDate() + " " + THMONTH[dt.getMonth()] + '</div>' +
+      '<div><h3>' + e.title + '</h3><p>' + e.note + '</p></div>';
+    agenda.appendChild(row);
+  });
+})();
+</script>
+</body>
+</html>
