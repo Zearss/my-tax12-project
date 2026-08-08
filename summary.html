@@ -1,447 +1,590 @@
 <!DOCTYPE html>
+
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>สรุปหัวข้อ · EV &amp; Battery — TAXAD 12 ทีมสีแดง</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ผังโครงสร้างกลุ่มบริษัท ไทยพาวเวอร์เซลล์ — แผนผังภาษีอากร</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:#F4F5F3;
-    --card:#FFFFFF;
-    --ink:#1A1C20;
-    --body:#43474D;
-    --slate:#767A81;
-    --line:#E0E2DE;
-    --line-2:#CBCEC9;
-    --red:#C81E28;
-    --amber:#C07C1E;
-    --green:#1F6F5C;
-    --mono:"IBM Plex Mono",monospace;
-    --radius:3px;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;
-    background:var(--paper);
-    background-image:
-      linear-gradient(rgba(21,23,27,.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(21,23,27,.035) 1px, transparent 1px);
-    background-size:26px 26px;
-    color:var(--ink);
-    font-family:"IBM Plex Sans Thai", system-ui, sans-serif;
-    font-weight:400;
-    line-height:1.65;
-    padding: 0px 32px;
-  }
-  a{color:inherit}
-  :focus-visible{outline:2px solid var(--red);outline-offset:2px}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+:root{
+  --zinc:#E6E7E1;
+  --zinc-2:#F2F3EF;
+  --lead:#23282C;
+  --lead-2:#4A5257;
+  --plate:#B9BDB6;
+  --hair:#C6CAC2;
+  --terminal:#B33A2B;   /* ขั้วบวก = ภาระภาษี */
+  --electrolyte:#146B5E; /* ขั้วลบ = สิทธิประโยชน์ */
+  --acid:#B08214;
+  --paper:#FBFBF9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--zinc);
+  color:var(--lead);
+  font-family:'IBM Plex Sans Thai',sans-serif;
+  font-weight:300;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px);
+  background-size:56px 56px;
+  background-position:-1px -1px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 100px}
 
-  .top{border-bottom:1px solid var(--line);background:var(--card)}
-  .top-in{display:flex;align-items:center;gap:12px;height:54px}
-  .mark{width:11px;height:11px;background:var(--red);border-radius:2px;flex:none}
-  .top strong{font-size:14.5px;font-weight:600}
-  .top .back{margin-left:auto;text-decoration:none;font-family:var(--mono);
-    font-size:11.5px;color:var(--slate);letter-spacing:.06em;
-    border:1px solid var(--line-2);border-radius:var(--radius);padding:5px 11px;
-    transition:border-color .15s}
-  .top .back:hover{border-color:var(--ink);color:var(--ink)}
+/* ══ HEADER ══ */
+.masthead{
+border:2px solid var(–lead);
+background:var(–paper);
+margin-top:36px;
+}
+.mast-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:20px;padding:26px 28px 18px}
+.eyebrow{
+font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:.22em;
+text-transform:uppercase;color:var(–lead-2);display:block;margin-bottom:12px;
+}
+h1{
+font-family:‘Chakra Petch’,sans-serif;font-weight:700;
+font-size:clamp(30px,5.2vw,52px);line-height:1.08;letter-spacing:-.01em;
+}
+h1 .sub{display:block;font-size:clamp(15px,2.2vw,21px);font-weight:500;color:var(–lead-2);margin-top:10px;letter-spacing:0}
+.stamp{
+border:2px solid var(–terminal);color:var(–terminal);
+font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:12px;
+letter-spacing:.12em;padding:8px 12px;transform:rotate(-3deg);
+white-space:nowrap;align-self:center;
+}
+.specbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(–lead)}
+.specbar div{padding:14px 18px;border-right:1px solid var(–hair)}
+.specbar div:last-child{border-right:0}
+.specbar b{
+display:block;font-family:‘Chakra Petch’,sans-serif;font-size:26px;font-weight:700;line-height:1.1
+}
+.specbar span{font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(–lead-2)}
 
-  .intro{padding:clamp(28px,5vw,52px) 0 clamp(16px,3vw,26px)}
-  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--slate);margin:0 0 12px}
-  h1{font-size:clamp(24px,4.2vw,38px);font-weight:600;line-height:1.2;
-    margin:0;letter-spacing:-.01em}
-  h1 .en{color:var(--red)}
-  .intro p{margin:14px 0 0;max-width:62ch;color:var(--body);font-size:15.5px;font-weight:300}
+.note{
+border-left:4px solid var(–acid);background:var(–paper);
+padding:16px 20px;margin-top:22px;font-size:14.5px;
+}
+.note b{font-weight:600}
 
-  /* section scaffolding */
-  section{padding:clamp(18px,3vw,26px) 0}
-  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:16px}
-  .sec-head .num{font-family:var(--mono);font-size:11px;color:#fff;background:var(--ink);
-    padding:3px 7px;border-radius:2px;letter-spacing:.06em}
-  .sec-head h2{margin:0;font-size:clamp(17px,2.4vw,21px);font-weight:600}
-  .sec-head .rule{flex:1;height:1px;background:var(--line)}
+/* ══ SECTION ══ */
+section{margin-top:64px}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(–lead);padding-bottom:8px;margin-bottom:26px}
+.sec-num{font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:600;color:var(–terminal);letter-spacing:.1em}
+.sec-head h2{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:clamp(19px,3vw,26px)}
+.sec-head .hint{margin-left:auto;font-family:‘IBM Plex Mono’,monospace;font-size:11px;color:var(–lead-2);letter-spacing:.08em}
 
-  .box{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius);
-    padding:clamp(16px,2.6vw,24px)}
-  .box + .box{margin-top:14px}
-  .box p{margin:0 0 10px}
-  .box p:last-child{margin-bottom:0}
-  .box p.lead{color:var(--body)}
-  .warn{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);
-    color:var(--red);font-weight:500}
+/* ══ LEGEND ══ */
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.lg{display:flex;align-items:center;gap:9px;background:var(–paper);border:1px solid var(–hair);padding:8px 14px;font-size:13px}
+.pole{
+width:20px;height:20px;flex:none;display:grid;place-items:center;
+font-family:‘IBM Plex Mono’,monospace;font-weight:600;font-size:13px;color:#fff
+}
+.pos{background:var(–terminal)}
+.neg{background:var(–electrolyte)}
 
-  .why{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
-  .why li{padding-left:22px;position:relative;font-size:14.5px;color:var(--body)}
-  .why li::before{content:"→";position:absolute;left:0;color:var(--red);font-family:var(--mono)}
+/* ══ BUSBAR DIAGRAM ══ */
+.rig{background:var(–paper);border:2px solid var(–lead);padding:30px 24px 34px}
+.tier{display:flex;flex-direction:column;align-items:center}
+.node{
+border:2px solid var(–lead);background:var(–zinc-2);
+padding:12px 22px;text-align:center;max-width:520px;width:100%
+}
+.node .role{font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(–lead-2)}
+.node .nm{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:17px;margin-top:3px}
+.node .dt{font-size:12.5px;color:var(–lead-2);margin-top:2px}
+.node.hq{background:var(–lead);color:var(–paper);border-color:var(–lead)}
+.node.hq .role,.node.hq .dt{color:var(–plate)}
+.drop{width:2px;height:26px;background:var(–lead)}
+.bus{height:6px;background:var(–lead);width:100%;max-width:1000px;position:relative;margin-top:0}
+.bus::before,.bus::after{content:’’;position:absolute;top:-5px;width:6px;height:16px;background:var(–lead)}
+.bus::before{left:0}.bus::after{right:0}
 
-  /* SWOT-style three columns */
-  .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .col{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius);
-    overflow:hidden;display:flex;flex-direction:column}
-  .col-head{padding:11px 15px;border-bottom:1px solid var(--line);
-    font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px}
-  .col-head i{width:9px;height:9px;border-radius:2px;flex:none}
-  .col.strong .col-head i{background:var(--green)}
-  .col.weak   .col-head i{background:var(--red)}
-  .col.boost  .col-head i{background:var(--amber)}
-  .col ul{list-style:none;margin:0;padding:12px 15px;display:grid;gap:9px;flex:1}
-  .col li{font-size:13.5px;color:var(--body);padding-left:15px;position:relative;line-height:1.5}
-  .col li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;
-    border-radius:50%;background:var(--line-2)}
-  .col.strong li::before{background:var(--green)}
-  .col.weak   li::before{background:var(--red)}
-  .col.boost  li::before{background:var(--amber)}
+.cells{
+display:grid;grid-template-columns:repeat(7,1fr);gap:10px;width:100%;max-width:1000px;margin-top:0
+}
+.stem{height:22px;width:2px;background:var(–lead);margin:0 auto}
+.cell{
+border:2px solid var(–lead);background:var(–paper);cursor:pointer;
+text-align:left;width:100%;font-family:inherit;color:inherit;
+display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease
+}
+.cell:hover,.cell:focus-visible{transform:translateY(-4px);box-shadow:5px 5px 0 var(–lead);outline:none}
+.cell.on{background:var(–lead);color:var(–paper)}
+.cap{height:9px;background:var(–terminal)}
+.cell.on .cap{background:var(–plate)}
+.cell-body{padding:9px 9px 11px;display:flex;flex-direction:column;gap:3px;flex:1}
+.cid{font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:20px;line-height:1}
+.cnm{font-size:12px;font-weight:500;line-height:1.35}
+.cpct{font-family:‘IBM Plex Mono’,monospace;font-size:10px;color:var(–lead-2);margin-top:auto;letter-spacing:.06em}
+.cell.on .cpct{color:var(–plate)}
+.ext{
+margin-top:26px;border-top:1px dashed var(–plate);padding-top:18px;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;width:100%
+}
+.ext h4{font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(–lead-2);grid-column:1/-1;margin-bottom:-4px}
+.extbox{border:1px dashed var(–lead-2);padding:10px 13px;font-size:12.5px;background:var(–zinc-2)}
+.extbox b{display:block;font-weight:600;font-size:13.5px;font-family:‘Chakra Petch’,sans-serif}
 
-  /* org chart */
-  .org-note{margin:0 0 16px;color:var(--body);font-size:14.5px}
-  .rec{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
-    color:#fff;background:var(--green);padding:2px 8px;border-radius:2px;margin-left:8px}
-  .org{display:grid;gap:14px}
-  .holdco{background:var(--ink);color:#fff;border-radius:var(--radius);
-    padding:14px 18px;text-align:center}
-  .holdco b{font-size:15px;font-weight:600}
-  .holdco span{display:block;font-family:var(--mono);font-size:11px;color:#B9BDC2;
-    letter-spacing:.06em;margin-top:3px}
-  .subs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative}
-  .subs::before{content:"";position:absolute;top:-8px;left:12.5%;right:12.5%;
-    height:1px;background:var(--line-2)}
-  .sub{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius);
-    padding:13px 14px;position:relative}
-  .sub::before{content:"";position:absolute;top:-8px;left:50%;width:1px;height:8px;
-    background:var(--line-2)}
-  .sub small{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--slate)}
-  .sub b{display:block;font-size:14px;font-weight:600;margin:2px 0 5px}
-  .sub p{margin:0;font-size:12.5px;color:var(--slate);line-height:1.5}
-  .sub .boi{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:9.5px;
-    letter-spacing:.06em;color:var(--green);border:1px solid var(--green);
-    border-radius:2px;padding:1px 5px}
+/* ══ DETAIL PANEL ══ */
+#panel{margin-top:20px}
+.card{border:2px solid var(–lead);background:var(–paper);margin-bottom:16px}
+.card-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:16px 20px;background:var(–zinc-2);border-bottom:2px solid var(–lead)}
+.badge{
+font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:22px;
+background:var(–lead);color:var(–paper);width:42px;height:42px;display:grid;place-items:center;flex:none
+}
+.card-head .t{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:17px;line-height:1.3}
+.card-head .r{font-size:12.5px;color:var(–lead-2);line-height:1.4}
+.own{margin-left:auto;font-family:‘IBM Plex Mono’,monospace;font-size:11px;border:1px solid var(–lead-2);padding:4px 9px;letter-spacing:.06em}
+.rows{width:100%;border-collapse:collapse;font-size:14px}
+.rows tr{border-bottom:1px solid var(–hair)}
+.rows tr:last-child{border-bottom:0}
+.rows td{padding:11px 14px;vertical-align:top}
+.rows td.p{width:34px;text-align:center}
+.rows td.k{width:34%;font-weight:500;font-family:‘Chakra Petch’,sans-serif;font-size:14.5px}
+.rows tr.star td.k{color:var(–terminal)}
+.rows tr.star.benefit td.k{color:var(–electrolyte)}
+.pin{
+display:inline-grid;place-items:center;width:19px;height:19px;color:#fff;
+font-family:‘IBM Plex Mono’,monospace;font-weight:600;font-size:12px;line-height:1
+}
 
-  /* blueprint flow */
-  .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .stage{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius);
-    padding:14px 16px}
-  .stage h4{margin:0 0 8px;font-size:13.5px;font-weight:600;
-    display:flex;align-items:center;gap:8px}
-  .stage h4 span{font-family:var(--mono);font-size:10px;color:var(--slate);
-    letter-spacing:.08em;text-transform:uppercase}
-  .stage ul{margin:0;padding-left:16px;font-size:13px;color:var(--body);
-    display:grid;gap:4px}
-  .rev{margin-top:14px;padding:13px 16px;background:#FAFAF9;border:1px dashed var(--line);
-    border-radius:var(--radius);font-size:13.5px;color:var(--body)}
-  .rev b{color:var(--ink);font-weight:600}
+/* ══ FLOW TABLE ══ */
+.scroll{overflow-x:auto;border:2px solid var(–lead);background:var(–paper)}
+table.grid{width:100%;border-collapse:collapse;font-size:13.5px;min-width:660px}
+table.grid th{
+background:var(–lead);color:var(–paper);font-family:‘Chakra Petch’,sans-serif;font-weight:600;
+font-size:12.5px;text-align:left;padding:11px 13px;letter-spacing:.02em;position:sticky;top:0
+}
+table.grid td{padding:10px 13px;border-bottom:1px solid var(–hair);vertical-align:top}
+table.grid tr:last-child td{border-bottom:0}
+.tag{
+font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:12px;
+border:1.5px solid var(–lead);padding:1px 7px;display:inline-block;white-space:nowrap
+}
+.arrow{font-family:‘IBM Plex Mono’,monospace;color:var(–terminal);font-weight:600}
+.num{font-family:‘IBM Plex Mono’,monospace;font-size:12px;color:var(–lead-2)}
 
-  /* tax table */
-  .tbl-scroll{overflow-x:auto;border:1px solid var(--line-2);border-radius:var(--radius);
-    background:var(--card)}
-  table{border-collapse:collapse;width:100%;min-width:560px;font-size:13.5px}
-  thead th{background:var(--ink);color:#fff;text-align:left;font-weight:500;
-    padding:10px 14px;font-size:12.5px;letter-spacing:.02em;white-space:nowrap}
-  tbody td{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--body);
-    vertical-align:top}
-  tbody tr:last-child td{border-bottom:0}
-  tbody td:first-child{font-weight:500;color:var(--ink);white-space:nowrap}
-  tbody td .rate{font-family:var(--mono);font-size:12px;color:var(--red)}
-  .dept{font-family:var(--mono);font-size:11.5px;color:var(--slate);white-space:nowrap}
+/* ══ CHECKLIST ══ */
+.filternote{
+font-size:13px;background:var(–lead);color:var(–paper);padding:9px 14px;
+display:none;align-items:center;gap:12px;flex-wrap:wrap
+}
+.filternote.show{display:flex}
+.filternote button{
+font-family:‘IBM Plex Mono’,monospace;font-size:11px;background:none;color:var(–paper);
+border:1px solid var(–plate);padding:3px 9px;cursor:pointer;letter-spacing:.06em
+}
+.filternote button:hover{background:var(–paper);color:var(–lead)}
+tr.dim{opacity:.26}
+.agency{font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:.04em;color:var(–lead-2);white-space:nowrap}
 
-  .carbon{margin-top:14px}
-  .carbon .box{border-left:3px solid var(--green)}
+/* ══ PHASES ══ */
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:0;border:2px solid var(–lead);background:var(–paper)}
+.ph{padding:20px 20px 22px;border-right:1px solid var(–hair)}
+.ph:last-child{border-right:0}
+.ph .n{font-family:‘IBM Plex Mono’,monospace;font-size:11px;color:var(–terminal);letter-spacing:.14em}
+.ph h3{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:16px;margin:6px 0 8px}
+.ph p{font-size:13.5px;color:var(–lead-2)}
+.ph .case{display:inline-block;margin-top:10px;font-family:‘IBM Plex Mono’,monospace;font-size:10.5px;border:1px solid var(–plate);padding:2px 7px;letter-spacing:.08em}
 
-  .disc{margin-top:8px;font-size:12.5px;color:var(--slate);font-style:normal}
+/* ══ WARN ══ */
+.warns{display:grid;gap:12px}
+.warn{border:2px solid var(–lead);background:var(–paper);padding:16px 20px;display:flex;gap:16px;align-items:flex-start}
+.warn .i{font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:20px;color:var(–terminal);flex:none;line-height:1.3}
+.warn b{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:15px;display:block;margin-bottom:3px}
+.warn p{font-size:13.5px;color:var(–lead-2)}
 
-  footer{border-top:1px solid var(--line);background:var(--card);padding:18px 0;
-    margin-top:clamp(28px,5vw,48px)}
-  .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
-    font-family:var(--mono);font-size:11px;color:var(--slate);letter-spacing:.06em}
+footer{margin-top:60px;border-top:2px solid var(–lead);padding-top:16px;font-family:‘IBM Plex Mono’,monospace;font-size:11px;color:var(–lead-2);letter-spacing:.06em;display:flex;flex-wrap:wrap;gap:8px 22px}
 
-  @media (max-width:760px){
-    .cols3{grid-template-columns:1fr}
-    .subs{grid-template-columns:1fr 1fr}
-    .subs::before{display:none}
-    .sub::before{display:none}
-    .flow{grid-template-columns:1fr}
-  }
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(max-width:900px){
+.cells{grid-template-columns:repeat(4,1fr);gap:8px}
+.bus{display:none}
+.stem{display:none}
+.specbar{grid-template-columns:repeat(2,1fr)}
+.specbar div:nth-child(2){border-right:0}
+.specbar div:nth-child(-n+2){border-bottom:1px solid var(–hair)}
+}
+@media(max-width:560px){
+.wrap{padding:0 14px 70px}
+.cells{grid-template-columns:repeat(2,1fr)}
+.rig{padding:20px 14px 24px}
+.rows td.k{width:auto;display:block;padding-bottom:2px}
+.rows td.v{display:block;padding-top:0}
+.rows td.p{display:block;text-align:left;width:auto;padding-bottom:0}
+.card-head{padding:13px 14px}
+.own{margin-left:0}
+.stamp{transform:none}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
+
 </head>
 <body>
+<div class="wrap">
 
-<div class="top">
-  <div class="wrap top-in">
-    <span class="mark" aria-hidden="true"></span>
-    <strong>TAXAD 12 · ทีมสีแดง</strong>
-    <a class="back" href="index.html">← กลับหน้ารวม</a>
+<!-- ═══ MASTHEAD ═══ -->
+
+<div class="masthead">
+  <div class="mast-top">
+    <div>
+      <span class="eyebrow">โครงงานภาษีอากร · กรณีศึกษาสมมติ</span>
+      <h1>กลุ่มบริษัท<br>ไทยพาวเวอร์เซลล์
+        <span class="sub">THAI POWERCELL GROUP — นำเข้าวัตถุดิบ · ผลิต · จำหน่าย · ส่งออก แบตเตอรี่รถยนต์</span>
+      </h1>
+    </div>
+    <div class="stamp">บริษัทสมมติ<br>กฎหมายอ้างอิงของจริง</div>
+  </div>
+  <div class="specbar">
+    <div><b>7</b><span>บริษัทในกลุ่ม</span></div>
+    <div><b>20</b><span>ประเด็นภาษี</span></div>
+    <div><b>5</b><span>หน่วยงานจัดเก็บ</span></div>
+    <div><b>10</b><span>รายการระหว่างกัน</span></div>
   </div>
 </div>
 
-<div class="wrap intro">
-  <p class="kicker">สรุปหัวข้อ · ขอบเขตธุรกิจและเหตุผลที่เลือก</p>
-  <h1>EV &amp; Battery <span class="en">⚡🚗🔋</span></h1>
-  <p>ธุรกิจรถยนต์ไฟฟ้าครบวงจร — ผลิต ประกอบ จำหน่าย รวมถึงผลิตและจำหน่ายแบตเตอรี่ EV
-    เอกสารนี้สรุปโจทย์ เหตุผลที่เลือกหัวข้อ จุดแข็ง–จุดอ่อน โครงสร้างบริษัท
-    โครงร่างธุรกิจ และภาษี/กฎหมาย/คาร์บอนเครดิตที่เกี่ยวข้อง</p>
+<div class="note">
+  <b>คำชี้แจง</b> — กรณีศึกษานี้เป็นบริษัทสมมติ สร้างขึ้นเพื่อให้ครอบคลุมประเด็นภาษีอากรได้ครบทุกประเภท โดยอ้างอิงโครงสร้างอุตสาหกรรมจากผู้ประกอบการจริงในประเทศไทย ส่วนกฎหมาย อัตราภาษี และสิทธิประโยชน์ที่อ้างถึงเป็นของจริงทั้งหมด ตามประมวลรัษฎากร พ.ร.บ.ภาษีสรรพสามิต พ.ร.บ.ศุลกากร และประกาศที่เกี่ยวข้อง — <b>อัตราภาษีสรรพสามิตแบตเตอรี่และเงื่อนไขวัสดุรีไซเคิลมีการแก้ไขเป็นระยะ ต้องตรวจสอบประกาศล่าสุดก่อนใส่ตัวเลขจริง</b>
 </div>
 
-<!-- 01 โจทย์ -->
-<section class="wrap">
-  <div class="sec-head">
-    <span class="num">01</span><h2>สรุปโจทย์</h2><span class="rule"></span>
-  </div>
-  <div class="box brief">
-    <p class="lead">อาจารย์ให้ทำงานกลุ่มเรื่อง<b>ภาษีอากร</b> โดยเลือกหัวข้อ/ธุรกิจอะไรก็ได้
-      ที่<b>ครอบคลุมภาษีได้หลายประเภทที่สุด</b> ไม่ต้องอิงธุรกิจจริงแบบเป๊ะ ๆ
-      สามารถดัดแปลงรายละเอียดให้ครอบคลุมภาษีได้มากขึ้น</p>
-    <p class="warn">ห้ามเลือกธุรกิจแคบเกินไป เช่น ที่ปรึกษาอสังหาฯ เพราะจะโดนภาษีแค่ไม่กี่ตัว
-      — เล่าได้ไม่ครบมิติ <span class="disc">(Cr. พี่กิต)</span></p>
-  </div>
-</section>
+<!-- ═══ 01 DIAGRAM ═══ -->
 
-<!-- 02 หัวข้อที่เลือก -->
-<section class="wrap">
+<section>
   <div class="sec-head">
-    <span class="num">02</span><h2>หัวข้อที่เลือก &amp; เหตุผล</h2><span class="rule"></span>
+    <span class="sec-num">01</span><h2>ผังโครงสร้างกลุ่ม</h2>
+    <span class="hint">แตะเซลล์เพื่อดูรายละเอียด</span>
   </div>
-  <div class="box">
-    <p class="lead">ทีมเลือก <b>EV &amp; Battery</b> — ธุรกิจรถยนต์ไฟฟ้าครบวงจร ครอบคลุมทั้ง
-      การผลิต ประกอบ และจำหน่ายตัวรถ ต่อยอดไปถึงการผลิตและจำหน่ายแบตเตอรี่รถยนต์ไฟฟ้า
-      ซึ่งเป็นหัวใจต้นทุนของรถ EV</p>
-    <ul class="why">
-      <li>Supply chain ยาวตั้งแต่ต้นน้ำถึงปลายน้ำ → โดนภาษี<b>เกือบครบทุกประเภท</b> (นิติบุคคล, VAT, สรรพสามิต, ศุลกากร, หัก ณ ที่จ่าย, ที่ดินฯ, ป้าย)</li>
-      <li>มี<b>การนำเข้า</b>ชิ้นส่วน/แร่ และ<b>การผลิตในประเทศ</b> → ได้เล่าเรื่องอากรขาเข้าและสิทธิ BOI</li>
-      <li>รถยนต์เป็นสินค้าที่มี<b>ภาษีสรรพสามิต</b>โดยตรง — เพิ่มมิติที่ธุรกิจทั่วไปไม่มี</li>
-      <li>เชื่อมกับ<b>คาร์บอนเครดิต</b>และมาตรการรัฐ (BOI, EV3.5) → มีประเด็นสิทธิประโยชน์ทางภาษีให้วิเคราะห์</li>
-      <li>หลายสายธุรกิจ → เป็นเคสที่ดีสำหรับพูดเรื่อง<b>โครงสร้าง Holding และภาษีระหว่างบริษัทในเครือ</b></li>
-    </ul>
-  </div>
-</section>
 
-<!-- 03 วิเคราะห์ธุรกิจ -->
-<section class="wrap">
-  <div class="sec-head">
-    <span class="num">03</span><h2>วิเคราะห์ธุรกิจ</h2><span class="rule"></span>
+  <div class="legend">
+    <div class="lg"><span class="pole pos">+</span> ขั้วบวก = ภาระภาษีที่ต้องจ่าย</div>
+    <div class="lg"><span class="pole neg">−</span> ขั้วลบ = สิทธิประโยชน์ / ขอคืน / ยกเว้น</div>
   </div>
-  <div class="cols3">
-    <div class="col strong">
-      <div class="col-head"><i></i>จุดแข็ง</div>
-      <ul>
-        <li>อยู่บนเมกะเทรนด์โลก + นโยบายรัฐหนุนชัด (30@30, มาตรการ EV3.5)</li>
-        <li>ได้สิทธิ <b>BOI</b> ยกเว้น/ลดหย่อนภาษีเงินได้นิติบุคคลและอากรขาเข้าเครื่องจักร</li>
-        <li>ภาษีสรรพสามิตรถ BEV เหลือเพียง <b>2%</b> ทำให้ตั้งราคาแข่งขันได้</li>
-        <li>ครอบคลุมทั้ง value chain → มูลค่าเพิ่มสูง ควบคุมต้นทุนแบตเองได้</li>
-        <li>สร้างรายได้เสริมจากการขาย<b>คาร์บอนเครดิต</b>และบริการหลังการขาย/สถานีชาร์จ</li>
-      </ul>
-    </div>
-    <div class="col weak">
-      <div class="col-head"><i></i>จุดอ่อน</div>
-      <ul>
-        <li>ใช้เงินลงทุนสูงมาก โดยเฉพาะสายการผลิตเซลล์/แพ็กแบตเตอรี่</li>
-        <li>พึ่งพา<b>นำเข้า</b>ชิ้นส่วนและแร่ (ลิเทียม ฯลฯ) → เสี่ยงค่าเงินและต้นทุนอากรขาเข้า</li>
-        <li>แข่งขันดุจากผู้ผลิตจีน กดดันราคาและอัตรากำไร</li>
-        <li>แบตเตอรี่ใช้แล้วเป็น<b>ของเสียอันตราย</b> → มีต้นทุน/ภาระกฎหมายในการจัดการซาก</li>
-        <li>ต้องทำ Local Content ให้ถึงเกณฑ์จึงจะรักษาสิทธิประโยชน์ไว้ได้</li>
-      </ul>
-    </div>
-    <div class="col boost">
-      <div class="col-head"><i></i>จุดที่ต้องเสริม</div>
-      <ul>
-        <li>ตั้งหน่วย <b>R&amp;D</b> และระบบ<b>รีไซเคิลแบต</b>แบบ closed-loop ลดพึ่งพานำเข้าแร่</li>
-        <li>วางแผน<b>ราคาโอนระหว่างบริษัทในเครือ</b> (Transfer Pricing) ให้ถูกกฎหมาย</li>
-        <li>ขยายสถานีชาร์จ + ศูนย์บริการ/อะไหล่ เพื่อรายได้ต่อเนื่อง</li>
-        <li>ขึ้นทะเบียนโครงการเพื่อรับรอง<b>คาร์บอนเครดิต T-VER</b></li>
-        <li>ขอ<b>มอก.</b>แบตเตอรี่/ตัวรถ เพื่อความปลอดภัยและความเชื่อมั่น</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
-<!-- 04 โครงสร้างบริษัท -->
-<section class="wrap">
-  <div class="sec-head">
-    <span class="num">04</span><h2>โครงสร้างบริษัท</h2><span class="rule"></span>
-  </div>
-  <p class="org-note">คำแนะนำ: ใช้โครงสร้าง <b>Holding Company + บริษัทลูกแยกตามสายธุรกิจ</b>
-    <span class="rec">แนะนำ</span></p>
-  <div class="org">
-    <div class="holdco">
-      <b>EV Holding Co., Ltd. — บริษัทแม่ (โฮลดิ้ง)</b>
-      <span>ถือหุ้น · วางกลยุทธ์ · บริหารเงินทุนและภาษีรวมของกลุ่ม</span>
-    </div>
-    <div class="subs">
-      <div class="sub">
-        <small>SUB 1</small>
-        <b>ผลิต &amp; ประกอบรถ EV</b>
-        <p>โรงงานประกอบรถยนต์ไฟฟ้า ผลิตชิ้นส่วนหลัก</p>
-        <span class="boi">BOI</span>
+  <div class="rig">
+    <div class="tier">
+      <div class="node">
+        <span class="role">Shareholders</span>
+        <span class="nm">ผู้ถือหุ้น</span>
+        <span class="dt">บุคคลธรรมดาไทย 45% · สถาบันไทย 15% · Nihon Battery K.K. (ญี่ปุ่น) 40%</span>
       </div>
-      <div class="sub">
-        <small>SUB 2</small>
-        <b>ผลิตแบตเตอรี่ EV</b>
-        <p>ผลิต/ประกอบเซลล์และแพ็กแบต แยกความเสี่ยงของอันตราย</p>
-        <span class="boi">BOI</span>
+      <div class="drop"></div>
+      <div class="node hq">
+        <span class="role">Parent · Holding</span>
+        <span class="nm">บมจ. ทีพีซี โฮลดิ้ง</span>
+        <span class="dt">ถือหุ้นบริษัทในกลุ่ม · บริหารกลาง · บริหารเงินสด</span>
       </div>
-      <div class="sub">
-        <small>SUB 3</small>
-        <b>จำหน่าย &amp; บริการ</b>
-        <p>ดีลเลอร์ โชว์รูม ศูนย์บริการ อะไหล่ และสถานีชาร์จ</p>
-      </div>
-      <div class="sub">
-        <small>SUB 4</small>
-        <b>รีไซเคิล &amp; พลังงาน</b>
-        <p>รีไซเคิลซากแบต พลังงานสะอาด และคาร์บอนเครดิต</p>
-        <span class="boi">BOI</span>
+      <div class="drop"></div>
+      <div class="bus"></div>
+      <div class="cells" id="cells"></div>
+      <div class="ext">
+        <h4>คู่ค้าภายนอกกลุ่มที่ก่อให้เกิดภาระภาษี</h4>
+        <div class="extbox"><b>Nihon Battery K.K.</b>ผู้ถือหุ้น 40% + ให้ใช้เทคโนโลยี → ค่าสิทธิ, เงินปันผลออกนอกประเทศ</div>
+        <div class="extbox"><b>ตัวแทนจำหน่าย / ศูนย์บริการ</b>ทั้งนิติบุคคลและบุคคลธรรมดา → VAT, หัก ณ ที่จ่าย, ภ.ง.ด.90/94</div>
+        <div class="extbox"><b>ผู้รวบรวมแบตเตอรี่เก่า</b>บุคคลธรรมดาไม่จด VAT → ปัญหาไม่มีภาษีซื้อให้เครดิต</div>
+        <div class="extbox"><b>ลูกค้าต่างประเทศ</b>ลาว กัมพูชา ตะวันออกกลาง → VAT 0%, ยกเว้นสรรพสามิต</div>
       </div>
     </div>
   </div>
-  <div class="box" style="margin-top:16px">
-    <p class="lead"><b>ทำไมจึงเป็น Holding ไม่ใช่บริษัทเดียว</b></p>
-    <ul class="why">
-      <li><b>แยกความเสี่ยง</b>ทางกฎหมายและการเงินของแต่ละสาย — โรงงานแบต (ของอันตราย) แยกออกจากงานขาย</li>
-      <li>ขอ <b>BOI แยกรายกิจการ</b> แต่ละบริษัทลูกจึงได้รับสิทธิเต็มตามประเภทกิจการของตน</li>
-      <li><b>เงินปันผลระหว่างบริษัทไทย</b>ในกลุ่มได้รับยกเว้นภาษีเงินได้นิติบุคคล (ตามเงื่อนไขสัดส่วนและระยะเวลาถือหุ้น มาตรา 65 ทวิ (10))</li>
-      <li>ยืดหยุ่นในการ<b>ระดมทุน/ขายกิจการ</b>บางสายในอนาคต โดยไม่กระทบทั้งกลุ่ม</li>
-      <li>ต้องระวัง <b>Transfer Pricing (มาตรา 71 ทวิ)</b> — ราคาซื้อขายระหว่างบริษัทในเครือต้องเป็นราคาตลาด และจัดทำ Disclosure Form / Local File</li>
-    </ul>
-  </div>
 </section>
 
-<!-- 05 Project Blueprint -->
-<section class="wrap">
+<!-- ═══ 02 CARDS ═══ -->
+
+<section>
   <div class="sec-head">
-    <span class="num">05</span><h2>Project Blueprint (คร่าว)</h2><span class="rule"></span>
+    <span class="sec-num">02</span><h2>รายละเอียดแต่ละบริษัท</h2>
+    <span class="hint">ภาระภาษี + / สิทธิประโยชน์ −</span>
   </div>
-  <div class="flow">
-    <div class="stage">
-      <h4><span>ต้นน้ำ</span> จัดหา &amp; นำเข้า</h4>
-      <ul>
-        <li>นำเข้าเซลล์แบต/แร่ลิเทียม</li>
-        <li>นำเข้าชิ้นส่วน CKD</li>
-        <li>จัดหาวัตถุดิบในประเทศ</li>
-      </ul>
-    </div>
-    <div class="stage">
-      <h4><span>กลางน้ำ</span> ผลิต &amp; ประกอบ</h4>
-      <ul>
-        <li>ผลิตแพ็กแบตเตอรี่</li>
-        <li>ผลิตชิ้นส่วนหลัก (มอเตอร์ ฯลฯ)</li>
-        <li>ประกอบรถ EV ในนิคม (EEC)</li>
-      </ul>
-    </div>
-    <div class="stage">
-      <h4><span>ปลายน้ำ</span> จำหน่าย &amp; บริการ</h4>
-      <ul>
-        <li>ดีลเลอร์/โชว์รูม/ส่งออก</li>
-        <li>สถานีชาร์จ + อะไหล่/ซ่อม</li>
-        <li>รีไซเคิลซากแบต + คาร์บอนเครดิต</li>
-      </ul>
-    </div>
-  </div>
-  <div class="rev">
-    <b>แหล่งรายได้:</b> ขายรถ EV · ขายแบตเตอรี่/แพ็ก · ค่าบริการชาร์จและหลังการขาย ·
-    ขายคาร์บอนเครดิต &nbsp;•&nbsp; <b>ที่ตั้ง:</b> นิคมอุตสาหกรรมในเขต EEC เพื่อรับสิทธิ BOI สูงสุด
-  </div>
+  <div id="panel"></div>
 </section>
 
-<!-- 06 ภาษี กฎหมาย คาร์บอนเครดิต -->
-<section class="wrap">
+<!-- ═══ 03 FLOWS ═══ -->
+
+<section>
   <div class="sec-head">
-    <span class="num">06</span><h2>ภาษี · กฎหมาย · กรมที่เกี่ยวข้อง</h2><span class="rule"></span>
+    <span class="sec-num">03</span><h2>รายการระหว่างกันในกลุ่ม</h2>
+    <span class="hint">Intercompany Transactions</span>
   </div>
-  <div class="tbl-scroll">
-    <table>
-      <thead>
-        <tr><th>ภาษี / ประเภท</th><th>เกี่ยวข้องอย่างไรกับธุรกิจ</th><th>กรม / หน่วยงาน</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ภาษีเงินได้นิติบุคคล <span class="rate">20%</span></td>
-          <td>กำไรของบริษัทในกลุ่ม — ได้สิทธิ BOI ยกเว้น/ลดหย่อนบางส่วน</td>
-          <td class="dept">กรมสรรพากร</td>
-        </tr>
-        <tr>
-          <td>ภาษีมูลค่าเพิ่ม (VAT) <span class="rate">7%</span></td>
-          <td>ขายรถ ขายแบต ค่าบริการ — ภาษีขาย/ภาษีซื้อตลอด supply chain</td>
-          <td class="dept">กรมสรรพากร</td>
-        </tr>
-        <tr>
-          <td>ภาษีสรรพสามิต <span class="rate">BEV 2%</span></td>
-          <td>รถยนต์ไฟฟ้าเป็นสินค้าที่ต้องเสียสรรพสามิต — BEV ได้อัตราพิเศษ</td>
-          <td class="dept">กรมสรรพสามิต</td>
-        </tr>
-        <tr>
-          <td>อากรขาเข้า / ศุลกากร</td>
-          <td>นำเข้าเซลล์แบต แร่ ชิ้นส่วน CKD/CBU เครื่องจักร (บางส่วนลด/ยกเว้นตามมาตรการ)</td>
-          <td class="dept">กรมศุลกากร</td>
-        </tr>
-        <tr>
-          <td>ภาษีหัก ณ ที่จ่าย</td>
-          <td>ค่าจ้าง ค่าบริการ ค่าเช่า ค่าขนส่ง เงินปันผลในกลุ่ม</td>
-          <td class="dept">กรมสรรพากร</td>
-        </tr>
-        <tr>
-          <td>ภาษีเงินได้บุคคลธรรมดา</td>
-          <td>เงินเดือนพนักงานโรงงาน/สำนักงาน (นายจ้างหักนำส่ง)</td>
-          <td class="dept">กรมสรรพากร</td>
-        </tr>
-        <tr>
-          <td>ภาษีที่ดินและสิ่งปลูกสร้าง</td>
-          <td>ที่ดินและอาคารโรงงาน โชว์รูม คลังสินค้า</td>
-          <td class="dept">อปท. / เทศบาล</td>
-        </tr>
-        <tr>
-          <td>ภาษีป้าย</td>
-          <td>ป้ายชื่อบริษัท โชว์รูม สถานีชาร์จ</td>
-          <td class="dept">อปท. / เทศบาล</td>
-        </tr>
-        <tr>
-          <td>อากรแสตมป์</td>
-          <td>สัญญาเช่า จ้างทำของ กู้ยืม ตราสารต่าง ๆ</td>
-          <td class="dept">กรมสรรพากร</td>
-        </tr>
-        <tr>
-          <td>ภาษีรถยนต์ประจำปี</td>
-          <td>รถทดสอบ/รถบริษัท และการจดทะเบียนรถที่จำหน่าย</td>
-          <td class="dept">กรมการขนส่งทางบก</td>
-        </tr>
-      </tbody>
+  <div class="scroll">
+    <table class="grid">
+      <thead><tr><th style="width:34px">#</th><th style="width:170px">เส้นทาง</th><th>รายการ</th><th>ภาษีที่เกิดขึ้น</th></tr></thead>
+      <tbody id="flows"></tbody>
     </table>
   </div>
+</section>
 
-  <div class="box" style="margin-top:16px">
-    <p class="lead"><b>กฎหมาย / หน่วยงานสนับสนุนอื่น ๆ</b></p>
-    <ul class="why">
-      <li><b>BOI</b> (สนง.คณะกรรมการส่งเสริมการลงทุน) — สิทธิประโยชน์ EV3.5 ยกเว้นภาษีเงินได้/อากรเครื่องจักร</li>
-      <li><b>กรมพัฒนาธุรกิจการค้า (DBD)</b> — จดทะเบียนจัดตั้งบริษัทและงบการเงิน</li>
-      <li><b>กรมโรงงานอุตสาหกรรม (DIW)</b> — ใบอนุญาตประกอบกิจการโรงงานและการจัดการของเสียอันตราย (ซากแบต)</li>
-      <li><b>สมอ. (TISI)</b> — มาตรฐานผลิตภัณฑ์ มอก. ของแบตเตอรี่และตัวรถ</li>
-    </ul>
+<!-- ═══ 04 CHECKLIST ═══ -->
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><h2>ตารางตรวจสอบความครอบคลุม</h2>
+    <span class="hint">20 ประเด็น · 5 หน่วยงาน</span>
   </div>
+  <div class="filternote" id="fnote">
+    <span id="fnote-txt"></span>
+    <button id="fclear">แสดงทั้งหมด</button>
+  </div>
+  <div class="scroll">
+    <table class="grid">
+      <thead><tr><th style="width:34px">#</th><th>ประเภทภาษี</th><th style="width:130px">หน่วยงาน</th><th style="width:190px">เกิดที่บริษัท</th></tr></thead>
+      <tbody id="check"></tbody>
+    </table>
+  </div>
+</section>
 
-  <div class="carbon">
-    <div class="box">
-      <p class="lead"><b>🌱 คาร์บอนเครดิต</b></p>
-      <p>คาร์บอนเครดิต คือสิทธิที่ได้จากการ<b>ลดการปล่อยก๊าซเรือนกระจก</b> ซึ่งวัดปริมาณได้และนำไปขายหรือใช้ชดเชยได้
-        รถ EV และโรงงานที่ใช้พลังงานสะอาดสามารถขอขึ้นทะเบียนโครงการเพื่อรับรองเครดิตได้</p>
-      <p>ในไทยใช้โครงการ <b>T-VER</b> (Thailand Voluntary Emission Reduction) กำกับโดย
-        <b>องค์การบริหารจัดการก๊าซเรือนกระจก (อบก. / TGO)</b> ซึ่งเป็นหน่วยงานหลักด้านคาร์บอนเครดิต
-        และ<b>รายได้จากการขายคาร์บอนเครดิต T-VER มีสิทธิได้รับยกเว้นภาษีเงินได้</b>ตามพระราชกฤษฎีกาที่ออกมาส่งเสริม
-        (ควรตรวจสอบเงื่อนไข/ช่วงเวลาที่ใช้บังคับล่าสุด)</p>
+<!-- ═══ 05 PHASES ═══ -->
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><h2>โครงเรื่องการนำเสนอ 4 เฟส</h2>
+    <span class="hint">ครอบคลุมทั้ง Case 1–2–3</span>
+  </div>
+  <div class="phases">
+    <div class="ph">
+      <span class="n">PHASE 01</span>
+      <h3>ก่อตั้งและวางโครงสร้าง</h3>
+      <p>ทำไมต้องแยก 7 บริษัท? เปรียบเทียบภาระภาษีกับทางเลือก “บริษัทเดียวทำทุกอย่าง” พร้อมการเลือกรูปแบบนิติบุคคล การจด VAT และการขอ BOI</p>
+      <span class="case">CASE 1 · นักลงทุนตั้งใหม่</span>
+    </div>
+    <div class="ph">
+      <span class="n">PHASE 02</span>
+      <h3>ดำเนินงานตาม Value Chain</h3>
+      <p>เดินตามสายงานจริง: นำเข้าวัตถุดิบ → ผลิต → จำหน่ายในประเทศ → ส่งออก พร้อมตัวอย่างคำนวณตัวเลขทุกขั้น</p>
+      <span class="case">CASE 3 · ธุรกิจที่ทำอยู่แล้ว</span>
+    </div>
+    <div class="ph">
+      <span class="n">PHASE 03</span>
+      <h3>ขยายกิจการ</h3>
+      <p>ตั้งบริษัทลูกที่เวียดนาม — เปรียบเทียบสาขากับบริษัทลูก / ขายที่ดินโรงงานเดิมเพื่อย้ายฐานผลิต → ภาษีธุรกิจเฉพาะ</p>
+      <span class="case">CASE 2 · เพิ่มธุรกิจใหม่</span>
+    </div>
+    <div class="ph">
+      <span class="n">PHASE 04</span>
+      <h3>วางแผนภาษีและ Compliance</h3>
+      <p>เส้นแบ่งระหว่าง Tax Planning · Tax Avoidance · Tax Evasion, หลัก business purpose และ arm’s length พร้อมความเสี่ยงถูกประเมิน</p>
+      <span class="case">บทสรุปและข้อเสนอแนะ</span>
     </div>
   </div>
-  <p class="disc">* อัตราภาษีและสิทธิประโยชน์เป็นข้อมูลประกอบการทำรายงาน โจทย์อนุญาตให้ดัดแปลงได้
-    ควรตรวจสอบตัวเลข/เงื่อนไขกับกฎหมายและประกาศที่บังคับใช้ ณ ปัจจุบันก่อนนำเสนอ</p>
+</section>
+
+<!-- ═══ 06 WARNINGS ═══ -->
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><h2>ข้อควรระวังก่อนส่งงาน</h2>
+  </div>
+  <div class="warns">
+    <div class="warn"><span class="i">01</span><div>
+      <b>ต้องมีหัวข้อ “ขอบเขตของการวางแผนภาษีที่ชอบด้วยกฎหมาย”</b>
+      <p>อาจารย์จะถามแน่นอนว่าโครงสร้าง 7 บริษัทนี้เข้าข่ายเลี่ยงภาษีหรือไม่ คำตอบคือทุกบริษัทต้องมีเหตุผลทางธุรกิจที่แท้จริง (business purpose) และรายการระหว่างกันต้องเป็นราคาตลาด (arm’s length)</p>
+    </div></div>
+    <div class="warn"><span class="i">02</span><div>
+      <b>ตรวจอัตราภาษีสรรพสามิตแบตเตอรี่ก่อนใส่ตัวเลข</b>
+      <p>อัตรา เงื่อนไขลดหย่อนวัสดุรีไซเคิล และประเภทกิจการ BOI มีการแก้ไขเป็นระยะ ให้ยึดประกาศล่าสุดของกรมสรรพสามิตและ BOI เป็นหลัก</p>
+    </div></div>
+    <div class="warn"><span class="i">03</span><div>
+      <b>อย่าเล่าแค่ “มีภาษีอะไรบ้าง” ให้เล่า “ทำไมถึงเลือกแบบนี้”</b>
+      <p>เช่น ทำไมแยกบริษัทที่ดินออกมา ทำไมเลือกเขตปลอดอากรแทนมาตรา 19 ทวิ — การให้เหตุผลเชิงเปรียบเทียบคือความต่างระหว่างงานที่ได้ B กับ A</p>
+    </div></div>
+  </div>
 </section>
 
 <footer>
-  <div class="wrap foot">
-    <span>TEAM RED · EV &amp; BATTERY</span>
-    <span>สรุปหัวข้อ · อัปเดต ส.ค. 2569</span>
-  </div>
+  <span>แหล่งอ้างอิง: ประมวลรัษฎากร · กรมสรรพสามิต · กรมศุลกากร · BOI · DBD DataWarehouse · SET 56-1 One Report</span>
+  <span>เอกสารประกอบโครงงานภาษีอากร</span>
 </footer>
+</div>
+
+<script>
+const P='+', N='−';
+
+const CO=[
+ {id:'A',pct:'ถือหุ้น 100%',short:'ผลิต',name:'บจก. ทีพีซี แมนูแฟคเจอริ่ง',role:'โรงงานผลิตแบตเตอรี่ · จ.ระยอง · ได้รับส่งเสริม BOI',rows:[
+  ['ภาษีสรรพสามิต',P,'แบตเตอรี่เป็นสินค้าต้องเสียภาษีสรรพสามิต คำนวณจากราคาขายปลีกแนะนำ ต้องจดทะเบียนสรรพสามิต แจ้งราคา ทำบัญชีคุมสินค้า และชำระภาษีก่อนนำสินค้าออกจากโรงงาน',1],
+  ['ภาษีเพื่อมหาดไทย',P,'จัดเก็บเพิ่มอีก 10% ของค่าภาษีสรรพสามิตที่คำนวณได้',1],
+  ['ลดหย่อนสรรพสามิต',N,'ใช้ตะกั่วและวัสดุรีไซเคิลจากบริษัท [E] เข้าสายการผลิต เพื่อขอใช้อัตราลดหย่อน — เป็นจุดที่เชื่อมภาษีเข้ากับประเด็น ESG ได้',1],
+  ['สิทธิประโยชน์ BOI',N,'ยกเว้นภาษีเงินได้นิติบุคคลตามเงื่อนไขบัตรส่งเสริม + ยกเว้นอากรขาเข้าเครื่องจักร ทำให้ต้องแยกบัญชีกิจการ BOI และ Non-BOI ให้ชัดเจน',1],
+  ['ภาษีเงินได้นิติบุคคล',P,'ภ.ง.ด.50 / ภ.ง.ด.51 · ค่าเสื่อมราคาเครื่องจักร · ผลขาดทุนยกไป 5 รอบบัญชี · รายจ่ายต้องห้ามตามมาตรา 65 ตรี',0],
+  ['ภาษีมูลค่าเพิ่ม',P,'ภาษีขายหักภาษีซื้อ · ใบกำกับภาษีเต็มรูป · ระบบ e-Tax Invoice',0],
+  ['ภาษีที่ดินและสิ่งปลูกสร้าง',P,'ที่ดินและอาคารโรงงานจัดอยู่ในประเภทใช้ประโยชน์อื่น ๆ (ในผังนี้เช่าจาก [D] จึงต้องวิเคราะห์ว่าผู้ใดมีหน้าที่เสีย)',0],
+  ['ภาษีป้าย',P,'ป้ายชื่อโรงงานและตราสัญลักษณ์ คิดตามขนาดและลักษณะตัวอักษร',0],
+  ['ภาษีหัก ณ ที่จ่าย',P,'ค่าจ้างทำของ 3% · ค่าขนส่ง 1% · ค่าเช่า 5% · เงินได้พนักงาน ภ.ง.ด.1',0],
+  ['อากรแสตมป์',P,'สัญญาจ้างทำของและสัญญาเช่า ต้องปิดแสตมป์ให้ครบถ้วนจึงใช้เป็นพยานหลักฐานได้',0]]},
+
+ {id:'B',pct:'ถือหุ้น 100%',short:'นำเข้า + ค้าส่ง',name:'บจก. ทีพีซี เทรดดิ้ง',role:'นำเข้าวัตถุดิบและจัดจำหน่ายในประเทศ',rows:[
+  ['อากรขาเข้า',P,'นำเข้าตะกั่ว ลิเทียม เซลล์ แผ่นกั้น และเปลือกพลาสติก ต้องจำแนกพิกัดศุลกากร (HS Code) ให้ถูกต้อง เพราะอัตราอากรต่างกันตามพิกัด',1],
+  ['FTA และถิ่นกำเนิดสินค้า',N,'ใช้ Form E (จีน) · ATIGA (อาเซียน) · RCEP เพื่อลดอัตราอากร — ควรทำตารางเปรียบเทียบภาระอากรจากแต่ละแหล่งนำเข้า',1],
+  ['ภาษีมูลค่าเพิ่มตอนนำเข้า',P,'ฐานภาษี = ราคา CIF + อากรขาเข้า + ค่าธรรมเนียมอื่น แล้วคูณ 7% ชำระที่กรมศุลกากร',1],
+  ['มาตรา 19 ทวิ',N,'ขอคืนอากรขาเข้าสำหรับวัตถุดิบที่นำไปผลิตเป็นสินค้าส่งออก ต้องวางประกันและพิสูจน์สูตรการผลิต',1],
+  ['ภาษีมูลค่าเพิ่มขาย',P,'ขายให้ตัวแทนจำหน่ายและศูนย์บริการในประเทศ อัตรา 7%',0],
+  ['ภาษีหัก ณ ที่จ่าย',P,'ค่าโฆษณา 2% · ค่าส่งเสริมการขาย · รางวัลและส่วนลดตามเป้าหมาย 3%',0],
+  ['ภ.พ.36',P,'นำส่ง VAT แทนผู้ประกอบการต่างประเทศ กรณีจ่ายค่าซอฟต์แวร์ ERP หรือค่าที่ปรึกษาจากต่างประเทศ',0],
+  ['ภาษีเงินได้นิติบุคคล',P,'ไม่ได้รับ BOI จึงเสียอัตราปกติ 20% — ใช้เปรียบเทียบกับ [A] ที่ได้รับยกเว้นเพื่อให้เห็นผลของสิทธิประโยชน์',0]]},
+
+ {id:'C',pct:'ถือหุ้น 100%',short:'ส่งออก · Free Zone',name:'บจก. ทีพีซี เอ็กซ์ปอร์ต',role:'ส่งออกและบริหารเขตปลอดอากร',rows:[
+  ['VAT อัตรา 0%',N,'การส่งออกเสียภาษีขายอัตราศูนย์ แต่ยังขอคืนภาษีซื้อได้เต็มจำนวน ทำให้บริษัทอยู่ในสถานะขอคืน VAT ถาวร — เป็นประเด็นบริหารกระแสเงินสดที่ควรวิเคราะห์',1],
+  ['ยกเว้นภาษีสรรพสามิต',N,'สินค้าที่ส่งออกได้รับยกเว้นหรือขอคืนภาษีสรรพสามิต ต้องมีหลักฐานการส่งออกครบถ้วน',1],
+  ['เขตปลอดอากร',N,'นำวัตถุดิบเข้าโดยพักอากร — ควรเปรียบเทียบ 3 ทางเลือก คือ Free Zone / คลังสินค้าทัณฑ์บน / มาตรา 19 ทวิ ว่าเหมาะกับรูปแบบธุรกิจใด',1],
+  ['ชดเชยค่าภาษีอากร',N,'ผู้ส่งออกอาจขอรับบัตรภาษีเป็นการชดเชยภาษีอากรที่แฝงอยู่ในต้นทุนสินค้า',0],
+  ['ภาษีเงินได้นิติบุคคล',P,'รายได้จากการส่งออก · กำไรขาดทุนจากอัตราแลกเปลี่ยนตามมาตรา 65 ทวิ (5)',0],
+  ['อนุสัญญาภาษีซ้อน',P,'หากมีตัวแทนขายประจำในต่างประเทศ ต้องพิจารณาว่าเกิดสถานประกอบการถาวร (Permanent Establishment) หรือไม่',0]]},
+
+ {id:'D',pct:'ถือหุ้น 100%',short:'ที่ดิน + อาคาร',name:'บจก. ทีพีซี พร็อพเพอร์ตี้',role:'ถือครองที่ดินและอาคารโรงงาน ให้บริษัทในเครือเช่า',rows:[
+  ['ภาษีธุรกิจเฉพาะ',P,'เมื่อขายที่ดินโรงงานเดิมตอนย้ายฐานผลิต ถือเป็นการขายอสังหาริมทรัพย์เป็นทางค้าหรือหากำไร อัตรา 3.3% (รวมภาษีท้องถิ่น)',1],
+  ['ยกเว้น VAT ค่าเช่า',N,'การให้เช่าอสังหาริมทรัพย์ได้รับยกเว้น VAT แต่หากปรับเป็นสัญญาบริการพื้นที่พร้อมสาธารณูปโภคจะเข้าระบบ VAT ได้ — เป็นประเด็นวางแผนภาษีที่น่าสนใจที่สุดจุดหนึ่งของโครงงาน',1],
+  ['ภาษีที่ดินและสิ่งปลูกสร้าง',P,'ประเภทใช้ประโยชน์อื่น ๆ คิดอัตราขั้นบันไดตามมูลค่าที่ดินและสิ่งปลูกสร้าง',0],
+  ['ภาษีหัก ณ ที่จ่าย 5%',P,'ผู้เช่าซึ่งเป็นบริษัทในเครือมีหน้าที่หักภาษี ณ ที่จ่ายจากค่าเช่าและนำส่ง ภ.ง.ด.53',0],
+  ['อากรแสตมป์',P,'สัญญาเช่าอสังหาริมทรัพย์ปิดแสตมป์ 1 บาทต่อค่าเช่าทุก 1,000 บาทตลอดอายุสัญญา',0],
+  ['ค่าธรรมเนียมการโอน',P,'ค่าธรรมเนียมจดทะเบียนสิทธิและนิติกรรม 2% ของราคาประเมิน ณ สำนักงานที่ดิน',0],
+  ['Transfer Pricing',P,'ค่าเช่าที่เรียกเก็บจากบริษัทในเครือต้องเทียบเคียงราคาตลาดได้ มิฉะนั้นเจ้าพนักงานประเมินอาจปรับปรุงรายได้',0]]},
+
+ {id:'E',pct:'ถือหุ้น 70%',short:'รีไซเคิลตะกั่ว',name:'บจก. ทีพีซี รีไซเคิล',role:'รับซื้อแบตเตอรี่เก่า หลอมตะกั่วกลับเข้าสายการผลิต',rows:[
+  ['ปัญหาภาษีซื้อ',P,'รับซื้อแบตเตอรี่เก่าจากบุคคลธรรมดาและผู้รวบรวมที่ไม่ได้จด VAT จึงไม่มีภาษีซื้อให้เครดิต แต่เมื่อขายออกต้องเรียกเก็บ VAT 7% เต็มจำนวน ทำให้ภาระภาษีสูงผิดปกติ — เป็นเคสวิเคราะห์ที่แหลมคมที่สุดของโครงงาน',1],
+  ['เอกสารประกอบการลงบัญชี',P,'ใช้ใบรับเงินหรือใบสำคัญรับเงินแทนใบกำกับภาษี พร้อมสำเนาบัตรประชาชนผู้ขาย เพื่อให้รายจ่ายไม่เป็นรายจ่ายต้องห้าม',0],
+  ['ภาษีหัก ณ ที่จ่าย',P,'ต้องวิเคราะห์ว่าการรับซื้อของเก่าจากบุคคลธรรมดาเข้าลักษณะเงินได้ประเภทใด และมีหน้าที่หักภาษี ณ ที่จ่ายหรือไม่',0],
+  ['เชื่อมกับโรงงาน [A]',N,'ตะกั่วรีไซเคิลที่ส่งให้โรงงานเป็นเงื่อนไขในการขอใช้อัตราภาษีสรรพสามิตลดหย่อน',1],
+  ['สิทธิประโยชน์อื่น',N,'กิจการรีไซเคิลอาจขอรับส่งเสริมจาก BOI และมีรายจ่ายเพื่อสิ่งแวดล้อมบางประเภทที่หักได้เพิ่ม',0],
+  ['เงินปันผลรับ',N,'ถือหุ้นเพียง 70% แต่ยังเกินเกณฑ์ 25% จึงต้องวิเคราะห์เงื่อนไขการยกเว้นเงินปันผลตามมาตรา 65 ทวิ (10) ให้ครบทั้งสัดส่วนและระยะเวลาถือครอง',0]]},
+
+ {id:'F',pct:'ถือหุ้น 100%',short:'บริการ + R&D',name:'บจก. ทีพีซี เซอร์วิส แอนด์ อาร์แอนด์ดี',role:'ติดตั้ง รับประกัน และวิจัยพัฒนาแบตเตอรี่ลิเทียม',rows:[
+  ['รายจ่าย R&D',N,'ค่าวิจัยและพัฒนาเทคโนโลยีที่ผ่านการรับรอง สามารถหักเป็นรายจ่ายได้ 200% ของที่จ่ายจริง',1],
+  ['ค่าสิทธิจ่ายต่างประเทศ',P,'จ่ายค่าสิทธิให้ Nihon Battery K.K. ต้องหักภาษี ณ ที่จ่ายตามมาตรา 70 อัตรา 15% ลดได้ตามอนุสัญญาภาษีซ้อนไทย–ญี่ปุ่น และต้องนำส่ง ภ.พ.36 ควบคู่ไปด้วย',1],
+  ['ภาษีมูลค่าเพิ่ม',P,'ค่าบริการติดตั้งและบำรุงรักษาเสีย VAT 7% ตามปกติ',0],
+  ['ภาษีหัก ณ ที่จ่าย 3%',P,'ลูกค้านิติบุคคลมีหน้าที่หักภาษีจากค่าบริการและออกหนังสือรับรองการหักภาษี ณ ที่จ่าย',0],
+  ['ภาษีเงินได้บุคคลธรรมดา',P,'ช่างเทคนิคและที่ปรึกษาชาวต่างชาติที่เข้ามาทำงาน ต้องพิจารณาเกณฑ์ถิ่นที่อยู่ 180 วันและแหล่งเงินได้',0],
+  ['สวัสดิการพนักงาน',N,'เงินสมทบประกันสังคมและกองทุนสำรองเลี้ยงชีพ มีผลต่อการคำนวณเงินได้พึงประเมินและค่าลดหย่อนของพนักงาน',0]]},
+
+ {id:'G',pct:'ถือหุ้น 60%',short:'บริษัทลูกต่างประเทศ',name:'TPC Vietnam Co., Ltd.',role:'ฐานผลิตและจัดจำหน่ายในประเทศเวียดนาม',rows:[
+  ['สาขา vs บริษัทลูก',N,'เปรียบเทียบภาระภาษีสองทางเลือก ทั้งการรับรู้ผลขาดทุน การเสียภาษีซ้ำ และภาระ compliance — เป็นประเด็นวางแผนภาษีระหว่างประเทศหลักของโครงงาน',1],
+  ['เงินปันผลรับจากต่างประเทศ',N,'พิจารณาเงื่อนไขการยกเว้นภาษีในไทย และการขอเครดิตภาษีที่เสียไว้ในต่างประเทศ',1],
+  ['Transfer Pricing',P,'การขายสินค้าและวัตถุดิบให้บริษัทลูกต้องเป็นราคาตลาด พร้อมจัดทำเอกสารพิสูจน์ราคาโอน',0],
+  ['อนุสัญญาภาษีซ้อนไทย–เวียดนาม',N,'ใช้ลดอัตราภาษีหัก ณ ที่จ่ายสำหรับเงินปันผล ดอกเบี้ย และค่าสิทธิ',0],
+  ['รายงานตามกลุ่มบริษัท',P,'หากรายได้รวมของกลุ่มถึงเกณฑ์ ต้องจัดทำ Country-by-Country Report และแบบรายงานข้อมูลผู้มีความสัมพันธ์กัน',0]]}
+];
+
+const HQ={id:'HQ',pct:'บริษัทแม่',short:'โฮลดิ้ง',name:'บมจ. ทีพีซี โฮลดิ้ง',role:'ถือหุ้นบริษัทในกลุ่ม บริหารกลาง และบริหารเงินสด',rows:[
+  ['ภาษีเงินได้นิติบุคคล',P,'ยื่น ภ.ง.ด.50 และ ภ.ง.ด.51 · เงินปันผลรับจากบริษัทลูกได้รับยกเว้นหรือยกเว้นกึ่งหนึ่งตามมาตรา 65 ทวิ (10) ต้องอธิบายเงื่อนไขการถือหุ้นไม่น้อยกว่า 25% และถือครบ 3 เดือนก่อนและหลังวันจ่ายเงินปันผล',1],
+  ['ภาษีธุรกิจเฉพาะ',P,'ให้บริษัทในเครือกู้ยืมเงินแบบ cash pooling เข้าลักษณะประกอบกิจการเยี่ยงธนาคารพาณิชย์ เสียอัตรา 3.3% ของดอกเบี้ยรับ',1],
+  ['ภาษีหัก ณ ที่จ่ายเงินปันผล',P,'จ่ายปันผลให้บุคคลธรรมดาไทยหัก 10% · จ่ายให้ผู้ถือหุ้นญี่ปุ่นหักตามมาตรา 70 ลดได้ตามอนุสัญญาภาษีซ้อน',1],
+  ['ภาษีเงินได้บุคคลธรรมดา',P,'ผู้ถือหุ้นบุคคลธรรมดาเลือกได้ระหว่างใช้เครดิตภาษีเงินปันผลกับเสียภาษีสุดท้าย 10% — ควรทำตารางเปรียบเทียบตามระดับฐานภาษี',0],
+  ['อากรแสตมป์',P,'สัญญากู้ยืมเงินในเครือปิดแสตมป์ 1 บาทต่อทุก 2,000 บาท สูงสุดไม่เกิน 10,000 บาท',0],
+  ['ภาษีมูลค่าเพิ่มและ ภ.พ.36',P,'ค่าบริหารจัดการกลางที่เรียกเก็บจากบริษัทลูกเสีย VAT 7% และการนำเข้าบริการที่ปรึกษาจากต่างประเทศต้องนำส่ง ภ.พ.36',0],
+  ['Transfer Pricing',P,'อัตราดอกเบี้ยเงินกู้และค่าบริหารจัดการต้องเป็นราคาตลาด พร้อมยื่นแบบรายงานข้อมูลผู้มีความสัมพันธ์กัน (Disclosure Form)',0]]};
+
+const FLOWS=[
+ [1,'B','A','ขายวัตถุดิบนำเข้าให้โรงงาน','VAT 7%'],
+ [2,'E','A','ขายตะกั่วรีไซเคิลเข้าสายการผลิต','VAT 7% + เงื่อนไขลดอัตราสรรพสามิต'],
+ [3,'A','B','ขายแบตเตอรี่สำเร็จรูปเพื่อจำหน่ายในประเทศ','ภาษีสรรพสามิต + ภาษีเพื่อมหาดไทย + VAT 7%'],
+ [4,'A','C','ขายแบตเตอรี่สำเร็จรูปเพื่อการส่งออก','ยกเว้นสรรพสามิต + VAT อัตรา 0%'],
+ [5,'D','A','ให้เช่าที่ดินและอาคารโรงงาน','ยกเว้น VAT + หัก ณ ที่จ่าย 5% + อากรแสตมป์'],
+ [6,'HQ','A B C','ให้กู้ยืมเงินหมุนเวียนในกลุ่ม','ภาษีธุรกิจเฉพาะ 3.3% + อากรแสตมป์'],
+ [7,'HQ','ทุกบริษัท','ค่าบริหารจัดการกลาง','VAT 7% + หัก ณ ที่จ่าย 3% + Transfer Pricing'],
+ [8,'F','ญี่ปุ่น','ค่าสิทธิและค่าเทคโนโลยี','หัก ณ ที่จ่าย 15% ลดตาม DTA + ภ.พ.36'],
+ [9,'บริษัทลูก','HQ','จ่ายเงินปันผลขึ้นบริษัทแม่','ยกเว้น / ยกเว้นกึ่งหนึ่ง ตามมาตรา 65 ทวิ (10)'],
+ [10,'HQ','ผู้ถือหุ้น','จ่ายเงินปันผลออกนอกกลุ่ม','หัก ณ ที่จ่าย 10% (ไทย) · มาตรา 70 (ญี่ปุ่น)']
+];
+
+const CHECK=[
+ ['ภาษีเงินได้นิติบุคคล (ภ.ง.ด.50/51)','สรรพากร','ทุกบริษัท',['HQ','A','B','C','D','E','F','G']],
+ ['ภาษีเงินได้บุคคลธรรมดา (ภ.ง.ด.90/91)','สรรพากร','ผู้ถือหุ้น · พนักงาน · ตัวแทนจำหน่าย',['HQ','A','F']],
+ ['ภาษีมูลค่าเพิ่ม อัตรา 7%','สรรพากร','A · B · E · F',['A','B','E','F','HQ']],
+ ['ภาษีมูลค่าเพิ่ม อัตรา 0% (ส่งออก)','สรรพากร','C',['C']],
+ ['ภาษีมูลค่าเพิ่ม กรณียกเว้น (ค่าเช่าอสังหาฯ)','สรรพากร','D',['D']],
+ ['ภ.พ.36 — นำส่ง VAT แทนผู้ประกอบการต่างประเทศ','สรรพากร','โฮลดิ้ง · B · F',['HQ','B','F']],
+ ['ภาษีหัก ณ ที่จ่าย (ภ.ง.ด.1 / 3 / 53)','สรรพากร','ทุกบริษัท',['HQ','A','B','C','D','E','F']],
+ ['ภาษีหัก ณ ที่จ่ายจ่ายไปต่างประเทศ (ภ.ง.ด.54)','สรรพากร','โฮลดิ้ง · F',['HQ','F']],
+ ['ภาษีธุรกิจเฉพาะ','สรรพากร','โฮลดิ้ง (ให้กู้) · D (ขายที่ดิน)',['HQ','D']],
+ ['อากรแสตมป์','สรรพากร','ทุกบริษัท',['HQ','A','B','C','D','E','F']],
+ ['ภาษีสรรพสามิต','สรรพสามิต','A',['A']],
+ ['ภาษีเพื่อมหาดไทย','สรรพสามิต','A',['A']],
+ ['อากรขาเข้า','ศุลกากร','B',['B']],
+ ['อากรขาออก · ชดเชยค่าภาษีอากร','ศุลกากร','C',['C']],
+ ['ภาษีที่ดินและสิ่งปลูกสร้าง','อปท.','D · A',['D','A']],
+ ['ภาษีป้าย','อปท.','A · B',['A','B']],
+ ['ค่าธรรมเนียมจดทะเบียนสิทธิและนิติกรรม','กรมที่ดิน','D',['D']],
+ ['สิทธิประโยชน์ส่งเสริมการลงทุน (BOI)','BOI','A · E',['A','E']],
+ ['Transfer Pricing · Disclosure Form','สรรพากร','ทั้งกลุ่ม',['HQ','A','B','C','D','E','F','G']],
+ ['อนุสัญญาภาษีซ้อน (DTA)','สรรพากร','โฮลดิ้ง · F · G',['HQ','F','G']]
+];
+
+/* ── render cells ── */
+const cellsEl=document.getElementById('cells');
+CO.forEach(c=>{
+  const w=document.createElement('div');
+  w.innerHTML=`<div class="stem"></div>
+    <button class="cell" data-id="${c.id}" aria-label="${c.name}">
+      <span class="cap"></span>
+      <span class="cell-body">
+        <span class="cid">${c.id}</span>
+        <span class="cnm">${c.short}</span>
+        <span class="cpct">${c.pct}</span>
+      </span>
+    </button>`;
+  cellsEl.appendChild(w);
+});
+
+/* ── render cards ── */
+const panel=document.getElementById('panel');
+function card(c){
+  const rows=c.rows.map(r=>{
+    const pol=r[1]===P?'pos':'neg';
+    const cls=(r[3]?'star':'')+(r[3]&&r[1]===N?' benefit':'');
+    return `<tr class="${cls}"><td class="p"><span class="pin ${pol}">${r[1]}</span></td><td class="k">${r[0]}</td><td class="v">${r[2]}</td></tr>`;
+  }).join('');
+  return `<div class="card" id="card-${c.id}">
+    <div class="card-head">
+      <span class="badge">${c.id}</span>
+      <span><span class="t">${c.name}</span><br><span class="r">${c.role}</span></span>
+      <span class="own">${c.pct}</span>
+    </div>
+    <table class="rows"><tbody>${rows}</tbody></table>
+  </div>`;
+}
+panel.innerHTML=card(HQ)+CO.map(card).join('');
+
+/* ── flows ── */
+document.getElementById('flows').innerHTML=FLOWS.map(f=>
+ `<tr><td class="num">${f[0]}</td>
+  <td><span class="tag">${f[1]}</span> <span class="arrow">→</span> <span class="tag">${f[2]}</span></td>
+  <td>${f[3]}</td><td>${f[4]}</td></tr>`).join('');
+
+/* ── checklist ── */
+document.getElementById('check').innerHTML=CHECK.map((c,i)=>
+ `<tr data-who="${c[3].join(' ')}"><td class="num">${String(i+1).padStart(2,'0')}</td>
+  <td>${c[0]}</td><td class="agency">${c[1]}</td><td>${c[2]}</td></tr>`).join('');
+
+/* ── interaction ── */
+const fnote=document.getElementById('fnote'), fnoteTxt=document.getElementById('fnote-txt');
+let active=null;
+function clear(){
+  active=null;
+  document.querySelectorAll('.cell').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('#check tr').forEach(t=>t.classList.remove('dim'));
+  fnote.classList.remove('show');
+}
+document.querySelectorAll('.cell').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const id=btn.dataset.id;
+    if(active===id){clear();return;}
+    clear(); active=id; btn.classList.add('on');
+    document.querySelectorAll('#check tr').forEach(t=>{
+      if(!t.dataset.who.split(' ').includes(id)) t.classList.add('dim');
+    });
+    const co=CO.find(x=>x.id===id);
+    const n=CHECK.filter(c=>c[3].includes(id)).length;
+    fnoteTxt.textContent=`กำลังเน้นบริษัท ${id} — ${co.name} · เกี่ยวข้อง ${n} ประเด็นภาษี`;
+    fnote.classList.add('show');
+    document.getElementById('card-'+id).scrollIntoView({block:'start'});
+  });
+});
+document.getElementById('fclear').addEventListener('click',clear);
+</script>
 
 </body>
 </html>
