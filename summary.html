@@ -4,588 +4,715 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ผังโครงสร้างกลุ่มบริษัท ไทยพาวเวอร์เซลล์ — แผนผังภาษีอากร</title>
+<title>โครงงานภาษีอากร — บริษัท ไทยพาวเวอร์เซลล์ (สมมติ)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --zinc:#E6E7E1;
-  --zinc-2:#F2F3EF;
-  --lead:#23282C;
-  --lead-2:#4A5257;
-  --plate:#B9BDB6;
-  --hair:#C6CAC2;
-  --terminal:#B33A2B;   /* ขั้วบวก = ภาระภาษี */
-  --electrolyte:#146B5E; /* ขั้วลบ = สิทธิประโยชน์ */
-  --acid:#B08214;
-  --paper:#FBFBF9;
-}
 html{color-scheme:light only;-webkit-text-size-adjust:100%}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-html{scroll-behavior:smooth}
 body{
-  background:#DDDFD7;
-  color:#23282C;
-  font-family:'IBM Plex Sans Thai',sans-serif;
-  font-weight:300;
-  line-height:1.75;
+  background:#DDDFD7;color:#23282C;
+  font-family:'IBM Plex Sans Thai',sans-serif;font-weight:300;line-height:1.72;
   -webkit-font-smoothing:antialiased;
   background-image:linear-gradient(#C4C8C0 1px,transparent 1px),linear-gradient(90deg,#C4C8C0 1px,transparent 1px);
-  background-size:56px 56px;
-  background-position:-1px -1px;
+  background-size:56px 56px;background-position:-1px -1px;
 }
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px 100px}
+.wrap{max-width:940px;margin:0 auto;padding:0 16px 100px}
 
-/* ══ HEADER ══ */
-.masthead{
-border:2px solid #23282C;
-background:#FFFFFF;
-box-shadow:6px 6px 0 #C4C8C0;
-margin-top:36px;
+/* ══ TOP NAV ══ */
+.topbar{
+position:sticky;top:0;z-index:50;background:#23282C;border-bottom:2px solid #23282C;
+display:flex;align-items:center;gap:4px;padding:0 10px;overflow-x:auto;scrollbar-width:none;
 }
-.mast-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:20px;padding:26px 28px 18px}
-.eyebrow{
-font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:.22em;
-text-transform:uppercase;color:#4A5257;display:block;margin-bottom:12px;
+.topbar::-webkit-scrollbar{display:none}
+.topbar .brand{font-family:‘Chakra Petch’;font-weight:700;color:#fff;font-size:13px;padding:11px 12px 11px 4px;white-space:nowrap;letter-spacing:.02em;flex:none;cursor:pointer}
+.topbar .brand .dot{color:#B33A2B}
+.tnav{display:flex;gap:2px;flex:none}
+.tnav button{
+font-family:‘IBM Plex Sans Thai’;font-size:12.5px;color:#B9BDB6;background:none;border:0;
+padding:12px 11px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:color .15s
 }
-h1{
-font-family:‘Chakra Petch’,sans-serif;font-weight:700;
-font-size:clamp(30px,5.2vw,52px);line-height:1.08;letter-spacing:-.01em;
-}
-h1 .sub{display:block;font-size:clamp(15px,2.2vw,21px);font-weight:500;color:#4A5257;margin-top:10px;letter-spacing:0}
-.stamp{
-border:2px solid #B33A2B;color:#B33A2B;
-font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:12px;
-letter-spacing:.12em;padding:8px 12px;transform:rotate(-3deg);
-white-space:nowrap;align-self:center;
-}
-.specbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #23282C}
-.specbar div{padding:14px 18px;border-right:1px solid #C4C8C0}
-.specbar div:last-child{border-right:0}
-.specbar b{
-display:block;font-family:‘Chakra Petch’,sans-serif;font-size:26px;font-weight:700;line-height:1.1
-}
-.specbar span{font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#4A5257}
+.tnav button:hover{color:#fff}
+.tnav button.active{color:#fff;border-bottom-color:#B33A2B;font-weight:500}
 
-.note{
-border-left:6px solid #B08214;border-top:1px solid #C4C8C0;border-right:1px solid #C4C8C0;border-bottom:1px solid #C4C8C0;background:#FFFFFF;
-padding:16px 20px;margin-top:22px;font-size:14.5px;
-}
-.note b{font-weight:600}
+/* ══ PAGE ══ */
+.page{display:none;animation:fade .25s ease}
+.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* ══ SECTION ══ */
-section{margin-top:64px}
-.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid #23282C;padding-bottom:8px;margin-bottom:26px}
-.sec-num{font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:600;color:#B33A2B;letter-spacing:.1em}
-.sec-head h2{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:clamp(19px,3vw,26px)}
-.sec-head .hint{margin-left:auto;font-family:‘IBM Plex Mono’,monospace;font-size:11px;color:#4A5257;letter-spacing:.08em}
+/* ══ HERO / HOME ══ */
+.homelink{display:inline-block;margin-top:24px;margin-bottom:-6px;font-family:‘IBM Plex Mono’,monospace;font-size:12px;letter-spacing:.05em;color:#4A5257;text-decoration:none;background:#fff;border:1.5px solid #B9BDB6;padding:7px 13px}
+.homelink:hover{border-color:#23282C;color:#23282C}
+.hero{border:2px solid #23282C;background:#fff;margin-top:16px;box-shadow:7px 7px 0 #C4C8C0}
+.hero-in{padding:30px 30px 24px}
+.eyebrow{font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#4A5257;display:block;margin-bottom:12px}
+.hero h1{font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:clamp(28px,5.4vw,50px);line-height:1.08}
+.hero h1 .s{display:block;font-size:clamp(14px,2.2vw,19px);font-weight:500;color:#4A5257;margin-top:12px;letter-spacing:0}
+.hero-spec{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #23282C}
+.hero-spec div{padding:14px 16px;border-right:1px solid #E0E2DC}
+.hero-spec div:last-child{border-right:0}
+.hero-spec b{display:block;font-family:‘Chakra Petch’;font-size:25px;font-weight:700;line-height:1}
+.hero-spec span{font-family:‘IBM Plex Mono’;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#4A5257}
 
-/* ══ LEGEND ══ */
-.legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.lg{display:flex;align-items:center;gap:9px;background:#FFFFFF;border:1px solid #C4C8C0;padding:8px 14px;font-size:13px}
-.pole{
-width:20px;height:20px;flex:none;display:grid;place-items:center;
-font-family:‘IBM Plex Mono’,monospace;font-weight:600;font-size:13px;color:#fff
+.menu-lbl{font-family:‘IBM Plex Mono’;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#4A5257;margin:34px 0 12px}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.mcard{
+border:2px solid #23282C;background:#fff;box-shadow:4px 4px 0 #C4C8C0;cursor:pointer;
+padding:0;text-align:left;font-family:inherit;color:inherit;display:flex;flex-direction:column;
+transition:transform .16s,box-shadow .16s
 }
-.pos{background:#B33A2B}
-.neg{background:#146B5E}
+.mcard:hover,.mcard:focus-visible{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #23282C;outline:none}
+.mcard .cap{height:8px;background:#B33A2B}
+.mcard.b .cap{background:#146B5E}
+.mcard.c .cap{background:#B08214}
+.mcard .mc-in{padding:15px 17px 17px}
+.mcard .mnum{font-family:‘IBM Plex Mono’;font-size:11px;color:#4A5257;letter-spacing:.1em}
+.mcard h3{font-family:‘Chakra Petch’;font-weight:600;font-size:17px;margin:5px 0 6px;line-height:1.25}
+.mcard p{font-size:13px;color:#4A5257;line-height:1.5}
+.mcard .go{font-family:‘IBM Plex Mono’;font-size:11px;color:#B33A2B;margin-top:11px;letter-spacing:.05em}
 
-/* ══ BUSBAR DIAGRAM ══ */
-.rig{background:#FFFFFF;border:2px solid #23282C;padding:30px 24px 34px;box-shadow:6px 6px 0 #C4C8C0}
-.tier{display:flex;flex-direction:column;align-items:center}
-.node{
-border:2px solid #23282C;background:#F0F1EC;
-padding:12px 22px;text-align:center;max-width:520px;width:100%
-}
-.node .role{font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#4A5257}
-.node .nm{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:17px;margin-top:3px}
-.node .dt{font-size:12.5px;color:#4A5257;margin-top:2px}
-.node.hq{background:#23282C;color:#FFFFFF;border-color:#23282C}
-.node.hq .role,.node.hq .dt{color:#B9BDB6}
-.drop{width:2px;height:26px;background:#23282C}
-.bus{height:6px;background:#23282C;width:100%;max-width:1000px;position:relative;margin-top:0}
-.bus::before,.bus::after{content:’’;position:absolute;top:-5px;width:6px;height:16px;background:#23282C}
-.bus::before{left:0}.bus::after{right:0}
+/* ══ SECTION HEADER (inner pages) ══ */
+.crumb{display:flex;align-items:center;gap:10px;margin-top:26px;margin-bottom:2px}
+.backbtn{font-family:‘IBM Plex Mono’;font-size:11.5px;color:#4A5257;background:#fff;border:1.5px solid #B9BDB6;padding:6px 11px;cursor:pointer;letter-spacing:.04em}
+.backbtn:hover{border-color:#23282C;color:#23282C}
+.ptitle{border-bottom:2px solid #23282C;padding:14px 0 10px;margin-bottom:20px;margin-top:8px}
+.ptitle .pk{font-family:‘IBM Plex Mono’;font-size:11px;color:#B33A2B;letter-spacing:.14em}
+.ptitle h2{font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:clamp(22px,4vw,32px);line-height:1.15;margin-top:3px}
+.ptitle .pd{font-size:13.5px;color:#4A5257;margin-top:6px}
 
-.cells{
-display:grid;grid-template-columns:repeat(7,1fr);gap:10px;width:100%;max-width:1000px;margin-top:0
-}
-.stem{height:22px;width:2px;background:#23282C;margin:0 auto}
-.cell{
-border:2px solid #23282C;background:#FFFFFF;cursor:pointer;
-text-align:left;width:100%;font-family:inherit;color:inherit;
-display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease
-}
-.cell:hover,.cell:focus-visible{transform:translateY(-4px);box-shadow:5px 5px 0 #23282C;outline:none}
-.cell.on{background:#23282C;color:#FFFFFF}
-.cap{height:9px;background:#B33A2B}
-.cell.on .cap{background:#B9BDB6}
-.cell-body{padding:9px 9px 11px;display:flex;flex-direction:column;gap:3px;flex:1}
-.cid{font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:20px;line-height:1}
-.cnm{font-size:12px;font-weight:500;line-height:1.35}
-.cpct{font-family:‘IBM Plex Mono’,monospace;font-size:10px;color:#4A5257;margin-top:auto;letter-spacing:.06em}
-.cell.on .cpct{color:#B9BDB6}
-.ext{
-margin-top:26px;border-top:1px dashed #B9BDB6;padding-top:18px;
-display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;width:100%
-}
-.ext h4{font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#4A5257;grid-column:1/-1;margin-bottom:-4px}
-.extbox{border:1px dashed #4A5257;padding:10px 13px;font-size:12.5px;background:#F0F1EC}
-.extbox b{display:block;font-weight:600;font-size:13.5px;font-family:‘Chakra Petch’,sans-serif}
+.lead{border-left:4px solid #B08214;background:#fff;padding:14px 18px;font-size:14px;box-shadow:3px 3px 0 #C4C8C0;margin-bottom:22px}
+.lead b{font-weight:600}
+.lead.pos{border-left-color:#146B5E}
+.lead.neg{border-left-color:#B33A2B}
 
-/* ══ DETAIL PANEL ══ */
-#panel{margin-top:20px}
-.card{border:2px solid #23282C;background:#FFFFFF;margin-bottom:16px;box-shadow:4px 4px 0 #C4C8C0}
-.card-head{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:16px 20px;background:#F0F1EC;border-bottom:2px solid #23282C}
-.badge{
-font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:22px;
-background:#23282C;color:#FFFFFF;width:42px;height:42px;display:grid;place-items:center;flex:none
+/* ══ TABLES ══ */
+.tscroll{overflow-x:auto;border:2px solid #23282C;background:#fff;box-shadow:5px 5px 0 #C4C8C0;margin-bottom:8px}
+table.sheet{width:100%;border-collapse:collapse;font-size:13px;min-width:720px}
+table.sheet th{
+background:#23282C;color:#fff;font-family:‘Chakra Petch’;font-weight:600;font-size:12px;
+text-align:left;padding:11px 12px;vertical-align:top;border-right:1px solid #3a4147;line-height:1.3
 }
-.card-head .t{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:17px;line-height:1.3}
-.card-head .r{font-size:12.5px;color:#4A5257;line-height:1.4}
-.own{margin-left:auto;font-family:‘IBM Plex Mono’,monospace;font-size:11px;border:1px solid #4A5257;padding:4px 9px;letter-spacing:.06em}
-.rows{width:100%;border-collapse:collapse;font-size:14px}
-.rows tr{border-bottom:1px solid #C4C8C0}
-.rows tr:last-child{border-bottom:0}
-.rows td{padding:11px 14px;vertical-align:top}
-.rows td.p{width:34px;text-align:center}
-.rows td.k{width:34%;font-weight:500;font-family:‘Chakra Petch’,sans-serif;font-size:14.5px}
-.rows tr.star td.k{color:#B33A2B}
-.rows tr.star.benefit td.k{color:#146B5E}
-.pin{
-display:inline-grid;place-items:center;width:19px;height:19px;color:#fff;
-font-family:‘IBM Plex Mono’,monospace;font-weight:600;font-size:12px;line-height:1
-}
+table.sheet th .en{display:block;font-family:‘IBM Plex Mono’;font-size:9.5px;color:#B9BDB6;font-weight:400;letter-spacing:.04em;margin-top:2px}
+table.sheet td{padding:11px 12px;border-bottom:1px solid #E0E2DC;border-right:1px solid #EDEEE9;vertical-align:top;line-height:1.5}
+table.sheet tr:last-child td{border-bottom:0}
+table.sheet .mcol{font-family:‘Chakra Petch’;font-weight:700;font-size:16px;color:#23282C;text-align:center;background:#F0F1EC;width:44px}
+table.sheet .grp{font-family:‘Chakra Petch’;font-weight:600;font-size:13.5px;background:#F0F1EC;white-space:nowrap}
+table.sheet li{margin-left:15px;margin-bottom:3px}
+table.sheet ul{list-style:’▪  ’;padding:0}
+.hl-pos{color:#146B5E;font-weight:500}
+.hl-neg{color:#B33A2B;font-weight:500}
+.hl-warn{color:#B08214;font-weight:500}
 
-/* ══ FLOW TABLE ══ */
-.scroll{overflow-x:auto;border:2px solid #23282C;background:#FFFFFF;box-shadow:4px 4px 0 #C4C8C0}
-table.grid{width:100%;border-collapse:collapse;font-size:13.5px;min-width:660px}
-table.grid th{
-background:#23282C;color:#FFFFFF;font-family:‘Chakra Petch’,sans-serif;font-weight:600;
-font-size:12.5px;text-align:left;padding:11px 13px;letter-spacing:.02em;position:sticky;top:0
-}
-table.grid td{padding:10px 13px;border-bottom:1px solid #C4C8C0;vertical-align:top}
-table.grid tr:last-child td{border-bottom:0}
-.tag{
-font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:12px;
-border:1.5px solid #23282C;padding:1px 7px;display:inline-block;white-space:nowrap
-}
-.arrow{font-family:‘IBM Plex Mono’,monospace;color:#B33A2B;font-weight:600}
-.num{font-family:‘IBM Plex Mono’,monospace;font-size:12px;color:#4A5257}
+/* ══ CARDS / ISSUES ══ */
+.stack{display:grid;gap:14px}
+.icard{border:2px solid #23282C;background:#fff;box-shadow:4px 4px 0 #C4C8C0}
+.icard-h{display:flex;gap:12px;align-items:flex-start;padding:14px 17px;background:#F0F1EC;border-bottom:2px solid #23282C}
+.icard-h .ino{font-family:‘Chakra Petch’;font-weight:700;font-size:19px;color:#fff;background:#B33A2B;width:38px;height:38px;display:grid;place-items:center;flex:none}
+.icard-h h3{font-family:‘Chakra Petch’;font-weight:600;font-size:16px;line-height:1.3}
+.icard-h .tag{font-family:‘IBM Plex Mono’;font-size:9.5px;letter-spacing:.06em;color:#4A5257;border:1px solid #B9BDB6;padding:1px 6px;margin-top:4px;display:inline-block}
+.irow{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:11px 17px;border-bottom:1px solid #E0E2DC;font-size:13.5px}
+.irow:last-child{border-bottom:0}
+.irow .rk{font-family:‘Chakra Petch’;font-weight:600;font-size:12.5px;padding-top:1px}
+.irow.cause .rk{color:#B33A2B}
+.irow.fix{background:#EFF6F3}
+.irow.fix .rk{color:#146B5E}
+.irow .law{font-family:‘IBM Plex Mono’;font-size:11px;color:#4A5257;display:block;margin-top:3px}
 
-/* ══ CHECKLIST ══ */
-.filternote{
-font-size:13px;background:#23282C;color:#FFFFFF;padding:9px 14px;
-display:none;align-items:center;gap:12px;flex-wrap:wrap
-}
-.filternote.show{display:flex}
-.filternote button{
-font-family:‘IBM Plex Mono’,monospace;font-size:11px;background:none;color:#FFFFFF;
-border:1px solid #B9BDB6;padding:3px 9px;cursor:pointer;letter-spacing:.06em
-}
-.filternote button:hover{background:#FFFFFF;color:#23282C}
-tr.dim{opacity:.26}
-.agency{font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:.04em;color:#4A5257;white-space:nowrap}
+/* ══ LAW GROUPS ══ */
+.lawgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lawbox{border:2px solid #23282C;background:#fff;box-shadow:4px 4px 0 #C4C8C0}
+.lawbox h3{font-family:‘Chakra Petch’;font-weight:600;font-size:15px;color:#fff;background:#23282C;padding:10px 15px}
+.lawbox.alt h3{background:#146B5E}
+.lawbox ul{list-style:none;padding:6px 0}
+.lawbox li{padding:8px 15px;border-bottom:1px solid #EDEEE9;font-size:13.5px;line-height:1.5}
+.lawbox li:last-child{border-bottom:0}
+.lawbox li b{font-family:‘Chakra Petch’;font-weight:600;font-size:13.5px;display:block}
+.lawbox li .ref{font-family:‘IBM Plex Mono’;font-size:11px;color:#4A5257}
 
-/* ══ PHASES ══ */
-.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:0;border:2px solid #23282C;background:#FFFFFF;box-shadow:4px 4px 0 #C4C8C0}
-.ph{padding:20px 20px 22px;border-right:1px solid #C4C8C0}
-.ph:last-child{border-right:0}
-.ph .n{font-family:‘IBM Plex Mono’,monospace;font-size:11px;color:#B33A2B;letter-spacing:.14em}
-.ph h3{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:16px;margin:6px 0 8px}
-.ph p{font-size:13.5px;color:#4A5257}
-.ph .case{display:inline-block;margin-top:10px;font-family:‘IBM Plex Mono’,monospace;font-size:10.5px;border:1px solid #B9BDB6;padding:2px 7px;letter-spacing:.08em}
+/* ══ PLANNING ══ */
+.plan{display:grid;gap:10px}
+.pitem{border:2px solid #23282C;background:#fff;box-shadow:3px 3px 0 #C4C8C0;padding:13px 16px;display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:start}
+.pitem .pn{font-family:‘Chakra Petch’;font-weight:700;font-size:15px;color:#146B5E;flex:none;width:26px}
+.pitem b{font-family:‘Chakra Petch’;font-weight:600;font-size:14.5px}
+.pitem p{font-size:13.5px;color:#4A5257;margin-top:2px}
+.legendbar{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid #23282C;background:#fff;box-shadow:4px 4px 0 #C4C8C0;margin-bottom:18px}
+.legendbar div{padding:12px 15px;border-right:1px solid #E0E2DC}
+.legendbar div:last-child{border-right:0}
+.legendbar .t{font-family:‘Chakra Petch’;font-weight:600;font-size:14px}
+.legendbar .g{color:#146B5E}.legendbar .y{color:#B08214}.legendbar .r{color:#B33A2B}
+.legendbar p{font-size:12px;color:#4A5257;margin-top:2px}
 
-/* ══ WARN ══ */
-.warns{display:grid;gap:12px}
-.warn{border:2px solid #23282C;background:#FFFFFF;padding:16px 20px;display:flex;gap:16px;align-items:flex-start;box-shadow:4px 4px 0 #C4C8C0}
-.warn .i{font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:20px;color:#B33A2B;flex:none;line-height:1.3}
-.warn b{font-family:‘Chakra Petch’,sans-serif;font-weight:600;font-size:15px;display:block;margin-bottom:3px}
-.warn p{font-size:13.5px;color:#4A5257}
+/* ══ CONCLUSION ══ */
+.prose p{font-size:14.5px;margin-bottom:13px}
+.prose h3{font-family:‘Chakra Petch’;font-weight:600;font-size:16px;margin:22px 0 8px;padding-bottom:5px;border-bottom:1.5px solid #C4C8C0}
+.rec{border:2px solid #23282C;background:#fff;box-shadow:4px 4px 0 #C4C8C0;padding:8px 0;margin-top:6px}
+.rec .r{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:9px 16px;border-bottom:1px solid #EDEEE9;font-size:13.5px}
+.rec .r:last-child{border-bottom:0}
+.rec .rn{font-family:‘IBM Plex Mono’;font-weight:600;color:#B33A2B;font-size:12px}
 
-footer{margin-top:60px;border-top:2px solid #23282C;padding-top:16px;font-family:‘IBM Plex Mono’,monospace;font-size:11px;color:#4A5257;letter-spacing:.06em;display:flex;flex-wrap:wrap;gap:8px 22px}
+.calllink{display:block;border:2px dashed #23282C;background:#F0F1EC;padding:14px 18px;margin-top:22px;font-size:13.5px;color:#23282C;text-decoration:none}
+.calllink b{font-family:‘Chakra Petch’;font-weight:600;color:#B33A2B}
 
-@media(max-width:900px){
-.cells{grid-template-columns:repeat(4,1fr);gap:8px}
-.bus{display:none}
-.stem{display:none}
-.specbar{grid-template-columns:repeat(2,1fr)}
-.specbar div:nth-child(2){border-right:0}
-.specbar div:nth-child(-n+2){border-bottom:1px solid #C4C8C0}
+/* ══ FLOWCHART ══ */
+.flow-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:12px;font-size:12.5px;color:#4A5257}
+.flow-legend span{display:flex;align-items:center;gap:7px}
+.flow-legend .sw{width:22px;height:3px;flex:none}
+.flow-legend .sw.dash{background:repeating-linear-gradient(90deg,#23282C 0 5px,transparent 5px 9px);height:2px}
+.flow-legend .sw.red{background:#B33A2B}
+.flow-legend .sw.green{background:#146B5E}
+.flow-legend .sw.orange{background:#B08214}
+.flow-legend .sw.blue{background:#2C5F8A}
+.scrollhint{display:none;font-family:‘IBM Plex Mono’;font-size:10.5px;color:#4A5257;margin-bottom:6px;letter-spacing:.04em}
+.svgwrap{overflow-x:auto;border:2px solid #23282C;background:#fff;box-shadow:5px 5px 0 #C4C8C0;margin-bottom:16px}
+.svgwrap svg{display:block;width:860px;max-width:860px;height:auto;margin:0 auto}
+@media(max-width:880px){.scrollhint{display:block}.svgwrap svg{margin:0}}
+
+footer{margin-top:44px;border-top:2px solid #23282C;padding-top:14px;font-family:‘IBM Plex Mono’;font-size:10.5px;color:#4A5257;letter-spacing:.04em;line-height:1.9}
+
+@media(max-width:640px){
+.wrap{padding:0 11px 80px}
+.hero-spec{grid-template-columns:repeat(2,1fr)}
+.hero-spec div:nth-child(-n+2){border-bottom:1px solid #E0E2DC}
+.hero-spec div:nth-child(2){border-right:0}
+.lawgrid{grid-template-columns:1fr}
+.legendbar{grid-template-columns:1fr}
+.legendbar div{border-right:0;border-bottom:1px solid #E0E2DC}
+.irow{grid-template-columns:1fr}
+.irow .rk{padding-top:0}
 }
-@media(max-width:560px){
-.wrap{padding:0 14px 70px}
-.cells{grid-template-columns:repeat(2,1fr)}
-.rig{padding:20px 14px 24px}
-.rows td.k{width:auto;display:block;padding-bottom:2px}
-.rows td.v{display:block;padding-top:0}
-.rows td.p{display:block;text-align:left;width:auto;padding-bottom:0}
-.card-head{padding:13px 14px}
-.own{margin-left:0}
-.stamp{transform:none}
-}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
 </head>
 <body>
+
+<div class="topbar">
+  <span class="brand" onclick="go('home')">TPC<span class="dot">.</span> โครงงานภาษีอากร</span>
+  <nav class="tnav" id="tnav"></nav>
+</div>
+
 <div class="wrap">
 
-<!-- ═══ MASTHEAD ═══ -->
+<!-- ═══════════ HOME ═══════════ -->
 
-<div class="masthead">
-  <div class="mast-top">
-    <div>
-      <span class="eyebrow">โครงงานภาษีอากร · กรณีศึกษาสมมติ</span>
-      <h1>กลุ่มบริษัท<br>ไทยพาวเวอร์เซลล์
-        <span class="sub">THAI POWERCELL GROUP — นำเข้าวัตถุดิบ · ผลิต · จำหน่าย · ส่งออก แบตเตอรี่รถยนต์</span>
+<div class="page on" id="home">
+  <a href="index.html" class="homelink">← กลับไปหน้าแรก </a>
+  <div class="hero">
+    <div class="hero-in">
+      <span class="eyebrow">กรณีศึกษาสมมติ · ธุรกิจแบตเตอรี่รถยนต์ครบวงจร</span>
+      <h1>บริษัท ไทยพาวเวอร์เซลล์ จำกัด
+        <span class="s">นำเข้า · ประกอบ · ผลิต · จำหน่ายทั้งในและต่างประเทศ — บริษัทเดียว 3 โมเดลธุรกิจ ดำเนินงานครบ 5 ปี</span>
       </h1>
     </div>
-    <div class="stamp">บริษัทสมมติ<br>กฎหมายอ้างอิงของจริง</div>
+    <div class="hero-spec">
+      <div><b>3</b><span>โมเดลธุรกิจ</span></div>
+      <div><b>888</b><span>ลบ. สินทรัพย์สุทธิ</span></div>
+      <div><b>45/55</b><span>ญี่ปุ่น / ไทย</span></div>
+      <div><b>5</b><span>หน่วยงานภาษี</span></div>
+    </div>
   </div>
-  <div class="specbar">
-    <div><b>7</b><span>บริษัทในกลุ่ม</span></div>
-    <div><b>20</b><span>ประเด็นภาษี</span></div>
-    <div><b>5</b><span>หน่วยงานจัดเก็บ</span></div>
-    <div><b>10</b><span>รายการระหว่างกัน</span></div>
+
+  <div class="menu-lbl">// สารบัญ — แตะเพื่อเข้าแต่ละหัวข้อ</div>
+  <div class="menu" id="menu"></div>
+
+  <div class="lead" style="margin-top:26px">
+    <b>โจทย์ที่ตั้งไว้:</b> บริษัทจดทะเบียนในไทย บริษัทแม่ญี่ปุ่นถือหุ้น 45% (เจ้าของเทคโนโลยี + ผู้ให้กู้) โรงงานผลิตเป็นบริษัทลูก 100% ของแม่ตั้งอยู่ที่จีน · <b>ทำสัญญาซื้อผ่านบริษัทแม่ญี่ปุ่น แต่สินค้าผลิตและส่งตรงจากโรงงานจีน (Direct Consignment) ใช้ Form E</b> · ขายในประเทศผ่านดีลเลอร์ (จ่าย rebate) และส่งออกผ่านตัวแทนต่างประเทศ (ไม่มี PE)
   </div>
 </div>
 
-<div class="note">
-  <b>คำชี้แจง</b> — กรณีศึกษานี้เป็นบริษัทสมมติ สร้างขึ้นเพื่อให้ครอบคลุมประเด็นภาษีอากรได้ครบทุกประเภท โดยอ้างอิงโครงสร้างอุตสาหกรรมจากผู้ประกอบการจริงในประเทศไทย ส่วนกฎหมาย อัตราภาษี และสิทธิประโยชน์ที่อ้างถึงเป็นของจริงทั้งหมด ตามประมวลรัษฎากร พ.ร.บ.ภาษีสรรพสามิต พ.ร.บ.ศุลกากร และประกาศที่เกี่ยวข้อง — <b>อัตราภาษีสรรพสามิตแบตเตอรี่และเงื่อนไขวัสดุรีไซเคิลมีการแก้ไขเป็นระยะ ต้องตรวจสอบประกาศล่าสุดก่อนใส่ตัวเลขจริง</b>
+<!-- ═══════════ SHEET 1 ═══════════ -->
+
+<div class="page" id="models">
+  <div class="crumb"><button class="backbtn" onclick="go('home')">← เมนู</button></div>
+  <div class="ptitle"><span class="pk">SHEET 1</span><h2>3 โมเดลธุรกิจ</h2>
+    <div class="pd">รูปแบบการดำเนินธุรกิจ 3 แบบในบริษัทเดียว ไล่จากพึ่งพาบริษัทแม่มาก → ผลิตเองมากที่สุด</div></div>
+
+  <div class="lead neg"><b>การตัดสินใจเรื่องแหล่งซื้อ (สำคัญต่อทั้งโครงงาน):</b> เลือกทำสัญญาและชำระเงินกับ <b>บริษัทแม่ญี่ปุ่น</b> (ผู้ถือกรรมสิทธิ์เทคโนโลยีและออกใบกำกับ) แต่สินค้า <b>ผลิตและส่งตรงจากโรงงานจีน</b> มายังไทย จึงเกิดสถานะ <span class="hl-warn">Third-Party Invoicing</span> — จ่ายเงินให้ญี่ปุ่น แต่ถิ่นกำเนิดสินค้าเป็นจีน (ใช้ Form E ได้ แต่ต้องสำแดงให้ถูก ดูหัวข้อปัญหาภาษี ข้อ 1–2)</div>
+
+  <div class="tscroll">
+    <table class="sheet">
+      <thead><tr>
+        <th>Model</th>
+        <th>รูปแบบธุรกิจ<span class="en">Business model</span></th>
+        <th>สินค้าที่นำเข้า<span class="en">Imported goods</span></th>
+        <th>คู่สัญญา / แหล่งผลิต<span class="en">Counterparty / origin</span></th>
+        <th>ช่องทางจำหน่าย<span class="en">Sales channel</span></th>
+        <th>สิทธิประโยชน์ / เงื่อนไขพิเศษ<span class="en">Incentive / note</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="mcol">1</td>
+          <td class="grp">Trading</td>
+          <td>สินค้าสำเร็จรูป<br>(Finished Goods — แบตเตอรี่พร้อมขาย)</td>
+          <td>สัญญา/จ่ายเงิน → <b>ญี่ปุ่น</b><br>ผลิต+ส่งตรง → <b>จีน</b></td>
+          <td>ในประเทศ &amp; ต่างประเทศ</td>
+          <td>ซื้อมาขายไป เน้นกระจายสินค้าเร็ว · <span class="hl-neg">ไม่มี royalty</span> (ไม่ได้ใช้เทคโนโลยีผลิต) · เสีย <span class="hl-warn">สรรพสามิตตอนนำเข้า</span></td>
+        </tr>
+        <tr>
+          <td class="mcol">2</td>
+          <td class="grp">Assembly</td>
+          <td>ชิ้นส่วน/อุปกรณ์<br>(Components — cell, module)</td>
+          <td>สัญญา/จ่ายเงิน → <b>ญี่ปุ่น</b><br>ผลิต+ส่งตรง → <b>จีน</b></td>
+          <td>ในประเทศ &amp; ต่างประเทศ</td>
+          <td>นำมาประกอบเป็น Cell/Pack ในไทย · <span class="hl-neg">จ่าย royalty</span> ค่าเทคโนโลยีให้ญี่ปุ่น · เสีย <span class="hl-warn">สรรพสามิตตอนผลิตเสร็จ</span></td>
+        </tr>
+        <tr>
+          <td class="mcol">3</td>
+          <td class="grp">Full Production</td>
+          <td>วัตถุดิบตั้งต้น<br>(Raw Materials)</td>
+          <td>สัญญา/จ่ายเงิน → <b>ญี่ปุ่น/ซัพพลายเออร์</b><br>ผลิต+ส่งตรง → <b>จีน</b></td>
+          <td>ในประเทศ &amp; ต่างประเทศ</td>
+          <td>ผลิตเองเต็มรูปแบบในไทย · จ่าย royalty · <span class="hl-pos">ได้รับสิทธิ BOI</span> (ยกเว้น CIT + ยกเว้นอากรวัตถุดิบ) · ต้อง <span class="hl-warn">แยกบัญชี BOI</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="lead"><b>ข้อสังเกตที่ทำให้ตารางสอดคล้องกัน:</b> ทั้ง 3 โมเดลใช้เส้นทางเดียวกัน (จ่ายญี่ปุ่น–ส่งจากจีน) ต่างกันแค่ "ระดับความสำเร็จรูปของสินค้าที่นำเข้า" ยิ่งนำเข้าดิบเท่าไร ยิ่งผลิตในไทยมาก → ได้ BOI และเสียภาษีที่ต่างจุดกัน</div>
 </div>
 
-<!-- ═══ 01 DIAGRAM ═══ -->
+<!-- ═══════════ SHEET 2 ═══════════ -->
 
-<section>
-  <div class="sec-head">
-    <span class="sec-num">01</span><h2>ผังโครงสร้างกลุ่ม</h2>
-    <span class="hint">แตะเซลล์เพื่อดูรายละเอียด</span>
-  </div>
+<div class="page" id="relations">
+  <div class="crumb"><button class="backbtn" onclick="go('home')">← เมนู</button></div>
+  <div class="ptitle"><span class="pk">SHEET 2</span><h2>ความสัมพันธ์ · เส้นทางเอกสาร · การขนส่ง · ภาษี</h2>
+    <div class="pd">ใครเป็นใคร เงินและเอกสารวิ่งทางไหน สินค้าวิ่งทางไหน และเกิดประเด็นภาษีอะไร</div></div>
 
-  <div class="legend">
-    <div class="lg"><span class="pole pos">+</span> ขั้วบวก = ภาระภาษีที่ต้องจ่าย</div>
-    <div class="lg"><span class="pole neg">−</span> ขั้วลบ = สิทธิประโยชน์ / ขอคืน / ยกเว้น</div>
-  </div>
-
-  <div class="rig">
-    <div class="tier">
-      <div class="node">
-        <span class="role">Shareholders</span>
-        <span class="nm">ผู้ถือหุ้น</span>
-        <span class="dt">บุคคลธรรมดาไทย 45% · สถาบันไทย 15% · Nihon Battery K.K. (ญี่ปุ่น) 40%</span>
-      </div>
-      <div class="drop"></div>
-      <div class="node hq">
-        <span class="role">Parent · Holding</span>
-        <span class="nm">บมจ. ทีพีซี โฮลดิ้ง</span>
-        <span class="dt">ถือหุ้นบริษัทในกลุ่ม · บริหารกลาง · บริหารเงินสด</span>
-      </div>
-      <div class="drop"></div>
-      <div class="bus"></div>
-      <div class="cells" id="cells"></div>
-      <div class="ext">
-        <h4>คู่ค้าภายนอกกลุ่มที่ก่อให้เกิดภาระภาษี</h4>
-        <div class="extbox"><b>Nihon Battery K.K.</b>ผู้ถือหุ้น 40% + ให้ใช้เทคโนโลยี → ค่าสิทธิ, เงินปันผลออกนอกประเทศ</div>
-        <div class="extbox"><b>ตัวแทนจำหน่าย / ศูนย์บริการ</b>ทั้งนิติบุคคลและบุคคลธรรมดา → VAT, หัก ณ ที่จ่าย, ภ.ง.ด.90/94</div>
-        <div class="extbox"><b>ผู้รวบรวมแบตเตอรี่เก่า</b>บุคคลธรรมดาไม่จด VAT → ปัญหาไม่มีภาษีซื้อให้เครดิต</div>
-        <div class="extbox"><b>ลูกค้าต่างประเทศ</b>ลาว กัมพูชา ตะวันออกกลาง → VAT 0%, ยกเว้นสรรพสามิต</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 02 CARDS ═══ -->
-
-<section>
-  <div class="sec-head">
-    <span class="sec-num">02</span><h2>รายละเอียดแต่ละบริษัท</h2>
-    <span class="hint">ภาระภาษี + / สิทธิประโยชน์ −</span>
-  </div>
-  <div id="panel"></div>
-</section>
-
-<!-- ═══ 03 FLOWS ═══ -->
-
-<section>
-  <div class="sec-head">
-    <span class="sec-num">03</span><h2>รายการระหว่างกันในกลุ่ม</h2>
-    <span class="hint">Intercompany Transactions</span>
-  </div>
-  <div class="scroll">
-    <table class="grid">
-      <thead><tr><th style="width:34px">#</th><th style="width:170px">เส้นทาง</th><th>รายการ</th><th>ภาษีที่เกิดขึ้น</th></tr></thead>
-      <tbody id="flows"></tbody>
+  <div class="tscroll">
+    <table class="sheet">
+      <thead><tr>
+        <th>หน่วยงาน<span class="en">Party</span></th>
+        <th>ความสัมพันธ์ / สัดส่วนหุ้น<span class="en">Relationship</span></th>
+        <th>เส้นทางเอกสาร &amp; การเงิน<span class="en">Document / money flow</span></th>
+        <th>เส้นทางขนส่งสินค้า<span class="en">Goods flow</span></th>
+        <th>ประเด็นภาษี / ข้อดี<span class="en">Tax point / benefit</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="grp">บริษัทแม่<br>(ญี่ปุ่น)</td>
+          <td><ul><li>ถือหุ้นบริษัทไทย <b>45%</b></li><li>เจ้าของเทคโนโลยี / ผู้ให้กู้</li></ul></td>
+          <td><ul><li>ไทยออก PO ไปญี่ปุ่น</li><li>ไทยชำระเงิน (ค่าสินค้า/royalty/ดอกเบี้ย) ไปญี่ปุ่น</li></ul></td>
+          <td><i>ไม่มีการขนส่งสินค้าจากญี่ปุ่นโดยตรง</i></td>
+          <td><ul><li>ค่า Royalty อยู่ภายใต้ <span class="hl-pos">DTA ไทย–ญี่ปุ่น</span></li><li>หักกลบลบหนี้ (netting) ระหว่างกันง่ายขึ้น</li><li>เป็น <span class="hl-neg">Related Party</span> → ทำ TP</li></ul></td>
+        </tr>
+        <tr>
+          <td class="grp">โรงงาน<br>(จีน)</td>
+          <td><ul><li>บริษัทลูก <b>100%</b> ของแม่ญี่ปุ่น</li><li><span class="hl-neg">Related Party</span> กับไทย</li></ul></td>
+          <td><ul><li>รับคำสั่งผลิตจากญี่ปุ่น</li><li>ออกเอกสารส่งออก + <b>Form E</b> ถิ่นกำเนิดจีน</li></ul></td>
+          <td><ul><li>ขนส่งตรงจีน → ไทย</li><li>(Direct Consignment)</li></ul></td>
+          <td><ul><li><span class="hl-pos">Form E (FTA อาเซียน–จีน)</span> ลดอากรขาเข้าเหลือ 0%</li><li>ต้องสำแดง <span class="hl-warn">Third-Party Invoicing</span></li></ul></td>
+        </tr>
+        <tr>
+          <td class="grp">ผู้ถือหุ้น<br>ไทย</td>
+          <td><ul><li>ถือหุ้นบริษัทไทย <b>55%</b></li></ul></td>
+          <td><i>ดำเนินงานภายในประเทศ</i></td>
+          <td><i>ดำเนินงานภายในประเทศ</i></td>
+          <td><ul><li>คงสถานะ <span class="hl-pos">"บริษัทสัญชาติไทย"</span></li><li>ไม่ติด พ.ร.บ.ต่างด้าว (ถือเกิน 50%)</li></ul></td>
+        </tr>
+      </tbody>
     </table>
   </div>
-</section>
+  <div class="lead neg"><b>จุดชี้ขาด:</b> การที่เงินวิ่งไปญี่ปุ่นแต่ของวิ่งมาจากจีน คือหัวใจของ Third-Party Invoicing — ต้องระบุใน Form E ช่อง 13 และเตรียมเอกสารพิสูจน์ราคาซื้อขายจริงเพื่อการประเมินราคาศุลกากร</div>
+</div>
 
-<!-- ═══ 04 CHECKLIST ═══ -->
+<!-- ═══════════ FLOWCHART ═══════════ -->
 
-<section>
-  <div class="sec-head">
-    <span class="sec-num">04</span><h2>ตารางตรวจสอบความครอบคลุม</h2>
-    <span class="hint">20 ประเด็น · 5 หน่วยงาน</span>
+<div class="page" id="flow">
+  <div class="crumb"><button class="backbtn" onclick="go('home')">← เมนู</button></div>
+  <div class="ptitle"><span class="pk">ภาพรวม</span><h2>แผนผังความสัมพันธ์ (Flowchart)</h2>
+    <div class="pd">ใครถือหุ้นใคร · เงินไหลทางไหน · สินค้าวิ่งทางไหน · เกิดภาษีจุดใด — ในภาพเดียว</div></div>
+
+  <div class="flow-legend">
+    <span><i class="sw dash"></i> การถือหุ้น</span>
+    <span><i class="sw red"></i> เงินไหลออก → ญี่ปุ่น</span>
+    <span><i class="sw green"></i> สินค้าเข้า ← จีน</span>
+    <span><i class="sw orange"></i> เงินกู้</span>
+    <span><i class="sw blue"></i> การขาย</span>
   </div>
-  <div class="filternote" id="fnote">
-    <span id="fnote-txt"></span>
-    <button id="fclear">แสดงทั้งหมด</button>
+  <div class="scrollhint">↔ เลื่อนแนวนอนเพื่อดูภาพเต็ม (บนมือถือ)</div>
+
+  <div class="svgwrap">
+  <svg viewBox="0 0 860 860" width="860" role="img" aria-label="แผนผังความสัมพันธ์ TPC">
+    <defs>
+      <style>
+        .bx{fill:#fff;stroke:#23282C;stroke-width:2}
+        .bx-hero{fill:#23282C;stroke:#23282C;stroke-width:2}
+        .bx-red{fill:#fff;stroke:#B33A2B;stroke-width:2}
+        .bx-green{fill:#fff;stroke:#146B5E;stroke-width:2}
+        .bx-side{fill:#F0F1EC;stroke:#23282C;stroke-width:2}
+        text{font-family:'IBM Plex Sans Thai',sans-serif}
+        .t{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:15px;fill:#23282C}
+        .t-w{fill:#fff}
+        .t-red{fill:#B33A2B}.t-green{fill:#146B5E}
+        .s{font-size:12px;fill:#4A5257;font-weight:300}
+        .s-w{fill:#DDDFD7}
+        .li{font-size:11.5px;fill:#23282C}
+        .note{font-size:10.5px;font-style:italic}
+        .fl{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:#4A5257}
+        .pill-t{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:#23282C}
+      </style>
+      <marker id="mDark" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#23282C"/></marker>
+      <marker id="mRed" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#B33A2B"/></marker>
+      <marker id="mGreen" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#146B5E"/></marker>
+      <marker id="mOrange" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#B08214"/></marker>
+      <marker id="mBlue" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2C5F8A"/></marker>
+    </defs>
+
+```
+<!-- ownership 100% arc Japan->China -->
+<path d="M272,96 C430,20 430,20 588,96" fill="none" stroke="#23282C" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#mDark)"/>
+<text class="fl" x="430" y="30" text-anchor="middle">ถือหุ้น 100% + สั่งผลิตให้จีน</text>
+
+<!-- TOP ROW boxes -->
+<g>
+  <rect class="bx" x="40" y="84" width="232" height="94"/>
+  <text class="t" x="156" y="116" text-anchor="middle">บริษัทแม่ (ญี่ปุ่น)</text>
+  <text class="s" x="156" y="138" text-anchor="middle">ถือหุ้นไทย 45%</text>
+  <text class="s" x="156" y="156" text-anchor="middle">เจ้าของเทคโนโลยี · ผู้ให้กู้</text>
+</g>
+<g>
+  <rect class="bx-side" x="314" y="84" width="232" height="94"/>
+  <text class="t" x="430" y="116" text-anchor="middle">ผู้ถือหุ้นไทย</text>
+  <text class="s" x="430" y="138" text-anchor="middle">ถือหุ้นไทย 55%</text>
+  <text class="s" x="430" y="156" text-anchor="middle">คงสถานะบริษัทสัญชาติไทย</text>
+</g>
+<g>
+  <rect class="bx" x="588" y="84" width="232" height="94"/>
+  <text class="t" x="704" y="116" text-anchor="middle">โรงงาน (จีน)</text>
+  <text class="s" x="704" y="138" text-anchor="middle">บริษัทลูก 100% ของแม่</text>
+  <text class="s" x="704" y="156" text-anchor="middle">Related Party · ผู้ผลิต/ส่ง</text>
+</g>
+
+<!-- ownership lines to hero -->
+<path d="M156,178 L360,316" fill="none" stroke="#23282C" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#mDark)"/>
+<text class="fl" x="222" y="250" text-anchor="middle">45%</text>
+<path d="M430,178 L430,314" fill="none" stroke="#23282C" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#mDark)"/>
+<text class="fl" x="446" y="252">55%</text>
+
+<!-- loan orange Japan->hero -->
+<path d="M238,178 C300,240 300,300 322,352" fill="none" stroke="#B08214" stroke-width="2.4" marker-end="url(#mOrange)"/>
+<text class="fl" x="292" y="300" text-anchor="middle" fill="#B08214">เงินกู้ 30 ลบ.</text>
+
+<!-- MIDDLE ROW: red / hero / green -->
+<g>
+  <rect class="bx-red" x="40" y="300" width="232" height="180"/>
+  <text class="t t-red" x="156" y="326" text-anchor="middle">จ่ายเงินไปญี่ปุ่น</text>
+  <text class="note fl" x="156" y="343" text-anchor="middle">Related Party — ทำ TP ทุกขา</text>
+  <text class="li" x="54" y="368">• ค่าสินค้า (โมเดล 1–3)</text>
+  <text class="li" x="54" y="390">• Royalty %ยอดขาย → WHT + ภ.พ.36</text>
+  <text class="li" x="54" y="412">• ดอกเบี้ยเงินกู้ → WHT + อากรแสตมป์</text>
+  <text class="li" x="54" y="434">• เงินปันผล → WHT 10% (DTA)</text>
+  <text class="li" x="54" y="456">• ส่วน BOI จ่ายปันผล → ยกเว้น WHT</text>
+</g>
+<g>
+  <rect class="bx-hero" x="314" y="316" width="232" height="146"/>
+  <text class="t t-w" x="430" y="358" text-anchor="middle">บริษัทไทย · TH-SUB</text>
+  <text class="s s-w" x="430" y="382" text-anchor="middle">ผู้เสียภาษีหลัก · 3 โมเดล</text>
+  <text class="s s-w" x="430" y="404" text-anchor="middle">สินทรัพย์สุทธิ 888 ลบ.</text>
+  <text class="s s-w" x="430" y="426" text-anchor="middle">BOI เฉพาะโมเดล 3</text>
+</g>
+<g>
+  <rect class="bx-green" x="588" y="300" width="232" height="180"/>
+  <text class="t t-green" x="704" y="326" text-anchor="middle">สินค้าเข้าจากจีน</text>
+  <text class="note fl" x="704" y="343" text-anchor="middle">Direct Consignment</text>
+  <text class="li" x="602" y="368">• ส่งตรงจีน → ไทย</text>
+  <text class="li" x="602" y="390">• Form E → อากรขาเข้า 0%</text>
+  <text class="li" x="602" y="412">• VAT นำเข้า 7% (ภาษีซื้อ)</text>
+  <text class="li" x="602" y="434">• สรรพสามิต (นำเข้า/ผลิต)</text>
+  <text class="li" x="602" y="456">• สำแดง Third-Party Invoicing</text>
+</g>
+
+<!-- money flow: hero -> redbox -> japan -->
+<path d="M314,390 L274,390" fill="none" stroke="#B33A2B" stroke-width="2.4" marker-end="url(#mRed)"/>
+<path d="M120,300 L120,180" fill="none" stroke="#B33A2B" stroke-width="2.4" marker-end="url(#mRed)"/>
+<!-- goods flow: china -> greenbox -> hero -->
+<path d="M740,180 L740,300" fill="none" stroke="#146B5E" stroke-width="2.4" marker-end="url(#mGreen)"/>
+<path d="M586,390 L548,390" fill="none" stroke="#146B5E" stroke-width="2.4" marker-end="url(#mGreen)"/>
+
+<!-- BOTTOM ROW: dealers / agents -->
+<g>
+  <rect class="bx" x="64" y="676" width="300" height="118"/>
+  <text class="t" x="214" y="712" text-anchor="middle">ดีลเลอร์ (ในประเทศ)</text>
+  <text class="s" x="214" y="736" text-anchor="middle">ขายในประเทศ</text>
+  <text class="s" x="214" y="758" text-anchor="middle">จ่าย Rebate เป็น % ยอดขาย</text>
+</g>
+<g>
+  <rect class="bx" x="496" y="676" width="300" height="118"/>
+  <text class="t" x="646" y="712" text-anchor="middle">ตัวแทน/นายหน้า (ต่างประเทศ)</text>
+  <text class="s" x="646" y="736" text-anchor="middle">ขายส่งออก · ไม่มี PE</text>
+  <text class="s" x="646" y="758" text-anchor="middle">จ่ายค่าคอมมิชชั่น</text>
+</g>
+
+<!-- sales domestic -->
+<path d="M380,462 L240,676" fill="none" stroke="#2C5F8A" stroke-width="2.4" marker-end="url(#mBlue)"/>
+<g><rect x="250" y="536" width="86" height="20" rx="2" fill="#EAF0F5" stroke="#2C5F8A"/><text class="pill-t" x="293" y="550" text-anchor="middle">VAT 7%</text></g>
+<g><rect x="238" y="562" width="110" height="20" rx="2" fill="#EAF0F5" stroke="#2C5F8A"/><text class="pill-t" x="293" y="576" text-anchor="middle">+ สรรพสามิต</text></g>
+<!-- rebate return -->
+<path d="M300,676 C340,600 370,540 396,462" fill="none" stroke="#2C5F8A" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#mBlue)"/>
+<text class="fl" x="392" y="620">Rebate (ใบลดหนี้)</text>
+
+<!-- sales export -->
+<path d="M480,462 L620,676" fill="none" stroke="#2C5F8A" stroke-width="2.4" marker-end="url(#mBlue)"/>
+<g><rect x="522" y="530" width="84" height="20" rx="2" fill="#EAF0F5" stroke="#2C5F8A"/><text class="pill-t" x="564" y="544" text-anchor="middle">VAT 0%</text></g>
+<g><rect x="510" y="556" width="120" height="20" rx="2" fill="#EAF0F5" stroke="#2C5F8A"/><text class="pill-t" x="570" y="570" text-anchor="middle">ยกเว้นสรรพสามิต</text></g>
+<g><rect x="516" y="582" width="112" height="20" rx="2" fill="#EAF0F5" stroke="#2C5F8A"/><text class="pill-t" x="572" y="596" text-anchor="middle">No PE · ค่าคอมฯ</text></g>
+```
+
+  </svg>
   </div>
-  <div class="scroll">
-    <table class="grid">
-      <thead><tr><th style="width:34px">#</th><th>ประเภทภาษี</th><th style="width:130px">หน่วยงาน</th><th style="width:190px">เกิดที่บริษัท</th></tr></thead>
-      <tbody id="check"></tbody>
+
+  <div class="lead"><b>วิธีอ่านภาพ:</b> เส้นประ = การถือหุ้น · เส้นแดง = เงินที่ไทยจ่ายออกไปญี่ปุ่น (ทุกเส้นเป็น Related Party ต้องทำ TP) · เส้นเขียว = สินค้าที่ส่งตรงจากจีนพร้อม Form E · เส้นส้ม = เงินกู้ · เส้นน้ำเงิน = การขายในประเทศ/ส่งออก พร้อมป้ายภาษีที่เกิดในแต่ละช่องทาง</div>
+  <div class="lead neg"><b>จุดสังเกตหลัก:</b> "เงินวิ่งไปญี่ปุ่น แต่ของวิ่งมาจากจีน" คือหัวใจของกรณีนี้ — ทำให้เกิดทั้งประเด็น Third-Party Invoicing (ศุลกากร) และ Transfer Pricing (สรรพากร) พร้อมกัน</div>
+</div>
+
+<!-- ═══════════ SHEET 3 ═══════════ -->
+
+<div class="page" id="sales">
+  <div class="crumb"><button class="backbtn" onclick="go('home')">← เมนู</button></div>
+  <div class="ptitle"><span class="pk">SHEET 3</span><h2>โครงสร้างรายได้และผลตอบแทน</h2>
+    <div class="pd">Sales &amp; Incentives — แต่ละช่องทางมีรายได้/รายจ่ายและเงื่อนไขภาษีอย่างไร</div></div>
+
+  <div class="tscroll">
+    <table class="sheet">
+      <thead><tr>
+        <th>กลุ่ม<span class="en">Segment</span></th>
+        <th>ช่องทาง / คู่ค้า<span class="en">Channel</span></th>
+        <th>รูปแบบรายได้ / รายจ่าย<span class="en">Revenue / cost</span></th>
+        <th>ผลตอบแทน / Incentive<span class="en">Incentive</span></th>
+        <th>เงื่อนไขภาษี / PE<span class="en">Tax condition</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="grp">จัดซื้อ<br>(Procurement)</td>
+          <td>ซื้อสินค้า/วัตถุดิบจากกลุ่มบริษัทแม่ (จ่ายญี่ปุ่น–ส่งจากจีน)</td>
+          <td>เป็น <b>ต้นทุนสินค้า</b> ของบริษัทไทย</td>
+          <td>ฝั่งผู้ขายให้ <b>Rebate การซื้อ (% ยอดซื้อ)</b> กลับมาที่ไทย → ลดต้นทุน</td>
+          <td><span class="hl-neg">ตรวจ Transfer Pricing</span> + มูลค่าศุลกากร (rebate จาก RP อาจกระทบราคาสำแดง)</td>
+        </tr>
+        <tr>
+          <td class="grp">ขายในประเทศ<br>(Domestic)</td>
+          <td>Dealer / ตัวแทนจำหน่ายในประเทศ</td>
+          <td>กำไรจากการขายในไทย · เสีย <span class="hl-warn">VAT 7% + สรรพสามิต</span></td>
+          <td>บริษัทไทยจ่าย <b>Rebate (% ยอดขาย)</b> ให้ Dealer</td>
+          <td>ต้องมี <b>สัญญาทำยอดชัดเจน</b> เพื่อหักเป็นค่าใช้จ่ายได้ 100% · เลือกออก <span class="hl-pos">ใบลดหนี้</span> (ส่วนลด) แทนค่าบริการ</td>
+        </tr>
+        <tr>
+          <td class="grp">ขายส่งออก<br>(Export)</td>
+          <td>ตัวแทน / นายหน้าในต่างประเทศ</td>
+          <td>กำไรจากการส่งออก · <span class="hl-pos">VAT 0%</span> + ยกเว้นสรรพสามิต</td>
+          <td>บริษัทไทยจ่าย <b>ค่าคอมมิชชั่น</b> การขายให้นายหน้า</td>
+          <td><span class="hl-pos">ไม่มีสถานประกอบการถาวร (No PE)</span> ในต่างประเทศ · ค่าคอมฯ ไม่ต้องหัก WHT (บริการนอกไทย)</td>
+        </tr>
+      </tbody>
     </table>
   </div>
-</section>
+  <div class="lead"><b>ปรับให้ถูกต้องขึ้น:</b> "Rebate ขาซื้อ" (จากบริษัทแม่มาที่ไทย) เป็นการลดต้นทุน แต่เพราะเป็น Related Party ต้องระวังกระทบราคาสำแดงศุลกากรและ TP — ส่วน "Rebate ขาขาย" (ไทยจ่ายให้ดีลเลอร์) เป็นส่วนลดการค้าที่ควรออกใบลดหนี้เพื่อลดฐาน VAT</div>
+</div>
 
-<!-- ═══ 05 PHASES ═══ -->
+<!-- ═══════════ LAWS ═══════════ -->
 
-<section>
-  <div class="sec-head">
-    <span class="sec-num">05</span><h2>โครงเรื่องการนำเสนอ 4 เฟส</h2>
-    <span class="hint">ครอบคลุมทั้ง Case 1–2–3</span>
-  </div>
-  <div class="phases">
-    <div class="ph">
-      <span class="n">PHASE 01</span>
-      <h3>ก่อตั้งและวางโครงสร้าง</h3>
-      <p>ทำไมต้องแยก 7 บริษัท? เปรียบเทียบภาระภาษีกับทางเลือก “บริษัทเดียวทำทุกอย่าง” พร้อมการเลือกรูปแบบนิติบุคคล การจด VAT และการขอ BOI</p>
-      <span class="case">CASE 1 · นักลงทุนตั้งใหม่</span>
+<div class="page" id="laws">
+  <div class="crumb"><button class="backbtn" onclick="go('home')">← เมนู</button></div>
+  <div class="ptitle"><span class="pk">หัวข้อ 1</span><h2>กฎหมายภาษีอากรและกฎหมายอื่นที่เกี่ยวข้อง</h2>
+    <div class="pd">กฎหมายที่บริษัทต้องปฏิบัติตามในแต่ละธุรกรรม พร้อมมาตรา/พ.ร.บ. อ้างอิง</div></div>
+
+  <div class="lawgrid">
+    <div class="lawbox">
+      <h3>ก. กฎหมายภาษีอากร</h3>
+      <ul>
+        <li><b>ประมวลรัษฎากร — ภาษีเงินได้นิติบุคคล</b><span class="ref">ม.65 / 65 ทวิ / 65 ตรี (รายจ่ายต้องห้าม) · ม.66, 76 ทวิ (PE)</span></li>
+        <li><b>ภาษีมูลค่าเพิ่ม (VAT)</b><span class="ref">ม.77–90 · VAT 0% ส่งออก ม.80/1(1) · ภ.พ.36 นำเข้าบริการ ม.83/6</span></li>
+        <li><b>ภาษีหัก ณ ที่จ่าย</b><span class="ref">ม.3 เตรส (ในประเทศ) · ม.70 (จ่ายต่างประเทศ: royalty/ดอกเบี้ย/ปันผล)</span></li>
+        <li><b>ภาษีธุรกิจเฉพาะ</b><span class="ref">ม.91/2 — กรณีให้กู้ยืมเยี่ยงธนาคาร (ถ้ามี)</span></li>
+        <li><b>อากรแสตมป์</b><span class="ref">บัญชีอัตราอากรแสตมป์ — สัญญากู้ / เช่า / จ้างทำของ</span></li>
+        <li><b>Transfer Pricing</b><span class="ref">ม.71 ทวิ / 71 ตรี — ราคาตลาด + Disclosure Form</span></li>
+        <li><b>พ.ร.บ.ภาษีสรรพสามิต พ.ศ.2560</b><span class="ref">แบตเตอรี่ (พิกัด 08.90) — ฐานราคาขายปลีกแนะนำ + ภาษีท้องถิ่น 10%</span></li>
+        <li><b>พ.ร.บ.ศุลกากร พ.ศ.2560</b><span class="ref">การประเมินราคา (transaction value) · พิกัดฯ · ม.19 ทวิ คืนอากร · เขตปลอดอากร</span></li>
+        <li><b>พ.ร.บ.ภาษีที่ดินและสิ่งปลูกสร้าง / ภาษีป้าย</b><span class="ref">โรงงาน อาคาร และป้ายของกิจการ</span></li>
+      </ul>
     </div>
-    <div class="ph">
-      <span class="n">PHASE 02</span>
-      <h3>ดำเนินงานตาม Value Chain</h3>
-      <p>เดินตามสายงานจริง: นำเข้าวัตถุดิบ → ผลิต → จำหน่ายในประเทศ → ส่งออก พร้อมตัวอย่างคำนวณตัวเลขทุกขั้น</p>
-      <span class="case">CASE 3 · ธุรกิจที่ทำอยู่แล้ว</span>
-    </div>
-    <div class="ph">
-      <span class="n">PHASE 03</span>
-      <h3>ขยายกิจการ</h3>
-      <p>ตั้งบริษัทลูกที่เวียดนาม — เปรียบเทียบสาขากับบริษัทลูก / ขายที่ดินโรงงานเดิมเพื่อย้ายฐานผลิต → ภาษีธุรกิจเฉพาะ</p>
-      <span class="case">CASE 2 · เพิ่มธุรกิจใหม่</span>
-    </div>
-    <div class="ph">
-      <span class="n">PHASE 04</span>
-      <h3>วางแผนภาษีและ Compliance</h3>
-      <p>เส้นแบ่งระหว่าง Tax Planning · Tax Avoidance · Tax Evasion, หลัก business purpose และ arm’s length พร้อมความเสี่ยงถูกประเมิน</p>
-      <span class="case">บทสรุปและข้อเสนอแนะ</span>
+    <div class="lawbox alt">
+      <h3>ข. กฎหมายอื่นที่เกี่ยวข้อง</h3>
+      <ul>
+        <li><b>อนุสัญญาภาษีซ้อน ไทย–ญี่ปุ่น (DTA)</b><span class="ref">ลดอัตรา WHT: ค่าสิทธิ 15% · ดอกเบี้ย 15% (ผู้รับมิใช่สถาบันการเงิน) · ปันผล 10% · นิยาม PE</span></li>
+        <li><b>พ.ร.บ.การประกอบธุรกิจของคนต่างด้าว (FBA)</b><span class="ref">เกณฑ์ต่างด้าวถือหุ้น ≥ 50% — ต้องคุมสัดส่วนญี่ปุ่นไว้ต่ำกว่า 50%</span></li>
+        <li><b>พ.ร.บ.ส่งเสริมการลงทุน พ.ศ.2520 (BOI)</b><span class="ref">สิทธิยกเว้น CIT + อากรเครื่องจักร/วัตถุดิบ · เงื่อนไขสัดส่วนหุ้น/หนี้ต่อทุน</span></li>
+        <li><b>ความตกลง ACFTA — Form E</b><span class="ref">กฎถิ่นกำเนิดสินค้า (RoO) · Third-Party Invoicing (สำแดงช่อง 13)</span></li>
+        <li><b>ประมวลกฎหมายแพ่งและพาณิชย์ / พ.ร.บ.บริษัทมหาชนฯ</b><span class="ref">การเพิ่มทุน–ออกหุ้นใหม่ (กรณี debt-to-equity swap)</span></li>
+        <li><b>พ.ร.บ.การบัญชี / มาตรฐานการรายงานทางการเงิน</b><span class="ref">การรับรู้รายได้ ค่าเสื่อม สินทรัพย์ไม่มีตัวตน และบัญชีแยก BOI</span></li>
+      </ul>
     </div>
   </div>
-</section>
+  <div class="lead" style="margin-top:18px"><b>สรุปมิติกฎหมาย:</b> ธุรกิจนี้อยู่ภายใต้ 3 กรมจัดเก็บภาษี (สรรพากร · สรรพสามิต · ศุลกากร) และภาษีท้องถิ่น รวมทั้งกฎหมายส่งเสริม/ควบคุมการลงทุน (BOI · FBA) และความตกลงระหว่างประเทศ (DTA · ACFTA) — ความครอบคลุมนี้คือจุดแข็งของกรณีศึกษา</div>
+</div>
 
-<!-- ═══ 06 WARNINGS ═══ -->
+<!-- ═══════════ ISSUES ═══════════ -->
 
-<section>
-  <div class="sec-head">
-    <span class="sec-num">06</span><h2>ข้อควรระวังก่อนส่งงาน</h2>
+<div class="page" id="issues">
+  <div class="crumb"><button class="backbtn" onclick="go('home')">← เมนู</button></div>
+  <div class="ptitle"><span class="pk">หัวข้อ 2</span><h2>ปัญหาภาษีอากร สาเหตุ และแนวทางแก้ไข</h2>
+    <div class="pd">Tax Issues — ประเด็นที่มีความเสี่ยง/ข้อโต้แย้ง พร้อมสาเหตุและวิธีจัดการ</div></div>
+  <div class="stack" id="issueStack"></div>
+</div>
+
+<!-- ═══════════ PLANNING ═══════════ -->
+
+<div class="page" id="planning">
+  <div class="crumb"><button class="backbtn" onclick="go('home')">← เมนู</button></div>
+  <div class="ptitle"><span class="pk">หัวข้อ 3</span><h2>การวางแผนภาษีอากร</h2>
+    <div class="pd">Tax Planning — การจัดโครงสร้างธุรกรรมให้เสียภาษีถูกต้องและประหยัดที่สุดโดยชอบด้วยกฎหมาย</div></div>
+
+  <div class="legendbar">
+    <div><span class="t g">Tax Planning</span><p>วางแผนโดยใช้สิทธิที่กฎหมายให้ — ถูกต้อง ทำได้</p></div>
+    <div><span class="t y">Tax Avoidance</span><p>เลี่ยงช่องว่างกฎหมาย — เสี่ยงถูกประเมิน</p></div>
+    <div><span class="t r">Tax Evasion</span><p>หลีกเลี่ยง/ปกปิดข้อเท็จจริง — ผิดกฎหมาย</p></div>
   </div>
-  <div class="warns">
-    <div class="warn"><span class="i">01</span><div>
-      <b>ต้องมีหัวข้อ “ขอบเขตของการวางแผนภาษีที่ชอบด้วยกฎหมาย”</b>
-      <p>อาจารย์จะถามแน่นอนว่าโครงสร้าง 7 บริษัทนี้เข้าข่ายเลี่ยงภาษีหรือไม่ คำตอบคือทุกบริษัทต้องมีเหตุผลทางธุรกิจที่แท้จริง (business purpose) และรายการระหว่างกันต้องเป็นราคาตลาด (arm’s length)</p>
-    </div></div>
-    <div class="warn"><span class="i">02</span><div>
-      <b>ตรวจอัตราภาษีสรรพสามิตแบตเตอรี่ก่อนใส่ตัวเลข</b>
-      <p>อัตรา เงื่อนไขลดหย่อนวัสดุรีไซเคิล และประเภทกิจการ BOI มีการแก้ไขเป็นระยะ ให้ยึดประกาศล่าสุดของกรมสรรพสามิตและ BOI เป็นหลัก</p>
-    </div></div>
-    <div class="warn"><span class="i">03</span><div>
-      <b>อย่าเล่าแค่ “มีภาษีอะไรบ้าง” ให้เล่า “ทำไมถึงเลือกแบบนี้”</b>
-      <p>เช่น ทำไมแยกบริษัทที่ดินออกมา ทำไมเลือกเขตปลอดอากรแทนมาตรา 19 ทวิ — การให้เหตุผลเชิงเปรียบเทียบคือความต่างระหว่างงานที่ได้ B กับ A</p>
-    </div></div>
-  </div>
-</section>
+  <div class="lead pos"><b>หลักที่ยึด:</b> ทุกกลยุทธ์ต้องมี <b>เหตุผลทางธุรกิจจริง (business purpose)</b> และราคาระหว่างกันต้องเป็น <b>ราคาตลาด (arm's length)</b> จึงจะเป็น Tax Planning ที่ปลอดภัย ไม่ตกไปเป็น Avoidance</div>
 
-<footer>
-  <span>แหล่งอ้างอิง: ประมวลรัษฎากร · กรมสรรพสามิต · กรมศุลกากร · BOI · DBD DataWarehouse · SET 56-1 One Report</span>
-  <span>เอกสารประกอบโครงงานภาษีอากร</span>
+  <div class="plan" id="planStack"></div>
+</div>
+
+<!-- ═══════════ CONCLUSION ═══════════ -->
+
+<div class="page" id="conclusion">
+  <div class="crumb"><button class="backbtn" onclick="go('home')">← เมนู</button></div>
+  <div class="ptitle"><span class="pk">หัวข้อ 4</span><h2>บทสรุปและข้อเสนอแนะ</h2>
+    <div class="pd">Conclusion &amp; Recommendation</div></div>
+
+  <div class="prose">
+    <h3>บทสรุป</h3>
+    <p>กรณีศึกษาบริษัท ไทยพาวเวอร์เซลล์ จำกัด แสดงให้เห็นว่าธุรกิจแบตเตอรี่รถยนต์ที่ดำเนินการครบทั้ง 3 โมเดล (ซื้อมาขายไป · ประกอบ · ผลิตเอง) ในบริษัทเดียว ก่อให้เกิดภาระและประเด็นภาษีครอบคลุมถึง 5 หน่วยงานจัดเก็บ ได้แก่ กรมสรรพากร กรมสรรพสามิต กรมศุลกากร องค์กรปกครองส่วนท้องถิ่น และเกี่ยวพันกับ BOI รวมถึงกฎหมายระหว่างประเทศอย่าง DTA และ ACFTA</p>
+    <p>โครงสร้างที่บริษัทแม่ญี่ปุ่นถือหุ้น 45% เป็นเจ้าของเทคโนโลยีและผู้ให้กู้ ขณะที่โรงงานผลิตตั้งอยู่ที่จีน ทำให้ธุรกรรมสำคัญเกือบทั้งหมด (ซื้อสินค้า จ่ายค่าสิทธิ กู้ยืมเงิน) เป็นรายการกับบุคคลที่เกี่ยวข้องกัน ประเด็นราคาโอน (Transfer Pricing) และการประเมินราคาศุลกากรจึงเป็นแกนกลางของความเสี่ยง ประกอบกับการเลือกซื้อผ่านญี่ปุ่นแต่รับของจากจีน ที่ทำให้เกิดเงื่อนไข Third-Party Invoicing ในการใช้สิทธิ Form E</p>
+    <p>ด้านสิทธิประโยชน์ การได้รับ BOI เฉพาะโมเดลผลิตเต็มรูป (โมเดล 3) การใช้ Form E ลดอากรเหลือศูนย์ การส่งออกด้วย VAT อัตราศูนย์และยกเว้นสรรพสามิต ล้วนเป็นเครื่องมือลดภาระภาษีที่ชอบด้วยกฎหมาย หากบริษัทจัดการเงื่อนไขและเอกสารประกอบให้ครบถ้วน</p>
+
+```
+<h3>ข้อเสนอแนะ</h3>
+<div class="rec">
+  <div class="r"><span class="rn">01</span><span>จัดทำ <b>เอกสารกำหนดราคาโอน (TP Documentation)</b> และ Disclosure Form ล่วงหน้าทุกปี พร้อม benchmarking อัตรา royalty/ดอกเบี้ย/ราคาซื้อ เทียบอุตสาหกรรม และพิจารณาขอ APA หากมูลค่าธุรกรรมสูง</span></div>
+  <div class="r"><span class="rn">02</span><span>ขอ <b>คำวินิจฉัยราคาศุลกากรล่วงหน้า (Advance Ruling)</b> เรื่องการไม่บวก royalty เข้าฐานอากร และการใช้ Form E แบบ Third-Party Invoicing เพื่อลดข้อโต้แย้งภายหลัง</span></div>
+  <div class="r"><span class="rn">03</span><span>วาง <b>ระบบบัญชีแยก BOI / Non-BOI</b> ให้ชัดเจนตั้งแต่ต้น พร้อมหลักเกณฑ์ปันส่วนรายจ่ายร่วม และแยกกำไรสะสมเพื่อการจ่ายปันผลที่ได้สิทธิยกเว้น</span></div>
+  <div class="r"><span class="rn">04</span><span>ทำ <b>สัญญาให้ชัดเจน</b>: สัญญาดีลเลอร์ระบุ rebate เป็นส่วนลดตามยอด (ออกใบลดหนี้), สัญญานายหน้าต่างประเทศเป็นตัวแทนอิสระไม่มีอำนาจผูกพัน (ป้องกัน PE), สัญญากู้ระบุอัตราดอกเบี้ยตลาดและคุมสัดส่วนหนี้ต่อทุน</span></div>
+  <div class="r"><span class="rn">05</span><span>กรณี <b>swap หนี้เป็นทุน</b> ให้ตีราคาหุ้นที่มูลค่ายุติธรรม ควบคุมสัดส่วนญี่ปุ่นให้ต่ำกว่า 50% เพื่อคงสถานะบริษัทไทยและสิทธิ BOI พร้อมวางแผนภาษีรายได้จากการปลดหนี้ (ถ้ามี)</span></div>
+  <div class="r"><span class="rn">06</span><span>ใช้เครื่องมือ <b>บริหารกระแสเงินสด VAT</b> จากสถานะผู้ส่งออก (ขอคืนภาษีซื้อ) และพิจารณาเขตปลอดอากร/มาตรา 19 ทวิ สำหรับวัตถุดิบนำเข้าเพื่อผลิตส่งออก</span></div>
+</div>
+
+<a class="calllink" href="tpc-tax-calculator.html"><b>ดูตัวอย่างคำนวณภาษีทั้งวงจร →</b> เปิดไฟล์เครื่องคำนวณ (ปรับตัวเลขได้) เพื่อดูภาระภาษีเป็นตัวเลขจริงในแต่ละด่าน</a>
+```
+
+  </div>
+</div>
+
+<footer id="foot">
+  บริษัทและตัวเลขเป็นกรณีสมมติเพื่อการศึกษา · อัตราภาษีอ้างอิง: กรมสรรพสามิต (แบตเตอรี่ 8% + ท้องถิ่น 10%) · DTA ไทย–ญี่ปุ่น (rd.go.th) · ประมวลรัษฎากร · พ.ร.บ.ศุลกากร 2560 · พ.ร.บ.ต่างด้าว<br>
+  ⚠️ ตรวจสอบประกาศอัตราภาษีและเงื่อนไข BOI ล่าสุดก่อนนำไปใช้จริง
 </footer>
 </div>
 
 <script>
-const P='+', N='−';
-
-const CO=[
- {id:'A',pct:'ถือหุ้น 100%',short:'ผลิต',name:'บจก. ทีพีซี แมนูแฟคเจอริ่ง',role:'โรงงานผลิตแบตเตอรี่ · จ.ระยอง · ได้รับส่งเสริม BOI',rows:[
-  ['ภาษีสรรพสามิต',P,'แบตเตอรี่เป็นสินค้าต้องเสียภาษีสรรพสามิต คำนวณจากราคาขายปลีกแนะนำ ต้องจดทะเบียนสรรพสามิต แจ้งราคา ทำบัญชีคุมสินค้า และชำระภาษีก่อนนำสินค้าออกจากโรงงาน',1],
-  ['ภาษีเพื่อมหาดไทย',P,'จัดเก็บเพิ่มอีก 10% ของค่าภาษีสรรพสามิตที่คำนวณได้',1],
-  ['ลดหย่อนสรรพสามิต',N,'ใช้ตะกั่วและวัสดุรีไซเคิลจากบริษัท [E] เข้าสายการผลิต เพื่อขอใช้อัตราลดหย่อน — เป็นจุดที่เชื่อมภาษีเข้ากับประเด็น ESG ได้',1],
-  ['สิทธิประโยชน์ BOI',N,'ยกเว้นภาษีเงินได้นิติบุคคลตามเงื่อนไขบัตรส่งเสริม + ยกเว้นอากรขาเข้าเครื่องจักร ทำให้ต้องแยกบัญชีกิจการ BOI และ Non-BOI ให้ชัดเจน',1],
-  ['ภาษีเงินได้นิติบุคคล',P,'ภ.ง.ด.50 / ภ.ง.ด.51 · ค่าเสื่อมราคาเครื่องจักร · ผลขาดทุนยกไป 5 รอบบัญชี · รายจ่ายต้องห้ามตามมาตรา 65 ตรี',0],
-  ['ภาษีมูลค่าเพิ่ม',P,'ภาษีขายหักภาษีซื้อ · ใบกำกับภาษีเต็มรูป · ระบบ e-Tax Invoice',0],
-  ['ภาษีที่ดินและสิ่งปลูกสร้าง',P,'ที่ดินและอาคารโรงงานจัดอยู่ในประเภทใช้ประโยชน์อื่น ๆ (ในผังนี้เช่าจาก [D] จึงต้องวิเคราะห์ว่าผู้ใดมีหน้าที่เสีย)',0],
-  ['ภาษีป้าย',P,'ป้ายชื่อโรงงานและตราสัญลักษณ์ คิดตามขนาดและลักษณะตัวอักษร',0],
-  ['ภาษีหัก ณ ที่จ่าย',P,'ค่าจ้างทำของ 3% · ค่าขนส่ง 1% · ค่าเช่า 5% · เงินได้พนักงาน ภ.ง.ด.1',0],
-  ['อากรแสตมป์',P,'สัญญาจ้างทำของและสัญญาเช่า ต้องปิดแสตมป์ให้ครบถ้วนจึงใช้เป็นพยานหลักฐานได้',0]]},
-
- {id:'B',pct:'ถือหุ้น 100%',short:'นำเข้า + ค้าส่ง',name:'บจก. ทีพีซี เทรดดิ้ง',role:'นำเข้าวัตถุดิบและจัดจำหน่ายในประเทศ',rows:[
-  ['อากรขาเข้า',P,'นำเข้าตะกั่ว ลิเทียม เซลล์ แผ่นกั้น และเปลือกพลาสติก ต้องจำแนกพิกัดศุลกากร (HS Code) ให้ถูกต้อง เพราะอัตราอากรต่างกันตามพิกัด',1],
-  ['FTA และถิ่นกำเนิดสินค้า',N,'ใช้ Form E (จีน) · ATIGA (อาเซียน) · RCEP เพื่อลดอัตราอากร — ควรทำตารางเปรียบเทียบภาระอากรจากแต่ละแหล่งนำเข้า',1],
-  ['ภาษีมูลค่าเพิ่มตอนนำเข้า',P,'ฐานภาษี = ราคา CIF + อากรขาเข้า + ค่าธรรมเนียมอื่น แล้วคูณ 7% ชำระที่กรมศุลกากร',1],
-  ['มาตรา 19 ทวิ',N,'ขอคืนอากรขาเข้าสำหรับวัตถุดิบที่นำไปผลิตเป็นสินค้าส่งออก ต้องวางประกันและพิสูจน์สูตรการผลิต',1],
-  ['ภาษีมูลค่าเพิ่มขาย',P,'ขายให้ตัวแทนจำหน่ายและศูนย์บริการในประเทศ อัตรา 7%',0],
-  ['ภาษีหัก ณ ที่จ่าย',P,'ค่าโฆษณา 2% · ค่าส่งเสริมการขาย · รางวัลและส่วนลดตามเป้าหมาย 3%',0],
-  ['ภ.พ.36',P,'นำส่ง VAT แทนผู้ประกอบการต่างประเทศ กรณีจ่ายค่าซอฟต์แวร์ ERP หรือค่าที่ปรึกษาจากต่างประเทศ',0],
-  ['ภาษีเงินได้นิติบุคคล',P,'ไม่ได้รับ BOI จึงเสียอัตราปกติ 20% — ใช้เปรียบเทียบกับ [A] ที่ได้รับยกเว้นเพื่อให้เห็นผลของสิทธิประโยชน์',0]]},
-
- {id:'C',pct:'ถือหุ้น 100%',short:'ส่งออก · Free Zone',name:'บจก. ทีพีซี เอ็กซ์ปอร์ต',role:'ส่งออกและบริหารเขตปลอดอากร',rows:[
-  ['VAT อัตรา 0%',N,'การส่งออกเสียภาษีขายอัตราศูนย์ แต่ยังขอคืนภาษีซื้อได้เต็มจำนวน ทำให้บริษัทอยู่ในสถานะขอคืน VAT ถาวร — เป็นประเด็นบริหารกระแสเงินสดที่ควรวิเคราะห์',1],
-  ['ยกเว้นภาษีสรรพสามิต',N,'สินค้าที่ส่งออกได้รับยกเว้นหรือขอคืนภาษีสรรพสามิต ต้องมีหลักฐานการส่งออกครบถ้วน',1],
-  ['เขตปลอดอากร',N,'นำวัตถุดิบเข้าโดยพักอากร — ควรเปรียบเทียบ 3 ทางเลือก คือ Free Zone / คลังสินค้าทัณฑ์บน / มาตรา 19 ทวิ ว่าเหมาะกับรูปแบบธุรกิจใด',1],
-  ['ชดเชยค่าภาษีอากร',N,'ผู้ส่งออกอาจขอรับบัตรภาษีเป็นการชดเชยภาษีอากรที่แฝงอยู่ในต้นทุนสินค้า',0],
-  ['ภาษีเงินได้นิติบุคคล',P,'รายได้จากการส่งออก · กำไรขาดทุนจากอัตราแลกเปลี่ยนตามมาตรา 65 ทวิ (5)',0],
-  ['อนุสัญญาภาษีซ้อน',P,'หากมีตัวแทนขายประจำในต่างประเทศ ต้องพิจารณาว่าเกิดสถานประกอบการถาวร (Permanent Establishment) หรือไม่',0]]},
-
- {id:'D',pct:'ถือหุ้น 100%',short:'ที่ดิน + อาคาร',name:'บจก. ทีพีซี พร็อพเพอร์ตี้',role:'ถือครองที่ดินและอาคารโรงงาน ให้บริษัทในเครือเช่า',rows:[
-  ['ภาษีธุรกิจเฉพาะ',P,'เมื่อขายที่ดินโรงงานเดิมตอนย้ายฐานผลิต ถือเป็นการขายอสังหาริมทรัพย์เป็นทางค้าหรือหากำไร อัตรา 3.3% (รวมภาษีท้องถิ่น)',1],
-  ['ยกเว้น VAT ค่าเช่า',N,'การให้เช่าอสังหาริมทรัพย์ได้รับยกเว้น VAT แต่หากปรับเป็นสัญญาบริการพื้นที่พร้อมสาธารณูปโภคจะเข้าระบบ VAT ได้ — เป็นประเด็นวางแผนภาษีที่น่าสนใจที่สุดจุดหนึ่งของโครงงาน',1],
-  ['ภาษีที่ดินและสิ่งปลูกสร้าง',P,'ประเภทใช้ประโยชน์อื่น ๆ คิดอัตราขั้นบันไดตามมูลค่าที่ดินและสิ่งปลูกสร้าง',0],
-  ['ภาษีหัก ณ ที่จ่าย 5%',P,'ผู้เช่าซึ่งเป็นบริษัทในเครือมีหน้าที่หักภาษี ณ ที่จ่ายจากค่าเช่าและนำส่ง ภ.ง.ด.53',0],
-  ['อากรแสตมป์',P,'สัญญาเช่าอสังหาริมทรัพย์ปิดแสตมป์ 1 บาทต่อค่าเช่าทุก 1,000 บาทตลอดอายุสัญญา',0],
-  ['ค่าธรรมเนียมการโอน',P,'ค่าธรรมเนียมจดทะเบียนสิทธิและนิติกรรม 2% ของราคาประเมิน ณ สำนักงานที่ดิน',0],
-  ['Transfer Pricing',P,'ค่าเช่าที่เรียกเก็บจากบริษัทในเครือต้องเทียบเคียงราคาตลาดได้ มิฉะนั้นเจ้าพนักงานประเมินอาจปรับปรุงรายได้',0]]},
-
- {id:'E',pct:'ถือหุ้น 70%',short:'รีไซเคิลตะกั่ว',name:'บจก. ทีพีซี รีไซเคิล',role:'รับซื้อแบตเตอรี่เก่า หลอมตะกั่วกลับเข้าสายการผลิต',rows:[
-  ['ปัญหาภาษีซื้อ',P,'รับซื้อแบตเตอรี่เก่าจากบุคคลธรรมดาและผู้รวบรวมที่ไม่ได้จด VAT จึงไม่มีภาษีซื้อให้เครดิต แต่เมื่อขายออกต้องเรียกเก็บ VAT 7% เต็มจำนวน ทำให้ภาระภาษีสูงผิดปกติ — เป็นเคสวิเคราะห์ที่แหลมคมที่สุดของโครงงาน',1],
-  ['เอกสารประกอบการลงบัญชี',P,'ใช้ใบรับเงินหรือใบสำคัญรับเงินแทนใบกำกับภาษี พร้อมสำเนาบัตรประชาชนผู้ขาย เพื่อให้รายจ่ายไม่เป็นรายจ่ายต้องห้าม',0],
-  ['ภาษีหัก ณ ที่จ่าย',P,'ต้องวิเคราะห์ว่าการรับซื้อของเก่าจากบุคคลธรรมดาเข้าลักษณะเงินได้ประเภทใด และมีหน้าที่หักภาษี ณ ที่จ่ายหรือไม่',0],
-  ['เชื่อมกับโรงงาน [A]',N,'ตะกั่วรีไซเคิลที่ส่งให้โรงงานเป็นเงื่อนไขในการขอใช้อัตราภาษีสรรพสามิตลดหย่อน',1],
-  ['สิทธิประโยชน์อื่น',N,'กิจการรีไซเคิลอาจขอรับส่งเสริมจาก BOI และมีรายจ่ายเพื่อสิ่งแวดล้อมบางประเภทที่หักได้เพิ่ม',0],
-  ['เงินปันผลรับ',N,'ถือหุ้นเพียง 70% แต่ยังเกินเกณฑ์ 25% จึงต้องวิเคราะห์เงื่อนไขการยกเว้นเงินปันผลตามมาตรา 65 ทวิ (10) ให้ครบทั้งสัดส่วนและระยะเวลาถือครอง',0]]},
-
- {id:'F',pct:'ถือหุ้น 100%',short:'บริการ + R&D',name:'บจก. ทีพีซี เซอร์วิส แอนด์ อาร์แอนด์ดี',role:'ติดตั้ง รับประกัน และวิจัยพัฒนาแบตเตอรี่ลิเทียม',rows:[
-  ['รายจ่าย R&D',N,'ค่าวิจัยและพัฒนาเทคโนโลยีที่ผ่านการรับรอง สามารถหักเป็นรายจ่ายได้ 200% ของที่จ่ายจริง',1],
-  ['ค่าสิทธิจ่ายต่างประเทศ',P,'จ่ายค่าสิทธิให้ Nihon Battery K.K. ต้องหักภาษี ณ ที่จ่ายตามมาตรา 70 อัตรา 15% ลดได้ตามอนุสัญญาภาษีซ้อนไทย–ญี่ปุ่น และต้องนำส่ง ภ.พ.36 ควบคู่ไปด้วย',1],
-  ['ภาษีมูลค่าเพิ่ม',P,'ค่าบริการติดตั้งและบำรุงรักษาเสีย VAT 7% ตามปกติ',0],
-  ['ภาษีหัก ณ ที่จ่าย 3%',P,'ลูกค้านิติบุคคลมีหน้าที่หักภาษีจากค่าบริการและออกหนังสือรับรองการหักภาษี ณ ที่จ่าย',0],
-  ['ภาษีเงินได้บุคคลธรรมดา',P,'ช่างเทคนิคและที่ปรึกษาชาวต่างชาติที่เข้ามาทำงาน ต้องพิจารณาเกณฑ์ถิ่นที่อยู่ 180 วันและแหล่งเงินได้',0],
-  ['สวัสดิการพนักงาน',N,'เงินสมทบประกันสังคมและกองทุนสำรองเลี้ยงชีพ มีผลต่อการคำนวณเงินได้พึงประเมินและค่าลดหย่อนของพนักงาน',0]]},
-
- {id:'G',pct:'ถือหุ้น 60%',short:'บริษัทลูกต่างประเทศ',name:'TPC Vietnam Co., Ltd.',role:'ฐานผลิตและจัดจำหน่ายในประเทศเวียดนาม',rows:[
-  ['สาขา vs บริษัทลูก',N,'เปรียบเทียบภาระภาษีสองทางเลือก ทั้งการรับรู้ผลขาดทุน การเสียภาษีซ้ำ และภาระ compliance — เป็นประเด็นวางแผนภาษีระหว่างประเทศหลักของโครงงาน',1],
-  ['เงินปันผลรับจากต่างประเทศ',N,'พิจารณาเงื่อนไขการยกเว้นภาษีในไทย และการขอเครดิตภาษีที่เสียไว้ในต่างประเทศ',1],
-  ['Transfer Pricing',P,'การขายสินค้าและวัตถุดิบให้บริษัทลูกต้องเป็นราคาตลาด พร้อมจัดทำเอกสารพิสูจน์ราคาโอน',0],
-  ['อนุสัญญาภาษีซ้อนไทย–เวียดนาม',N,'ใช้ลดอัตราภาษีหัก ณ ที่จ่ายสำหรับเงินปันผล ดอกเบี้ย และค่าสิทธิ',0],
-  ['รายงานตามกลุ่มบริษัท',P,'หากรายได้รวมของกลุ่มถึงเกณฑ์ ต้องจัดทำ Country-by-Country Report และแบบรายงานข้อมูลผู้มีความสัมพันธ์กัน',0]]}
+const PAGES=[
+  {id:'models',n:'01',cls:'',t:'3 โมเดลธุรกิจ',d:'Trading · Assembly · Full Production ในบริษัทเดียว',k:'SHEET 1'},
+  {id:'relations',n:'02',cls:'',t:'ความสัมพันธ์ & เส้นทาง',d:'ใครเป็นใคร เงิน/เอกสาร/สินค้าวิ่งทางไหน',k:'SHEET 2'},
+  {id:'flow',n:'02+',cls:'c',t:'แผนผังความสัมพันธ์',d:'Flowchart — เงิน · สินค้า · หุ้น · ภาษี เห็นภาพรวม',k:'ภาพรวม'},
+  {id:'sales',n:'03',cls:'',t:'รายได้ & ผลตอบแทน',d:'จัดซื้อ · ขายในประเทศ · ส่งออก และเงื่อนไขภาษี',k:'SHEET 3'},
+  {id:'laws',n:'04',cls:'b',t:'กฎหมายที่เกี่ยวข้อง',d:'ภาษีอากร + กฎหมายอื่น พร้อมมาตราอ้างอิง',k:'หัวข้อ 1'},
+  {id:'issues',n:'05',cls:'',t:'ปัญหาภาษีอากร',d:'Tax Issues · สาเหตุ · แนวทางแก้ไข',k:'หัวข้อ 2'},
+  {id:'planning',n:'06',cls:'c',t:'การวางแผนภาษี',d:'Tax Planning โดยชอบด้วยกฎหมาย',k:'หัวข้อ 3'},
+  {id:'conclusion',n:'07',cls:'b',t:'บทสรุป & ข้อเสนอแนะ',d:'Conclusion & Recommendation',k:'หัวข้อ 4'},
 ];
 
-const HQ={id:'HQ',pct:'บริษัทแม่',short:'โฮลดิ้ง',name:'บมจ. ทีพีซี โฮลดิ้ง',role:'ถือหุ้นบริษัทในกลุ่ม บริหารกลาง และบริหารเงินสด',rows:[
-  ['ภาษีเงินได้นิติบุคคล',P,'ยื่น ภ.ง.ด.50 และ ภ.ง.ด.51 · เงินปันผลรับจากบริษัทลูกได้รับยกเว้นหรือยกเว้นกึ่งหนึ่งตามมาตรา 65 ทวิ (10) ต้องอธิบายเงื่อนไขการถือหุ้นไม่น้อยกว่า 25% และถือครบ 3 เดือนก่อนและหลังวันจ่ายเงินปันผล',1],
-  ['ภาษีธุรกิจเฉพาะ',P,'ให้บริษัทในเครือกู้ยืมเงินแบบ cash pooling เข้าลักษณะประกอบกิจการเยี่ยงธนาคารพาณิชย์ เสียอัตรา 3.3% ของดอกเบี้ยรับ',1],
-  ['ภาษีหัก ณ ที่จ่ายเงินปันผล',P,'จ่ายปันผลให้บุคคลธรรมดาไทยหัก 10% · จ่ายให้ผู้ถือหุ้นญี่ปุ่นหักตามมาตรา 70 ลดได้ตามอนุสัญญาภาษีซ้อน',1],
-  ['ภาษีเงินได้บุคคลธรรมดา',P,'ผู้ถือหุ้นบุคคลธรรมดาเลือกได้ระหว่างใช้เครดิตภาษีเงินปันผลกับเสียภาษีสุดท้าย 10% — ควรทำตารางเปรียบเทียบตามระดับฐานภาษี',0],
-  ['อากรแสตมป์',P,'สัญญากู้ยืมเงินในเครือปิดแสตมป์ 1 บาทต่อทุก 2,000 บาท สูงสุดไม่เกิน 10,000 บาท',0],
-  ['ภาษีมูลค่าเพิ่มและ ภ.พ.36',P,'ค่าบริหารจัดการกลางที่เรียกเก็บจากบริษัทลูกเสีย VAT 7% และการนำเข้าบริการที่ปรึกษาจากต่างประเทศต้องนำส่ง ภ.พ.36',0],
-  ['Transfer Pricing',P,'อัตราดอกเบี้ยเงินกู้และค่าบริหารจัดการต้องเป็นราคาตลาด พร้อมยื่นแบบรายงานข้อมูลผู้มีความสัมพันธ์กัน (Disclosure Form)',0]]};
-
-const FLOWS=[
- [1,'B','A','ขายวัตถุดิบนำเข้าให้โรงงาน','VAT 7%'],
- [2,'E','A','ขายตะกั่วรีไซเคิลเข้าสายการผลิต','VAT 7% + เงื่อนไขลดอัตราสรรพสามิต'],
- [3,'A','B','ขายแบตเตอรี่สำเร็จรูปเพื่อจำหน่ายในประเทศ','ภาษีสรรพสามิต + ภาษีเพื่อมหาดไทย + VAT 7%'],
- [4,'A','C','ขายแบตเตอรี่สำเร็จรูปเพื่อการส่งออก','ยกเว้นสรรพสามิต + VAT อัตรา 0%'],
- [5,'D','A','ให้เช่าที่ดินและอาคารโรงงาน','ยกเว้น VAT + หัก ณ ที่จ่าย 5% + อากรแสตมป์'],
- [6,'HQ','A B C','ให้กู้ยืมเงินหมุนเวียนในกลุ่ม','ภาษีธุรกิจเฉพาะ 3.3% + อากรแสตมป์'],
- [7,'HQ','ทุกบริษัท','ค่าบริหารจัดการกลาง','VAT 7% + หัก ณ ที่จ่าย 3% + Transfer Pricing'],
- [8,'F','ญี่ปุ่น','ค่าสิทธิและค่าเทคโนโลยี','หัก ณ ที่จ่าย 15% ลดตาม DTA + ภ.พ.36'],
- [9,'บริษัทลูก','HQ','จ่ายเงินปันผลขึ้นบริษัทแม่','ยกเว้น / ยกเว้นกึ่งหนึ่ง ตามมาตรา 65 ทวิ (10)'],
- [10,'HQ','ผู้ถือหุ้น','จ่ายเงินปันผลออกนอกกลุ่ม','หัก ณ ที่จ่าย 10% (ไทย) · มาตรา 70 (ญี่ปุ่น)']
+const ISSUES=[
+ {no:1,tag:'ศุลกากร · ACFTA',t:'Third-Party Invoicing (จ่ายญี่ปุ่น–ของมาจากจีน)',
+  cause:'บริษัทออก PO และชำระเงินให้บริษัทแม่ญี่ปุ่น แต่สินค้าผลิตและส่งตรงจากโรงงานจีน ใบกำกับราคาจึงมาจากญี่ปุ่น ขณะที่ถิ่นกำเนิดสินค้าเป็นจีน เกิดคำถามว่าจะใช้สิทธิ Form E ได้หรือไม่ และใช้ราคาใดเป็นฐานอากร',
+  law:'พ.ร.บ.ศุลกากร 2560 · ความตกลง ACFTA',
+  fix:'ใช้สิทธิ Form E ได้ เพราะ ACFTA อนุญาต Third-Party Invoicing โดยต้องสำแดงในช่อง 13 ของ Form E และแสดงชื่อผู้ออกใบกำกับ (ญี่ปุ่น) · ใช้ราคาซื้อขายจริงตามใบกำกับญี่ปุ่นเป็น transaction value พร้อมเตรียมสัญญาและหลักฐานการชำระเงินให้สอดคล้อง'},
+ {no:2,tag:'ศุลกากร · TP',t:'Royalty ต้องบวกเข้าฐานราคาศุลกากรหรือไม่',
+  cause:'บริษัทจ่ายค่าสิทธิให้ญี่ปุ่นสำหรับเทคโนโลยีที่ใช้ในโมเดล 2–3 หากค่าสิทธินี้เป็น "เงื่อนไขของการซื้อสินค้านำเข้า" กฎหมายศุลกากรกำหนดให้ต้องบวกเข้าฐานอากร ทำให้อากรสูงขึ้น',
+  law:'พ.ร.บ.ศุลกากร 2560 (การประเมินราคา)',
+  fix:'โครงสร้าง royalty คิดเป็น % ของยอดขายให้บุคคลภายนอก (เกิดหลังนำเข้า) และไม่ใช่เงื่อนไขบังคับของการซื้อวัตถุดิบ จึงมีเหตุผลที่จะไม่บวกเข้าฐานอากร · จัดทำหนังสือชี้แจงและสัญญา license แยกจากสัญญาซื้อขาย และขอ Advance Ruling เพื่อความแน่นอน'},
+ {no:3,tag:'สรรพากร · TP',t:'ราคาโอนของธุรกรรม Related Party ทุกขา',
+  cause:'ซื้อสินค้า/วัตถุดิบ จ่าย royalty และกู้เงิน ล้วนทำกับกลุ่มบริษัทแม่ (RP) หากราคาไม่เป็นตลาด เจ้าพนักงานประเมินมีอำนาจปรับปรุงรายได้/รายจ่าย',
+  law:'ประมวลรัษฎากร ม.71 ทวิ / 71 ตรี',
+  fix:'จัดทำ TP Documentation + Disclosure Form ทุกปี · benchmarking อัตราเทียบบริษัทอิสระในอุตสาหกรรมเดียวกัน · พิจารณาทำ Advance Pricing Arrangement (APA) กับสรรพากรหากมูลค่าสูง'},
+ {no:4,tag:'สรรพากร · BOI',t:'การแยกบัญชี BOI / Non-BOI ในบริษัทเดียว',
+  cause:'โมเดล 3 ได้ยกเว้น CIT (BOI) แต่โมเดล 1–2 เสียภาษีปกติ เมื่ออยู่บริษัทเดียวกัน รายได้และรายจ่ายที่ใช้ร่วมกันต้องปันส่วน หากปันไม่ถูกอาจถูกประเมินภาษีเพิ่ม',
+  law:'พ.ร.บ.ส่งเสริมการลงทุน · ประมวลรัษฎากร',
+  fix:'วางระบบบัญชีแยกกิจการ BOI/Non-BOI ตั้งแต่ต้น · กำหนดหลักเกณฑ์ปันส่วนรายจ่ายร่วมที่สมเหตุผลและสม่ำเสมอ · แยกกำไรสะสมเพื่อการจ่ายปันผลที่ได้สิทธิยกเว้น WHT'},
+ {no:5,tag:'สรรพากร',t:'Rebate ดีลเลอร์ = ส่วนลด หรือ ค่าบริการ',
+  cause:'หาก rebate ถูกตีความเป็น "ค่าส่งเสริมการขาย" (ตอบแทนการทำกิจกรรม) ต้องหัก WHT 3% และดีลเลอร์ต้องมี VAT ขาย แต่หากเป็น "ส่วนลดตามยอด" จะเป็นเพียงการลดราคาขาย',
+  law:'ประมวลรัษฎากร · คำสั่งกรมสรรพากร ป.เกี่ยวกับส่วนลด/รางวัล',
+  fix:'ออกแบบให้ rebate เป็นส่วนลดตามปริมาณซื้อ (volume discount) โดยดีลเลอร์เพียงซื้อถึงเป้า ไม่มีภาระต้องทำกิจกรรมตอบแทน → ออกใบลดหนี้ ลดฐาน VAT · เขียนสัญญาให้ชัดเพื่อหักค่าใช้จ่ายได้เต็ม'},
+ {no:6,tag:'สรรพากร · DTA',t:'ความเสี่ยงเกิดสถานประกอบการถาวร (PE) ในต่างประเทศ',
+  cause:'การขายส่งออกผ่านตัวแทน/นายหน้าในต่างประเทศ หากตัวแทนมีอำนาจทำสัญญาผูกพันแทนบริษัท อาจถือว่าบริษัทมี PE ในประเทศนั้น ทำให้ต้องเสียภาษีในต่างประเทศ',
+  law:'DTA ไทย–ญี่ปุ่น/ประเทศคู่ค้า (Article เรื่อง PE)',
+  fix:'ใช้ตัวแทนอิสระ (independent agent) ที่ทำธุรกิจของตนเอง · สัญญาระบุว่านายหน้าไม่มีอำนาจลงนามผูกพันบริษัท · ไม่ตั้งสำนักงานหรือคลังสินค้าถาวรในต่างประเทศ → คงสถานะ No PE'},
+ {no:7,tag:'สรรพากร · BOI',t:'ดอกเบี้ยเงินกู้ RP และสัดส่วนหนี้ต่อทุน',
+  cause:'เงินกู้ 30 ล้านจากบริษัทแม่ทำให้เกิดดอกเบี้ยจ่ายที่หักภาษีได้ แต่หากสัดส่วนหนี้ต่อทุนสูงเกิน หรือดอกเบี้ยไม่เป็นตลาด อาจถูกปรับปรุง และกระทบเงื่อนไข D:E ของ BOI (โดยทั่วไป 3:1)',
+  law:'ประมวลรัษฎากร ม.65 ตรี · เงื่อนไข BOI',
+  fix:'กำหนดอัตราดอกเบี้ยตามราคาตลาด · ควบคุมสัดส่วนหนี้ต่อทุนไม่ให้เกินเกณฑ์ BOI · ปิดอากรแสตมป์สัญญากู้ · นำส่ง WHT ดอกเบี้ยตาม DTA (ดอกเบี้ยได้รับยกเว้น VAT จึงไม่ต้องทำ ภ.พ.36)'},
+ {no:8,tag:'FBA · สรรพากร',t:'Swap หนี้เป็นทุน — ทะลุ 50% และรายได้ปลดหนี้',
+  cause:'บริษัทแม่ขอชำระเงินกู้คืนด้วยการแปลงเป็นหุ้น หากตีราคาหุ้นต่ำ ญี่ปุ่นจะได้หุ้นมากจนเกิน 50% = กลายเป็นบริษัทต่างด้าว และหากมูลค่าหุ้นที่ออกต่ำกว่ามูลหนี้ ส่วนต่างอาจเป็นรายได้จากการปลดหนี้',
+  law:'พ.ร.บ.ต่างด้าว · ปพพ. (เพิ่มทุน) · ประมวลรัษฎากร ม.65',
+  fix:'ตีราคาหุ้นที่มูลค่ายุติธรรมอิงสินทรัพย์สุทธิ 888 ลบ. เพื่อคุมสัดส่วนญี่ปุ่นให้ต่ำกว่า 50% (จาก 45% ขยับเพียงเล็กน้อย) · ออกหุ้นให้มูลค่าเท่ามูลหนี้เพื่อไม่ให้เกิดรายได้ปลดหนี้ · จดทะเบียนเพิ่มทุนที่ DBD'},
+ {no:9,tag:'สรรพากร',t:'ภ.พ.36 การนำส่ง VAT ค่าสิทธิต่างประเทศ',
+  cause:'การจ่ายค่าสิทธิให้ผู้ประกอบการต่างประเทศที่ไม่ได้จด VAT ในไทย ผู้จ่ายมีหน้าที่นำส่ง VAT แทน หากลืมนำส่งจะมีเบี้ยปรับเงินเพิ่ม',
+  law:'ประมวลรัษฎากร ม.83/6 (ภ.พ.36)',
+  fix:'นำส่ง ภ.พ.36 ในเดือนถัดไปทุกครั้งที่จ่ายค่าสิทธิ · ใบเสร็จ ภ.พ.36 ใช้เป็นภาษีซื้อขอเครดิตคืนได้ จึงเป็นภาระชั่วคราวไม่ใช่ต้นทุนสุทธิ · แยกให้ชัดจากดอกเบี้ยเงินกู้ที่ยกเว้น VAT'},
 ];
 
-const CHECK=[
- ['ภาษีเงินได้นิติบุคคล (ภ.ง.ด.50/51)','สรรพากร','ทุกบริษัท',['HQ','A','B','C','D','E','F','G']],
- ['ภาษีเงินได้บุคคลธรรมดา (ภ.ง.ด.90/91)','สรรพากร','ผู้ถือหุ้น · พนักงาน · ตัวแทนจำหน่าย',['HQ','A','F']],
- ['ภาษีมูลค่าเพิ่ม อัตรา 7%','สรรพากร','A · B · E · F',['A','B','E','F','HQ']],
- ['ภาษีมูลค่าเพิ่ม อัตรา 0% (ส่งออก)','สรรพากร','C',['C']],
- ['ภาษีมูลค่าเพิ่ม กรณียกเว้น (ค่าเช่าอสังหาฯ)','สรรพากร','D',['D']],
- ['ภ.พ.36 — นำส่ง VAT แทนผู้ประกอบการต่างประเทศ','สรรพากร','โฮลดิ้ง · B · F',['HQ','B','F']],
- ['ภาษีหัก ณ ที่จ่าย (ภ.ง.ด.1 / 3 / 53)','สรรพากร','ทุกบริษัท',['HQ','A','B','C','D','E','F']],
- ['ภาษีหัก ณ ที่จ่ายจ่ายไปต่างประเทศ (ภ.ง.ด.54)','สรรพากร','โฮลดิ้ง · F',['HQ','F']],
- ['ภาษีธุรกิจเฉพาะ','สรรพากร','โฮลดิ้ง (ให้กู้) · D (ขายที่ดิน)',['HQ','D']],
- ['อากรแสตมป์','สรรพากร','ทุกบริษัท',['HQ','A','B','C','D','E','F']],
- ['ภาษีสรรพสามิต','สรรพสามิต','A',['A']],
- ['ภาษีเพื่อมหาดไทย','สรรพสามิต','A',['A']],
- ['อากรขาเข้า','ศุลกากร','B',['B']],
- ['อากรขาออก · ชดเชยค่าภาษีอากร','ศุลกากร','C',['C']],
- ['ภาษีที่ดินและสิ่งปลูกสร้าง','อปท.','D · A',['D','A']],
- ['ภาษีป้าย','อปท.','A · B',['A','B']],
- ['ค่าธรรมเนียมจดทะเบียนสิทธิและนิติกรรม','กรมที่ดิน','D',['D']],
- ['สิทธิประโยชน์ส่งเสริมการลงทุน (BOI)','BOI','A · E',['A','E']],
- ['Transfer Pricing · Disclosure Form','สรรพากร','ทั้งกลุ่ม',['HQ','A','B','C','D','E','F','G']],
- ['อนุสัญญาภาษีซ้อน (DTA)','สรรพากร','โฮลดิ้ง · F · G',['HQ','F','G']]
+const PLAN=[
+ ['1','ใช้สิทธิ BOI ให้เต็ม (โมเดล 3)','ยกเว้น CIT ตามบัตรส่งเสริม + ยกเว้นอากรวัตถุดิบ · กำหนดสัดส่วนผลิตเพื่อส่งออก และวางแผนจ่ายปันผลจากกำไร BOI ก่อน เพราะได้ยกเว้น WHT'],
+ ['2','Form E ลดอากรขาเข้าเหลือศูนย์','ใช้ถิ่นกำเนิดจีนภายใต้ ACFTA ทุกครั้งที่นำเข้า พร้อมสำแดง Third-Party Invoicing ให้ถูกต้อง'],
+ ['3','เขตปลอดอากร / มาตรา 19 ทวิ','สำหรับวัตถุดิบที่นำเข้ามาผลิตเพื่อส่งออก พักหรือขอคืนอากร ลดต้นทุนและเพิ่มสภาพคล่อง'],
+ ['4','โครงสร้าง Royalty อิงยอดขาย','คิดค่าสิทธิเป็น % ของยอดขายให้บุคคลภายนอก (post-import) เพื่อมีเหตุผลไม่บวกเข้าฐานอากรศุลกากร'],
+ ['5','บริหาร VAT สถานะผู้ส่งออก','ส่งออก VAT 0% แต่ขอคืนภาษีซื้อได้ → วางแผนขอคืนสม่ำเสมอเพื่อรักษากระแสเงินสด'],
+ ['6','สรรพสามิต: ใช้สิทธิยกเว้นส่งออก + อัตราลด','ส่งออกอัตรา 0% · หากเข้าเงื่อนไขแบตฯ EV ที่มีแผนรีไซเคิล พิจารณาใช้อัตราลด (เช่น 1%)'],
+ ['7','จัดทำ TP Documentation ล่วงหน้า','ป้องกันการถูกประเมินราคาโอน · พิจารณา APA · benchmarking อัตรา royalty/ดอกเบี้ย/ราคาซื้อ'],
+ ['8','หักกลบลบหนี้ (Netting) ระหว่างกัน','บริหารการชำระค่าสินค้า–royalty–ดอกเบี้ยกับกลุ่มบริษัทแม่ให้มีประสิทธิภาพ ลดต้นทุนธุรกรรม'],
+ ['9','Debt-to-Equity Swap ที่มูลค่ายุติธรรม','แปลงเงินกู้เป็นทุนโดยคุมสัดส่วนญี่ปุ่น < 50% รักษาสถานะบริษัทไทยและสิทธิ BOI'],
+ ['10','แยกบัญชี BOI/Non-BOI + วางแผนปันผล','แยกกำไรสะสมสองส่วน จ่ายปันผลจากส่วน BOI ก่อนเพื่อใช้สิทธิยกเว้น WHT'],
 ];
 
-/* ── render cells ── */
-const cellsEl=document.getElementById('cells');
-CO.forEach(c=>{
-  const w=document.createElement('div');
-  w.innerHTML=`<div class="stem"></div>
-    <button class="cell" data-id="${c.id}" aria-label="${c.name}">
-      <span class="cap"></span>
-      <span class="cell-body">
-        <span class="cid">${c.id}</span>
-        <span class="cnm">${c.short}</span>
-        <span class="cpct">${c.pct}</span>
-      </span>
-    </button>`;
-  cellsEl.appendChild(w);
-});
+// render menu
+document.getElementById('menu').innerHTML=PAGES.map(p=>
+ `<button class="mcard ${p.cls}" onclick="go('${p.id}')">
+    <span class="cap"></span>
+    <span class="mc-in">
+      <span class="mnum">${p.k} · ${p.n}</span>
+      <h3>${p.t}</h3>
+      <p>${p.d}</p>
+      <span class="go">เปิดหัวข้อ →</span>
+    </span>
+  </button>`).join('');
 
-/* ── render cards ── */
-const panel=document.getElementById('panel');
-function card(c){
-  const rows=c.rows.map(r=>{
-    const pol=r[1]===P?'pos':'neg';
-    const cls=(r[3]?'star':'')+(r[3]&&r[1]===N?' benefit':'');
-    return `<tr class="${cls}"><td class="p"><span class="pin ${pol}">${r[1]}</span></td><td class="k">${r[0]}</td><td class="v">${r[2]}</td></tr>`;
-  }).join('');
-  return `<div class="card" id="card-${c.id}">
-    <div class="card-head">
-      <span class="badge">${c.id}</span>
-      <span><span class="t">${c.name}</span><br><span class="r">${c.role}</span></span>
-      <span class="own">${c.pct}</span>
-    </div>
-    <table class="rows"><tbody>${rows}</tbody></table>
-  </div>`;
+// render top nav
+document.getElementById('tnav').innerHTML=PAGES.map(p=>
+ `<button data-p="${p.id}" onclick="go('${p.id}')">${p.t}</button>`).join('');
+
+// render issues
+document.getElementById('issueStack').innerHTML=ISSUES.map(i=>
+ `<div class="icard">
+    <div class="icard-h"><span class="ino">${i.no}</span>
+      <div><h3>${i.t}</h3><span class="tag">${i.tag}</span></div></div>
+    <div class="irow cause"><span class="rk">สาเหตุ</span><span>${i.cause}<span class="law">อ้างอิง: ${i.law}</span></span></div>
+    <div class="irow fix"><span class="rk">แนวทางแก้ไข</span><span>${i.fix}</span></div>
+  </div>`).join('');
+
+// render planning
+document.getElementById('planStack').innerHTML=PLAN.map(p=>
+ `<div class="pitem"><span class="pn">${p[0]}</span><div><b>${p[1]}</b><p>${p[2]}</p></div></div>`).join('');
+
+// router
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  const el=document.getElementById(id)||document.getElementById('home');
+  el.classList.add('on');
+  document.querySelectorAll('.tnav button').forEach(b=>b.classList.toggle('active',b.dataset.p===id));
+  if(history.replaceState) history.replaceState(null,'',id==='home'?location.pathname:'#'+id);
+  window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
 }
-panel.innerHTML=card(HQ)+CO.map(card).join('');
-
-/* ── flows ── */
-document.getElementById('flows').innerHTML=FLOWS.map(f=>
- `<tr><td class="num">${f[0]}</td>
-  <td><span class="tag">${f[1]}</span> <span class="arrow">→</span> <span class="tag">${f[2]}</span></td>
-  <td>${f[3]}</td><td>${f[4]}</td></tr>`).join('');
-
-/* ── checklist ── */
-document.getElementById('check').innerHTML=CHECK.map((c,i)=>
- `<tr data-who="${c[3].join(' ')}"><td class="num">${String(i+1).padStart(2,'0')}</td>
-  <td>${c[0]}</td><td class="agency">${c[1]}</td><td>${c[2]}</td></tr>`).join('');
-
-/* ── interaction ── */
-const fnote=document.getElementById('fnote'), fnoteTxt=document.getElementById('fnote-txt');
-let active=null;
-function clear(){
-  active=null;
-  document.querySelectorAll('.cell').forEach(b=>b.classList.remove('on'));
-  document.querySelectorAll('#check tr').forEach(t=>t.classList.remove('dim'));
-  fnote.classList.remove('show');
-}
-document.querySelectorAll('.cell').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const id=btn.dataset.id;
-    if(active===id){clear();return;}
-    clear(); active=id; btn.classList.add('on');
-    document.querySelectorAll('#check tr').forEach(t=>{
-      if(!t.dataset.who.split(' ').includes(id)) t.classList.add('dim');
-    });
-    const co=CO.find(x=>x.id===id);
-    const n=CHECK.filter(c=>c[3].includes(id)).length;
-    fnoteTxt.textContent=`กำลังเน้นบริษัท ${id} — ${co.name} · เกี่ยวข้อง ${n} ประเด็นภาษี`;
-    fnote.classList.add('show');
-    document.getElementById('card-'+id).scrollIntoView({block:'start'});
-  });
-});
-document.getElementById('fclear').addEventListener('click',clear);
+window.addEventListener('hashchange',()=>{const h=location.hash.replace('#','');if(h)go(h);});
+// init from hash
+(function(){const h=location.hash.replace('#','');if(h&&document.getElementById(h))go(h);})();
 </script>
 
 </body>
