@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax Mapping — บริษัท ไทยพาวเวอร์เซลล์ (สมมติ)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html{color-scheme:light only;-webkit-text-size-adjust:100%}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  background:#DDDFD7;color:#23282C;
+  font-family:'IBM Plex Sans Thai',sans-serif;font-weight:300;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(#C4C8C0 1px,transparent 1px),linear-gradient(90deg,#C4C8C0 1px,transparent 1px);
+  background-size:56px 56px;background-position:-1px -1px;
+}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px 90px}
+.homelink{display:inline-block;margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;color:#4A5257;text-decoration:none;background:#fff;border:1.5px solid #B9BDB6;padding:7px 13px}
+.homelink:hover{border-color:#23282C;color:#23282C}
+
+.mast{border:2px solid #23282C;background:#fff;margin-top:14px;box-shadow:6px 6px 0 #C4C8C0}
+.mast-in{padding:24px 26px 18px}
+.eyebrow{font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#4A5257;display:block;margin-bottom:11px}
+h1{font-family:‘Chakra Petch’,sans-serif;font-weight:700;font-size:clamp(26px,4.6vw,42px);line-height:1.1}
+h1 .s{display:block;font-size:clamp(13px,2vw,17px);font-weight:500;color:#4A5257;margin-top:9px}
+.mast-note{border-top:2px solid #23282C;background:#F0F1EC;padding:12px 26px;font-size:12.5px;color:#4A5257}
+.mast-note b{color:#B33A2B;font-weight:600}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:9px 16px;margin:20px 0 6px;font-size:12.5px;color:#4A5257;align-items:center}
+.legend .lg{display:flex;align-items:center;gap:7px}
+.chip{font-family:‘IBM Plex Mono’;font-size:11px;padding:2px 8px;border:1px solid}
+.chip.ap{background:#FBF3F1;border-color:#B33A2B;color:#B33A2B}
+.chip.ex{background:#EFF6F3;border-color:#146B5E;color:#146B5E}
+.chip.na{background:#F0F1EC;border-color:#B9BDB6;color:#8A9088}
+.wtnote{font-family:‘IBM Plex Mono’;font-size:11px;color:#4A5257;margin:2px 0 12px;letter-spacing:.02em}
+.scrollhint{display:none;font-family:‘IBM Plex Mono’;font-size:10.5px;color:#4A5257;margin-bottom:6px}
+
+/* table */
+.tscroll{overflow-x:auto;border:2px solid #23282C;background:#fff;box-shadow:6px 6px 0 #C4C8C0}
+table{border-collapse:collapse;width:100%;min-width:1120px;font-size:12.5px}
+thead th{
+background:#23282C;color:#fff;font-family:‘Chakra Petch’;font-weight:600;font-size:12px;
+padding:9px 10px;text-align:center;border:1px solid #3a4147;position:sticky;top:0;z-index:2;white-space:nowrap
+}
+thead tr:nth-child(2) th{top:36px}
+th.acct{text-align:left;min-width:230px}
+th.std{min-width:140px}
+tbody td{padding:8px 10px;border:1px solid #E0E2DC;vertical-align:top;line-height:1.4}
+tbody td.acct{font-family:‘IBM Plex Sans Thai’;font-weight:500;font-size:13px;color:#23282C}
+tbody td.acct .en{display:block;font-family:‘IBM Plex Mono’;font-size:10px;color:#8A9088;font-weight:400;margin-top:1px}
+tbody td.std{font-size:11.5px;color:#4A5257}
+tbody td.tx{text-align:center;font-family:‘IBM Plex Mono’;font-size:11.5px;white-space:nowrap}
+tbody td.tx small{display:block;font-size:9.5px;color:#8A9088;white-space:normal;line-height:1.25;margin-top:1px}
+td.ap{background:#FBF3F1;color:#B33A2B;font-weight:500}
+td.ex{background:#EFF6F3;color:#146B5E;font-weight:500}
+td.na{background:#F7F8F5;color:#B0B4AD}
+tr.cat td{
+background:#23282C;color:#fff;font-family:‘Chakra Petch’;font-weight:600;font-size:12.5px;
+letter-spacing:.04em;padding:8px 12px;border:1px solid #23282C
+}
+tr:hover td:not(.na){filter:brightness(.985)}
+
+footer{margin-top:34px;border-top:2px solid #23282C;padding-top:14px;font-family:‘IBM Plex Mono’;font-size:10.5px;color:#4A5257;letter-spacing:.04em;line-height:1.9}
+
+@media(max-width:1000px){.scrollhint{display:block}}
+@media(max-width:560px){.wrap{padding:0 11px 70px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="homelink">← กลับไปหน้าแรก (index.html)</a>
+
+<div class="mast">
+  <div class="mast-in">
+    <span class="eyebrow">โครงงานภาษีอากร · Tax Mapping Matrix</span>
+    <h1>ผังแมปภาษีตามบัญชี
+      <span class="s">บริษัท ไทยพาวเวอร์เซลล์ จำกัด (สมมติ) — ธุรกิจแบตเตอรี่รถยนต์ 3 โมเดล</span>
+    </h1>
+  </div>
+  <div class="mast-note">
+    แต่ละบัญชีถูกแมปกับภาษีที่เกี่ยวข้อง — <b>CIT</b> ภาษีเงินได้นิติบุคคล · <b>WT</b> ภาษีหัก ณ ที่จ่าย (แยกผู้รับเป็นนิติบุคคล/บุคคลธรรมดา) · <b>VAT</b> ภาษีมูลค่าเพิ่ม · <b>SBT</b> ภาษีธุรกิจเฉพาะ · <b>SD</b> อากรแสตมป์ · <b>Others</b> สรรพสามิต/ศุลกากร/ภาษีท้องถิ่น
+  </div>
+</div>
+
+<div class="legend">
+  <span class="lg"><span class="chip ap">มี</span> ภาษีเกี่ยวข้อง / มีภาระ</span>
+  <span class="lg"><span class="chip ex">ยกเว้น</span> ยกเว้น / อัตรา 0%</span>
+  <span class="lg"><span class="chip na">–</span> ไม่เกี่ยวข้อง</span>
+</div>
+<div class="wtnote">// WT-CIT = หักเมื่อผู้รับเป็นนิติบุคคล · WT-PIT = หักเมื่อผู้รับเป็นบุคคลธรรมดา (ภ.ง.ด.1/3/53/54)</div>
+<div class="scrollhint">↔ เลื่อนตารางแนวนอนเพื่อดูทุกคอลัมน์</div>
+
+<div class="tscroll">
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2" class="acct">ชื่อบัญชี</th>
+      <th rowspan="2" class="std">มาตรฐานการบัญชี</th>
+      <th rowspan="2">CIT</th>
+      <th colspan="2">WT</th>
+      <th rowspan="2">VAT</th>
+      <th rowspan="2">SBT</th>
+      <th rowspan="2">SD</th>
+      <th rowspan="2">Others</th>
+    </tr>
+    <tr><th>CIT</th><th>PIT</th></tr>
+  </thead>
+  <tbody id="body"></tbody>
+</table>
+</div>
+
+<footer>
+  บริษัทและตัวเลขเป็นกรณีสมมติเพื่อการศึกษา · อัตราและมาตราอ้างอิง: ประมวลรัษฎากร · พ.ร.บ.ภาษีสรรพสามิต 2560 · พ.ร.บ.ศุลกากร 2560 · DTA ไทย–ญี่ปุ่น · TFRS/TAS<br>
+  ⚠️ ตรวจสอบอัตราและเงื่อนไขล่าสุดก่อนนำไปใช้จริง — การจัดประเภทบางรายการขึ้นกับข้อเท็จจริงและข้อสัญญา
+</footer>
+</div>
+
+<script>
+// each row: [account, en, standard, CIT, WT-CIT, WT-PIT, VAT, SBT, SD, Others]
+// use \n inside a cell as: "main||small note"
+const CAT=(t)=>({cat:t});
+const ROWS=[
+ CAT('หมวดรายได้ (Revenue)'),
+ ['รายได้ขายในประเทศ','Domestic sales','TFRS 15','✓ รายได้||เงินได้พึงประเมิน','–','–','7%','–','–','สรรพสามิต||ตอนขาย/ผลิต'],
+ ['รายได้ส่งออก','Export sales','TFRS 15','✓ รายได้','–','–','0%||อัตราศูนย์','–','–','ยกเว้นสรรพสามิต||ศุลกากรขาออก'],
+ ['รายได้ค่าบริการติดตั้ง/รับประกัน','Service income','TFRS 15','✓ รายได้','ผู้จ่ายหัก 3%','ผู้จ่ายหัก 3%','7%','–','–','–'],
+ ['ดอกเบี้ยรับ','Interest income','TFRS 9','✓ รายได้','1%||ถ้ารับจากนิติบุคคล','–','ยกเว้น','3.3%||ถ้าให้กู้เยี่ยงธนาคาร','–','–'],
+ ['เงินปันผลรับ','Dividend income','—','ยกเว้น/กึ่งหนึ่ง||ม.65 ทวิ (10)','10%||ผู้จ่ายหัก (เครดิต/ยกเว้น)','–','–','–','–','–'],
+ ['กำไรจากอัตราแลกเปลี่ยน','FX gain','TAS 21','✓ รายได้||ม.65 ทวิ (5)','–','–','–','–','–','–'],
+ ['ส่วนลด/Rebate รับจากผู้ขาย','Purchase rebate','TAS 2','ลดต้นทุน (COGS)','–','–','ใบลดหนี้||ปรับภาษีซื้อ','–','–','TP||Related Party'],
+
+ CAT('หมวดต้นทุนและสินค้า (Cost / Inventory)'),
+ ['ซื้อสินค้าสำเร็จรูปนำเข้า (M1)','Import FG','TAS 2','ต้นทุน (หักได้)','–','–','7% นำเข้า||ภาษีซื้อ ขอคืนได้','–','–','อากรขาเข้า + สรรพสามิต'],
+ ['ซื้อชิ้นส่วน/วัตถุดิบนำเข้า (M2,M3)','Import materials','TAS 2','ต้นทุน (หักได้)','–','–','7% นำเข้า||ภาษีซื้อ','–','–','อากรขาเข้า||Form E 0% / BOI'],
+ ['สินค้าคงเหลือ','Inventory','TAS 2','ตีราคา NRV||ม.65 ทวิ (6)','–','–','–','–','–','–'],
+
+ CAT('หมวดค่าใช้จ่าย (Expenses)'),
+ ['เงินเดือน/ค่าจ้างพนักงาน','Salaries','TAS 19','✓ หักได้','–','ภ.ง.ด.1||อัตราก้าวหน้า','–','–','–','ประกันสังคม'],
+ ['ค่าเช่าอาคาร/ที่ดิน','Rent (immovable)','TFRS 16','✓ หักได้','5%','5%','ยกเว้น','–','สัญญาเช่า||0.1%','–'],
+ ['ค่าขนส่งในประเทศ','Domestic freight','—','✓ หักได้','1%','1%','ยกเว้น||(ขนส่งบริสุทธิ์)','–','–','–'],
+ ['ค่าโฆษณา','Advertising','—','✓ หักได้','2%','2%','7%','–','–','–'],
+ ['Rebate/ส่งเสริมการขาย จ่ายดีลเลอร์','Sales rebate','—','✓ หักได้||ต้องมีสัญญาชัดเจน','–||ถ้าเป็นส่วนลด','–','ใบลดหนี้||ลดฐาน VAT','–','–','ถ้าเป็นค่าบริการ→WT 3%'],
+ ['ค่าคอมมิชชั่นนายหน้าต่างประเทศ','Foreign commission','—','✓ หักได้','–||No PE, บริการนอกไทย','–','–||ใช้บริการในตปท.','–','–','–'],
+ ['ค่าสิทธิ (Royalty) จ่ายญี่ปุ่น','Royalty (foreign)','TAS 38','✓ หักได้','15%||ม.70 · DTA','–','ภ.พ.36 7%||นำส่งแทน · เครดิตได้','–','–','TP||Related Party'],
+ ['ดอกเบี้ยจ่ายเงินกู้ต่างประเทศ','Interest exp. (foreign)','TFRS 9','✓ หักได้||ระวัง D:E ของ BOI','15%||ม.70 · DTA','–','ยกเว้น','–','–','TP · thin cap'],
+ ['ค่าบริการวิชาชีพ/ที่ปรึกษา (ในปท.)','Professional fee','—','✓ หักได้','3%','3%','7%','–','–','–'],
+ ['ค่าที่ปรึกษาต่างประเทศ','Foreign consulting','—','✓ หักได้','15%||ม.70','–','ภ.พ.36 7%','–','–','–'],
+ ['ค่าสาธารณูปโภค (ไฟ/น้ำ/โทร)','Utilities','—','✓ หักได้','3%||เฉพาะค่าโทรศัพท์','–','7%','–','–','–'],
+ ['ค่าเสื่อมราคา','Depreciation','TAS 16','✓ หักได้||ตามอัตรา พ.ร.ฎ.','–','–','–','–','–','–'],
+ ['รายจ่ายวิจัยและพัฒนา','R&D expense','TAS 38','หักได้ 200%||ต้องผ่านการรับรอง','–','–','–','–','–','–'],
+ ['หนี้สูญ','Bad debt','TFRS 9','หักได้||ตามเงื่อนไข กฎกระทรวง 186','–','–','–','–','–','–'],
+
+ CAT('หมวดสินทรัพย์ (Assets)'),
+ ['ที่ดิน','Land','TAS 16','ไม่คิดค่าเสื่อม','–','–','–','3.3%||เมื่อขาย','ยกเว้น||(เมื่อเสีย SBT)','ภาษีที่ดินฯ · ค่าโอน 2%'],
+ ['อาคาร/สิ่งปลูกสร้าง','Buildings','TAS 16','✓ ค่าเสื่อม','–','–','–','3.3%||เมื่อขาย','–','ภาษีที่ดินฯ'],
+ ['เครื่องจักร','Machinery','TAS 16','✓ ค่าเสื่อม','–','–','7% นำเข้า','–','–','อากรนำเข้า||BOI ยกเว้น'],
+ ['สินทรัพย์ไม่มีตัวตน (License)','Intangibles','TAS 38','✓ ตัดจำหน่าย','–','–','–','–','–','–'],
+ ['ลูกหนี้การค้า','Trade receivables','TFRS 9','—','–','–','–','–','–','–'],
+
+ CAT('หมวดหนี้สินและส่วนของเจ้าของ (Liabilities / Equity)'),
+ ['เงินกู้ยืมจากบริษัทแม่','Loan from parent','TFRS 9','—','–','–','–','–','สัญญากู้||1/2,000 สูงสุด 10,000','WT ดอกเบี้ย (ดูค่าใช้จ่าย)'],
+ ['เจ้าหนี้การค้า','Trade payables','TFRS 9','—','–','–','–','–','–','–'],
+ ['ทุนเรือนหุ้น','Share capital','—','—','–','–','–','–','–||(ออกหุ้นใหม่)','ค่าธรรมเนียม DBD'],
+ ['เงินปันผลจ่าย','Dividend paid','—','จ่ายจากกำไรหลังภาษี','10%||ผู้รับนิติบุคคล ตปท./เงื่อนไข','10%||ผู้รับบุคคลธรรมดา','–','–','–','ส่วน BOI → ยกเว้น WT'],
+ ['การโอนหุ้น / Swap หนี้เป็นทุน','Share transfer / swap','—','กำไร/ปลดหนี้||ม.65','–','–','–','–','ตราสารโอนหุ้น||0.1%','FBA (คุม <50%)'],
+];
+
+function cell(v){
+  if(v===undefined||v==='') v='–';
+  const parts=String(v).split('||');
+  const main=parts[0], sub=parts[1];
+  let cls='ap';
+  if(main==='–') cls='na';
+  else if(/ยกเว้น|^0%|ไม่คิด|^—$/.test(main)) cls=(main==='—'?'na':'ex');
+  else if(main==='—') cls='na';
+  return `<td class="tx ${cls}">${main}${sub?`<small>${sub}</small>`:''}</td>`;
+}
+
+document.getElementById('body').innerHTML=ROWS.map(r=>{
+  if(r.cat) return `<tr class="cat"><td colspan="9">${r.cat}</td></tr>`;
+  return `<tr>
+    <td class="acct">${r[0]}<span class="en">${r[1]}</span></td>
+    <td class="std">${r[2]}</td>
+    ${cell(r[3])}${cell(r[4])}${cell(r[5])}${cell(r[6])}${cell(r[7])}${cell(r[8])}${cell(r[9])}
+  </tr>`;
+}).join('');
+</script>
+
+</body>
+</html>
